@@ -25,9 +25,9 @@ function Headerbar() {
   };
 
   return (
-    <div className="w-full bg-black text-white text-sm">
-      <div className="flexBetween py-3 px-[8%] lg:px-[12%] flex-col md:flex-row">
-        <div className="flex space-x-4 flex-wrap">
+    <div className="w-full  text-white text-sm">
+      <div className="flexBetween h-[42px] px-6 py-3   md:px-12 lg:px-[12%] flex-col md:flex-row">
+        <div className="flex space-x-4 flex-wrap text-sm font-medium text-gray-200">
           <p>Shop in Japan easily from the comfort of your own home, with fast and reliable service.</p>
         </div>
         <div className="flex space-x-4 flex-wrap">

@@ -29,7 +29,7 @@ function Header() {
       <div className="w-full border-b border-gray-300 relative">
         <div className="padd-cont flexBetween">
           {/* LOGO */}
-          <div className="">
+          <div className="pl-[1.5rem]">
             <Link href={"/"}>
               <Image
                 src={"/logoshoppyJapan.png"}
@@ -64,7 +64,7 @@ function Header() {
               placeholder="Search Product"
               className="flex-1 border px-3 py-2  border-gray-400 outline-none"
             />
-            <button className="bg-[#BB002C] text-white rounded-r-lg cursor-pointer w-10 flex justify-center items-center">
+            <button className="bg-orange-500  hover:bg-orange-600 text-white rounded-r-lg cursor-pointer w-10 flex justify-center items-center">
               <Search className="w-5 h-5"></Search>
             </button>
             
@@ -77,10 +77,10 @@ function Header() {
               <Heart></Heart>
             </Link>
             <Link  href={"/"}>
-              <Button className="">Login</Button>
+              <Button variant="outline" className="rounded-xl px-5 py-2">Login</Button>
             </Link>
             <Link  href={"/"}>
-              <Button>Register</Button>
+              <Button variant="solid" className="bg-orange-500 hover:bg-orange-600 text-white rounded-xl px-5 py-2" >Register</Button>
             </Link>
           </div>
         </div>

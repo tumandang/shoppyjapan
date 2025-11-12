@@ -1,6 +1,7 @@
 import { Inter , Lexend } from "next/font/google";
 import "./globals.css";
 import Header from "./(components)/Header";
+import Headerbar from "./(components)/headerbar";
 
 
 const inter = Inter({
@@ -24,7 +25,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className={`${inter.variable} ${lexend.variable} antialiased`}
+        
       >
+        <Headerbar/>
         <Header/>
         {children}
       </body>

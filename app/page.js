@@ -1,16 +1,11 @@
-import { Button } from '@/components/ui/button'
-import React from 'react'
+import { Button } from "@/components/ui/button";
+import React from "react";
+import Hero from "./(components)/hero";
 
-function page() {
+function Page() {
   return (
-    <div>
-      
-      <h2>
-        Homepage
-      </h2>
-      <Button>Click This</Button>
-    </div>
-  )
+    <Hero></Hero>
+  );
 }
 
-export default page
+export default Page;

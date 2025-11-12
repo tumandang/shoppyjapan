@@ -28,27 +28,17 @@ function Headerbar() {
     <div className="w-full bg-black text-white text-sm">
       <div className="flexBetween py-3 px-[8%] lg:px-[12%] flex-col md:flex-row">
         <div className="flex space-x-4 flex-wrap">
-          <Link
-            href="#"
-            className="pr-3 border-r-2 border-gray-300 hover:underline"
-          >
-            About Us
-          </Link>
-          <Link
-            href="#"
-            className="pr-3 border-r-2 border-gray-300 hover:underline"
-          >
-            Contact Us
-          </Link>
-          <Link href="#" className=" hover:underline">
-            Privacy Policy
-          </Link>
+          <p>Shop in Japan easily from the comfort of your own home, with fast and reliable service.</p>
         </div>
         <div className="flex space-x-4 flex-wrap">
           <Link
             href="#"
-            className="pr-3 border-r-2 border-gray-300 hover:underline flex items-center"
-          >
+            className="pr-3 border-r-2 border-gray-300 hover:underline flex items-center">
+            Delivery Policy
+          </Link>
+          <Link
+            href="#"
+            className="pr-3 border-r-2 border-gray-300 hover:underline flex items-center">
             First Time Use?
           </Link>
           <div className="flex items-center space-x-3">

@@ -2,6 +2,8 @@ import { Inter , Lexend } from "next/font/google";
 import "./globals.css";
 import Header from "./(components)/Header";
 import Headerbar from "./(components)/headerbar";
+import Navbar from "./(components)/Navbar";
+import Footer from "./(components)/Footer";
 
 
 const inter = Inter({
@@ -29,7 +31,13 @@ export default function RootLayout({ children }) {
       >
         <Headerbar/>
         <Header/>
-        {children}
+        <Navbar/>
+        
+       
+          
+          {children}
+        
+        <Footer></Footer>
       </body>
     </html>
   );

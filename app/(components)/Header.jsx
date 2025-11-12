@@ -1,7 +1,7 @@
 "use client"; 
 
 import Link from "next/link";
-
+import { Button } from '@/components/ui/button'
 import React, { useState } from "react";
 import {
   DropdownMenu,
@@ -11,12 +11,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Heart, Search, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 const langs = [
-  { code: "GB", label: "ENGLISH" },
-  { code: "MY", label: "BAHASA MELAYU" },
-  { code: "JP", label: "日本語" },
+  { label: "Rakuten" },
+  { label: "Rakuten Rakuma" },
+  { label: "Yahoo Auction" },
 ];
 function Header() {
   const [selectedLang, setSelectedLang] = useState(langs[0]);
@@ -25,7 +25,7 @@ function Header() {
     setSelectedLang(lang);
   };
   return (
-    <header>
+    <header className="bg-white">
       <div className="w-full border-b border-gray-300 relative">
         <div className="padd-cont flexBetween">
           {/* LOGO */}
@@ -41,41 +41,50 @@ function Header() {
           </div>
           {/* SearchBar */}
           <div className="flex-1 ms-6 mx-0 lg:max-6 max-w-xl relative hidden lg:flex">
-            <input
-              type="text"
-              placeholder="Search Product"
-              className="flex-1 border px-3 py-2 rounded-s-lg border-gray-400 outline-none"
-            />
-            <button className="bg-[#DD6657] text-white rounded-r cursor-pointer w-10 flex justify-center items-center">
-              <Search className="w-5 h-5"></Search>
-            </button>
             <div className="flex items-center space-x-3">
-              <DropdownMenu>
-                <DropdownMenuTrigger className="bg-white text-black px-2 py-1 rounded flex items-center space-x-2">
-                  <span
-                    className={`fi fi-${selectedLang.code.toLowerCase()} w-6 h-6`}
-                  ></span>
+              <DropdownMenu className="">
+                <DropdownMenuTrigger className="flexBetween space-x-2 border px-3  py-2 rounded-s-lg border-gray-400 outline-none w-44">
                   <span className="">{selectedLang.label}</span>
-                  <ChevronDown></ChevronDown>
+                  <ChevronDown size={14} strokeWidth={3}></ChevronDown>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-white text-black">
-                  {langs.map((lang) => (
+                  {langs.map((lang, index) => (
                     <DropdownMenuItem
-                      key={lang.code}
+                      key={index}
                       className="flex items-center space-x-2"
-                      onClick={() => handleSelect(lang)}
-                    >
-                      <span
-                        className={`fi fi-${lang.code.toLowerCase()} w-6 h-6`}
-                      ></span>
+                      onClick={() => handleSelect(lang)}>
                       <span>{lang.label}</span>
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
+            <input
+              type="text"
+              placeholder="Search Product"
+              className="flex-1 border px-3 py-2  border-gray-400 outline-none"
+            />
+            <button className="bg-[#BB002C] text-white rounded-r-lg cursor-pointer w-10 flex justify-center items-center">
+              <Search className="w-5 h-5"></Search>
+            </button>
+            
+          </div>
+          <div className="hidden lg:flex items-center space-x-4">
+            <Link  href={"/"}>
+              <ShoppingBag></ShoppingBag>
+            </Link>
+            <Link  href={"/"}>
+              <Heart></Heart>
+            </Link>
+            <Link  href={"/"}>
+              <Button className="">Login</Button>
+            </Link>
+            <Link  href={"/"}>
+              <Button>Register</Button>
+            </Link>
           </div>
         </div>
+
       </div>
     </header>
   );

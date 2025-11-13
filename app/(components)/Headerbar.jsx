@@ -1,12 +1,10 @@
-"use client"; 
-import { ChevronDown, GlobeIcon, HelpCircle } from "lucide-react";
+"use client";
+import { ChevronDown, X } from "lucide-react";
 import React, { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
@@ -19,48 +17,59 @@ const langs = [
 
 function Headerbar() {
   const [selectedLang, setSelectedLang] = useState(langs[0]);
+  const [showBanner, setShowBanner] = useState(true);
 
   const handleSelect = (lang) => {
     setSelectedLang(lang);
   };
 
   return (
-    <div className="w-full  text-white text-sm">
-      <div className="flexBetween h-[42px] px-6 py-3   md:px-12 lg:px-[12%] flex-col md:flex-row">
-        <div className="flex space-x-4 flex-wrap text-sm font-medium text-gray-200">
-          <p>Shop in Japan easily from the comfort of your own home, with fast and reliable service.</p>
-        </div>
-        <div className="flex space-x-4 flex-wrap">
-          <Link
-            href="#"
-            className="pr-3 border-r-2 border-gray-300 hover:underline flex items-center">
-            Delivery Policy
-          </Link>
-          <Link
-            href="#"
-            className="pr-3 border-r-2 border-gray-300 hover:underline flex items-center">
-            First Time Use?
-          </Link>
-          <div className="flex items-center space-x-3">
+    <>
+
+      <div className="w-full px-[5%] lg:px-[9%] bg-gray-50 border-b border-gray-200 text-sm">
+        <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
+          <div className="hidden md:flex items-center">
+            <div
+
+              className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+              Shop in Japan easily from home with fast, reliable service.
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4 ml-auto">
+            <Link
+              href="#"
+              className="text-gray-600 hover:text-gray-900 transition-colors font-medium hidden sm:block"
+            >
+              Delivery Policy
+            </Link>
+            
+            <div className="w-px h-4 bg-gray-300 hidden sm:block" />
+
+            <Link
+              href="#"
+              className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
+            >
+              First Time?
+            </Link>
+
+            <div className="w-px h-4 bg-gray-300" />
+
             <DropdownMenu>
-              <DropdownMenuTrigger className="bg-white text-black px-2 py-1 rounded flex items-center space-x-2">
-                <span
-                  className={`fi fi-${selectedLang.code.toLowerCase()} w-6 h-6`}
-                ></span>
-                <span className="">{selectedLang.label}</span>
-                <ChevronDown></ChevronDown>
+              <DropdownMenuTrigger className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                <span className={`fi fi-${selectedLang.code.toLowerCase()} w-5 h-5`} />
+                <span className="hidden sm:inline">{selectedLang.label}</span>
+                <ChevronDown size={14} />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white text-black">
+              <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg">
                 {langs.map((lang) => (
                   <DropdownMenuItem
                     key={lang.code}
-                    className="flex items-center space-x-2"
+                    className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 px-3 py-2"
                     onClick={() => handleSelect(lang)}
                   >
-                    <span
-                      className={`fi fi-${lang.code.toLowerCase()} w-6 h-6`}
-                    ></span>
-                    <span>{lang.label}</span>
+                    <span className={`fi fi-${lang.code.toLowerCase()} w-5 h-5`} />
+                    <span className="font-medium">{lang.label}</span>
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
@@ -68,50 +77,7 @@ function Headerbar() {
           </div>
         </div>
       </div>
-    </div>
-    // <div className="bg-black w-full p-3 flex justify-end px-9 gap-x-5">
-    //   <div className="flex items-center space-x-3">
-    //     <DropdownMenu>
-    //       <DropdownMenuTrigger className="bg-white text-black px-2 py-1 rounded flex items-center space-x-1">
-    //         <HelpCircle></HelpCircle>
-    //         <ChevronDown size={15} ></ChevronDown>
-    //       </DropdownMenuTrigger>
-    //       <DropdownMenuContent>
-    //         <DropdownMenuLabel>My Account</DropdownMenuLabel>
-    //         <DropdownMenuSeparator />
-    //         <DropdownMenuItem>Profile</DropdownMenuItem>
-    //         <DropdownMenuItem>Billing</DropdownMenuItem>
-    //         <DropdownMenuItem>Team</DropdownMenuItem>
-    //         <DropdownMenuItem>Subscription</DropdownMenuItem>
-    //       </DropdownMenuContent>
-    //     </DropdownMenu>
-    //   </div>
-    //   <div className="flex items-center space-x-3">
-    //     <DropdownMenu>
-    //       <DropdownMenuTrigger className="bg-white text-black px-2 py-1 rounded flex items-center space-x-2">
-    //         <span
-    //           className={`fi fi-${selectedLang.code.toLowerCase()} w-6 h-6`}
-    //         ></span>
-    //         <span className="">{selectedLang.label}</span>
-    //         <ChevronDown></ChevronDown>
-    //       </DropdownMenuTrigger>
-    //       <DropdownMenuContent className="bg-white text-black">
-    //         {langs.map((lang) => (
-    //           <DropdownMenuItem
-    //             key={lang.code}
-    //             className="flex items-center space-x-2"
-    //             onClick={() => handleSelect(lang)}
-    //           >
-    //             <span
-    //               className={`fi fi-${lang.code.toLowerCase()} w-6 h-6`}
-    //             ></span>
-    //             <span>{lang.label}</span>
-    //           </DropdownMenuItem>
-    //         ))}
-    //       </DropdownMenuContent>
-    //     </DropdownMenu>
-    //   </div>
-    // </div>
+    </>
   );
 }
 

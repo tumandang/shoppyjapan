@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,71 +10,83 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 
 function Navbar() {
+  const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
+
+  const isActive = (path) => pathname === path;
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About Us" },
+    { href: "/contact", label: "Contact Us" },
+  ];
+
+  const shopLinks = [
+    { href: "/rakuten", label: "Rakuten" },
+    { href: "/rakuma", label: "Rakuten Rakuma" },
+    { href: "/yahoo-auction", label: "Yahoo Auction" },
+  ];
+
   return (
-    <nav className="w-full border-b border-gray-300 bg-white">
-      <div className="padd-cont flexCenter">
-        <div className="flex-1 ms-6 mx-0 lg:max-6 max-w-xl hidden lg:flex items-center space-x-6">
-          
-          {/* Home */}
-          <Link href="/" className="hover:text-[#DD6657] transition-colors">
-            Home
-          </Link>
+    <nav className="bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-6">
 
-          {/* Shop Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="none" className="hover:border border-gray-300 transition-colors duration-300">
-                <h5 className="font-normal">Shop</h5>
-                <ChevronDown></ChevronDown>
-              </Button>
+        <div className="hidden lg:flex items-center justify-center h-14 gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`text-sm font-medium transition-colors relative py-4 ${
+                isActive(link.href)
+                  ? "text-orange-500"
+                  : "text-gray-700 hover:text-gray-900"
+              }`}
+            >
+              {link.label}
+              {isActive(link.href) && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-500" />
+              )}
+            </Link>
+          ))}
+
+
+          <DropdownMenu open={shopDropdownOpen} onOpenChange={setShopDropdownOpen}>
+            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors py-4 outline-none relative group">
+              <span>Shop</span>
+              <ChevronDown 
+                size={16} 
+                className={`transition-transform ${shopDropdownOpen ? 'rotate-180' : ''}`}
+              />
+              {(isActive("/rakuten") || isActive("/rakuma") || isActive("/yahoo-auction")) && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-500" />
+              )}
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="start">
-              <DropdownMenuLabel>Integrated Shop</DropdownMenuLabel>
-
-              <DropdownMenuItem>
-                <Link href="/rakuten" className="block w-full">
-                  Rakuten
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/rakuma" className="block w-full">
-                  Rakuten Rakuma
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/yahoo-auction" className="block w-full">
-                  Yahoo Auction
-                </Link>
-              </DropdownMenuItem>
+            <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg text-gray-700 min-w-[200px]">
+              <DropdownMenuLabel className="text-gray-500 text-xs">
+                Integrated Shops
+              </DropdownMenuLabel>
+              {shopLinks.map((link) => (
+                <DropdownMenuItem
+                  key={link.href}
+                  className={`cursor-pointer hover:bg-gray-50 ${
+                    isActive(link.href) ? "bg-orange-50 text-orange-500" : ""
+                  }`}
+                >
+                  <Link href={link.href} className="block w-full">
+                    {link.label}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
             </DropdownMenuContent>
           </DropdownMenu>
-
-
-          <Link
-            href="/about"
-            className="flexCenter hover:text-[#DD6657] transition-colors"
-          >
-            About Us
-          </Link>
-
-          <Link
-            href="/contact"
-            className="flexCenter hover:text-[#DD6657] transition-colors"
-          >
-            Contact Us
-          </Link>
-
-
-          <Link
-            href="/delivery-calculator"
-            className="flexCenter hover:text-[#DD6657] transition-colors"
-          >
-            Delivery Calculator
-          </Link>
         </div>
+
+     
+
       </div>
     </nav>
   );

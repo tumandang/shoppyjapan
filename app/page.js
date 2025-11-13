@@ -1,10 +1,15 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import Hero from "./(components)/hero";
+import Banner from "./(components)/Banner";
 
 function Page() {
   return (
-    <Hero></Hero>
+    <main>
+      <Hero></Hero>
+      <Banner/>
+    </main>
+
   );
 }
 

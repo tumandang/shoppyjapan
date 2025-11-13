@@ -50,9 +50,9 @@ function Header() {
     <header className="bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-6">
-          {/* Logo */}
+        
           <Link href="/" className="flex-shrink-0">
-            {/* Replace with your actual image path */}
+            
             <Image
               src="/logoshoppyJapan.png"
               width={160}
@@ -62,10 +62,10 @@ function Header() {
             />
           </Link>
 
-          {/* Desktop Search Bar (Large Screens) */}
+          
           <div className="hidden lg:flex flex-1 max-w-2xl">
             <div className="flex w-full shadow-sm">
-              {/* Platform Dropdown */}
+             
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 border border-r-0 border-gray-300 hover:bg-gray-50 transition-colors rounded-l-lg text-sm font-medium text-gray-700 outline-none min-w-[160px]">
                   <span className="flex-1 text-left">
@@ -86,14 +86,13 @@ function Header() {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              {/* Search Input */}
+          
               <input
                 type="text"
-                placeholder="Search for products..."
+                placeholder="Search by product or link URL"
                 className="flex-1 px-4 py-2.5 border-t border-b border-gray-300 outline-none focus:border-orange-500 transition-colors text-sm"
               />
 
-              {/* Search Button */}
               <button
                 className="bg-orange-500 hover:bg-orange-600 transition-colors text-white px-6 rounded-r-lg flex items-center justify-center"
                 aria-label="Search"
@@ -103,9 +102,9 @@ function Header() {
             </div>
           </div>
 
-          {/* Desktop Utility Icons (Large Screens) */}
+
           <div className="hidden lg:flex items-center gap-3">
-            {/* Wishlist */}
+
             <Link
               href="/wishlist"
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
@@ -122,7 +121,6 @@ function Header() {
               <span className="sr-only">Wishlist ({wishlistCount} items)</span>
             </Link>
 
-            {/* Cart */}
             <Link
               href="/cart"
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
@@ -139,7 +137,7 @@ function Header() {
               <span className="sr-only">Cart ({cartCount} items)</span>
             </Link>
 
-            {/* Login/Register Buttons */}
+  
             <Link href="/login">
               <Button
                 variant="outline"
@@ -155,9 +153,9 @@ function Header() {
             </Link>
           </div>
 
-          {/* Mobile Utility Icons & Menu Toggle (Small Screens) */}
+
           <div className="lg:hidden flex items-center gap-3">
-            {/* Wishlist Icon for Mobile - VISIBLE */}
+ 
             <Link
               href="/wishlist"
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -170,7 +168,7 @@ function Header() {
               )}
             </Link>
 
-            {/* Cart Icon for Mobile - VISIBLE */}
+
             <Link
               href="/cart"
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"

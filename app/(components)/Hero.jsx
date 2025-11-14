@@ -1,5 +1,6 @@
 import React from 'react'
 import HeroContent from './HeroContent'
+import Banner from './Banner'
 // import GlassmorphNav from './GlassmorphNav'
 
 

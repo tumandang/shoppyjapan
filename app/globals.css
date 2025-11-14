@@ -188,6 +188,10 @@
   font-size: 20px !important;
   
 }
+.swiper-slide-active img {
+  transform: scale(1.05);
+  transition: transform 3s ease;
+}
 
 
 

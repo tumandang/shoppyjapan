@@ -4,6 +4,7 @@ import Header from "./(components)/Header";
 import Headerbar from "./(components)/headerbar";
 import Navbar from "./(components)/Navbar";
 import Footer from "./(components)/Footer";
+import ChabotIcon from "./(components)/ChabotIcon";
 
 
 const inter = Inter({
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${lexend.variable} antialiased`}
+        className={`${inter.variable} ${lexend.variable} antialiased overflow-x-hidden`}
         
       >
         <Headerbar/>
@@ -34,9 +35,9 @@ export default function RootLayout({ children }) {
         <Navbar/>
         
        
-          
-          {children}
         
+          {children}
+         <ChabotIcon/>
         <Footer></Footer>
       </body>
     </html>

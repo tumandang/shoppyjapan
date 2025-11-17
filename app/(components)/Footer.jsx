@@ -4,6 +4,8 @@ import {
   Mail,
   MapIcon,
   Phone,
+  PhoneCall,
+  Pointer,
   Twitter,
   Youtube,
 } from "lucide-react";
@@ -110,14 +112,14 @@ function Footer() {
 
             <ul className="space-y-2">
               <div className="flex flex-row space-x-2">
-                <Mail color="White" size={20}></Mail>
+                <Mail color="White" size={15}></Mail>
                 <p>shopanhq@gmail.com</p>
               </div>
               {office.map((i) => (
                 <div key={i.name} className="space-y-2">
                   <h5 className="text-white">{i.name}</h5>
                   <div className="flex flex-row  items-center space-x-2">
-                    <MapIcon color="white" size={35}></MapIcon>
+                    
                     <p>{i.address}</p>
                   </div>
                   <div className="flex flex-row items-center space-x-2">

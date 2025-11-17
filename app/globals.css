@@ -122,7 +122,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-white text-foreground;
+    @apply bg-[#F7F7F7] text-foreground;
   }
 }
 @layer components{

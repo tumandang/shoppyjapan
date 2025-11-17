@@ -52,9 +52,9 @@ function FeatureCard({ icon: Icon, title, description }) {
   return (
     <div className="w-full max-w-sm p-6 flex flex-col items-center text-center h-full">
       <div className="mb-4 flex-shrink-0">
-        <Icon size={50} color="black" />
+        <Icon size={50} className="text-orange-500" />
       </div>
-      <h4 className={`font-bold text-orange-500 text-xl mb-3 ${lexend.className}`}>
+      <h4 className={`font-bold text-black text-xl mb-3 ${lexend.className}`}>
         {title}
       </h4>
       <p className="font-normal text-base text-gray-700 leading-relaxed">
@@ -67,7 +67,7 @@ function FeatureCard({ icon: Icon, title, description }) {
 function WhyChooseUS() {
   return (
     <div className="padd-cont flexCenter flex-col">
-      <h3 className={`text-orange-500 text-center mb-16 ${lexend.className}`}>
+      <h3 className={`text-black text-center mb-16 ${lexend.className}`}>
         Why You'll Love Choosing shoPan for <br />
         Your Japan Orders
       </h3>

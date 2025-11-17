@@ -4,6 +4,7 @@ import Hero from "./(components)/hero";
 import Banner from "./(components)/Banner";
 import UsageBuy from "./(components)/UsageBuy";
 import WhyChooseUS from "./(components)/WhyChooseUS";
+import FAQ from "./(components)/FAQ";
 
 function Page() {
   return (
@@ -12,6 +13,7 @@ function Page() {
       <Banner/>
       <WhyChooseUS/>
       <UsageBuy/>
+      <FAQ/>
     </main>
 
   );

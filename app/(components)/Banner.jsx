@@ -17,8 +17,8 @@ function Banner() {
   ];
 
   return (
-    <div className="w-full flexCenter p-4 pb-16">
-      <div className="relative w-full max-w-[1300px] aspect-[16/6] overflow-hidden rounded-xl shadow-[0_0_25px_rgba(0,0,0,0.25)] border border-white/10">
+    <div className="w-full flexCenter">
+      <div className="relative w-full h-[415px] overflow-hidden rounded-xl  border border-white/10">
 
       
         <Swiper

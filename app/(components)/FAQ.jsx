@@ -104,7 +104,7 @@ function FAQ() {
           return (
             <div
               key={index}
-              className="flex flex-row gap-x-5  cursor-pointer items-center "
+              className="flex flex-row gap-x-5  cursor-pointer items-start "
             >
               <div className="border border-gray-500 rounded-lg p-3 flexCenter">
                 {item.icon}

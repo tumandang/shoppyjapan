@@ -104,13 +104,13 @@ function FAQ() {
           return (
             <div
               key={index}
-              className="flex flex-row gap-x-5  cursor-pointer items-start "
+              className="flex flex-row gap-x-5 h-[60px] cursor-pointer items-start "
             >
               <div className="border border-gray-500 rounded-lg p-3 flexCenter">
                 {item.icon}
               </div>
 
-              <div className="flex flex-col gap-y-2 flex-1 ">
+              <div className="flex flex-col  flex-1 ">
                 <div
                   className="flex justify-between w-full"
                   onClick={() => toggleAnswer(index)}

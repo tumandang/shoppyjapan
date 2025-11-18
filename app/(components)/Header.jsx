@@ -51,7 +51,7 @@ function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-6">
         
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="shrink-0">
             
             <Image
               src="/logoshoppyJapan.png"
@@ -73,7 +73,7 @@ function Header() {
                   </span>
                   <ChevronDown size={16} className="text-gray-500" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg min-w-[160px]">
+                <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg min-w-40 ">
                   {platforms.map((platform) => (
                     <DropdownMenuItem
                       key={platform.value}

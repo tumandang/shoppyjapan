@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -26,15 +26,14 @@ function Navbar() {
   ];
 
   const shopLinks = [
-    { href: "/rakuten", label: "Rakuten" },
-    { href: "/rakuma", label: "Rakuten Rakuma" },
-    { href: "/yahoo-auction", label: "Yahoo Auction" },
+    { href: "/rakuten", label: "Rakuten", logo: "/rakutenlogo.png" },
+    { href: "/rakuma", label: "Rakuten Rakuma", logo: "/rakutenrakuma.png" },
+    { href: "/yahoo-auction", label: "Yahoo Auction", logo: "/yahoologo.jpg" },
   ];
 
   return (
     <nav className="bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6">
-
         <div className="hidden lg:flex items-center justify-center h-14 gap-8">
           {navLinks.map((link) => (
             <Link
@@ -53,15 +52,21 @@ function Navbar() {
             </Link>
           ))}
 
-
-          <DropdownMenu open={shopDropdownOpen} onOpenChange={setShopDropdownOpen}>
+          <DropdownMenu
+            open={shopDropdownOpen}
+            onOpenChange={setShopDropdownOpen}
+          >
             <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors py-4 outline-none relative group cursor-pointer">
               <span>Shop</span>
-              <ChevronDown 
-                size={16} 
-                className={`transition-transform ${shopDropdownOpen ? 'rotate-180' : ''}`}
+              <ChevronDown
+                size={16}
+                className={`transition-transform ${
+                  shopDropdownOpen ? "rotate-180" : ""
+                }`}
               />
-              {(isActive("/rakuten") || isActive("/rakuma") || isActive("/yahoo-auction")) && (
+              {(isActive("/rakuten") ||
+                isActive("/rakuma") ||
+                isActive("/yahoo-auction")) && (
                 <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-500" />
               )}
             </DropdownMenuTrigger>
@@ -76,7 +81,14 @@ function Navbar() {
                     isActive(link.href) ? "bg-orange-50 text-orange-500" : ""
                   }`}
                 >
-                  <Link href={link.href} className="block w-full">
+                  <Link href={link.href} className=" w-full flex flex-row items-center gap-x-2 ">
+                    <Image
+                      src={link.logo}
+                      width={200}
+                      height={200}
+                      alt="Rakuten Logo"
+                      className=" w-6 h-6 rounded-lg"
+                    />
                     {link.label}
                   </Link>
                 </DropdownMenuItem>
@@ -84,9 +96,6 @@ function Navbar() {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-
-     
-
       </div>
     </nav>
   );

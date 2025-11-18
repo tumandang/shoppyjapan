@@ -159,7 +159,7 @@ function UsageBuy() {
                   />
                 </div>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="min-w-screen h-3/4 fixed bottom-0 left-1/2 -translate-x-1/2 translate-y-0 top-auto rounded-t-lg">
                 <DialogHeader>
                   <DialogTitle className={`${dm_sans_bold.className} font-bold text-3xl flexCenter`}>Register the ShoPan account</DialogTitle>
                   <DialogDescription className={`${lexend.className} text-center`}>
@@ -181,7 +181,7 @@ function UsageBuy() {
                   <h4>2. Verify Your Email Address</h4>
                   <p>
                     After submitting the form, ShoPan will automatically send a verification email to the address you provided.
-                    Open the email and click “Activate ShoPan User” to confirm your account.
+                    Open the email and click "Activate ShoPan User" to confirm your account.
                     This step ensures that your account is valid and secure before you make any purchases.
                   </p>
                 </div>
@@ -189,7 +189,7 @@ function UsageBuy() {
                   <h4>3. Log In to Your ShoPan Dashboard</h4>
                   <p>
                     Once your email is successfully verified, return to ShoPan and log in using your registered email and password.
-                    You’ll now have access to your dashboard, where you can start browsing, adding items, and managing your orders.
+                    You'll now have access to your dashboard, where you can start browsing, adding items, and managing your orders.
                   </p>
                 </div>
                 <DialogFooter>

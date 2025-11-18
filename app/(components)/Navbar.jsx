@@ -55,7 +55,7 @@ function Navbar() {
 
 
           <DropdownMenu open={shopDropdownOpen} onOpenChange={setShopDropdownOpen}>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors py-4 outline-none relative group">
+            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors py-4 outline-none relative group cursor-pointer">
               <span>Shop</span>
               <ChevronDown 
                 size={16} 

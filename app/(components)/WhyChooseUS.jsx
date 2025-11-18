@@ -1,5 +1,6 @@
 import React from 'react';
 import { Lexend } from "next/font/google";
+import { motion } from "framer-motion";
 import { 
   CoinsIcon, 
   Compass, 
@@ -51,7 +52,7 @@ const features = [
 function FeatureCard({ icon: Icon, title, description }) {
   return (
     <div className="w-full max-w-sm p-6 flex flex-col items-center text-center h-full">
-      <div className="mb-4 flex-shrink-0">
+      <div className="mb-4 shrink-0">
         <Icon size={50} className="text-orange-500" />
       </div>
       <h4 className={`font-bold text-black text-xl mb-3 ${lexend.className}`}>

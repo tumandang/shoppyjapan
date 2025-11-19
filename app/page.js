@@ -15,9 +15,9 @@ function Page() {
       <Hero></Hero>
       {/* <Banner/> */}
       
-      
-      <WhyChooseUS/>
       <UsageBuy/>
+      <WhyChooseUS/>
+      
       <FAQ/>
     </main>
 

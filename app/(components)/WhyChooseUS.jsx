@@ -1,14 +1,16 @@
-import React from 'react';
+"use client";
+
+import React from "react";
 import { Lexend } from "next/font/google";
-import { motion } from "framer-motion";
-import { 
-  CoinsIcon, 
-  Compass, 
-  MessageCircle, 
-  ShieldCheckIcon, 
-  ShoppingBag, 
-  Trophy 
-} from 'lucide-react';
+import {
+  CoinsIcon,
+  Compass,
+  MessageCircle,
+  ShieldCheckIcon,
+  ShoppingBag,
+  Trophy,
+} from "lucide-react";
+import SpotlightCard from "@/components/react-bits/SpotlightCard";
 
 const lexend = Lexend({
   variable: "--font-Lexend",
@@ -20,71 +22,75 @@ const features = [
   {
     icon: ShieldCheckIcon,
     title: "Guaranteed Authentic",
-    description: "Every product we source is 100% genuine and verified for authenticity."
+    description: "Every product we source is 100% genuine and verified.",
   },
   {
     icon: CoinsIcon,
     title: "Hassle-Free Refunds",
-    description: "Shop with confidence — our refund policy ensures your money is protected, no stress attached."
+    description: "Shop confidently—your money is always protected.",
   },
   {
     icon: Trophy,
-    title: "Premium Quality, Every Time",
-    description: "We handpick only authentic, high-quality products from trusted Japanese sources."
+    title: "Premium Quality",
+    description: "We handpick only trusted, high-quality Japanese products.",
   },
   {
     icon: MessageCircle,
-    title: "Always Here to Help",
-    description: "Our friendly support team and AIKA-bot are available 24/7 to assist you whenever you need help."
+    title: "24/7 Support",
+    description:
+      "Our friendly team and AIKA-bot are always ready to assist you.",
   },
   {
     icon: ShoppingBag,
-    title: "Your Trusted Personal Shopper",
-    description: "Let our experienced team find and purchase the perfect items just for you."
+    title: "Personal Shopper",
+    description:
+      "Let us help you purchase the perfect items from Japan with ease.",
   },
   {
     icon: Compass,
-    title: "Discover More You'll Love",
-    description: "Explore our curated selection of popular and recommended Japanese products."
-  }
+    title: "Discover Japan Picks",
+    description:
+      "Explore curated recommendations and popular items loved by many.",
+  },
 ];
 
 function FeatureCard({ icon: Icon, title, description }) {
   return (
-    <div className="w-full max-w-sm p-6 flex flex-col items-center text-center h-full">
-      <div className="mb-4 shrink-0">
-        <Icon size={50} className="text-orange-500" />
+    <SpotlightCard
+      className="border-0 shadow-lg bg-white rounded-2xl"
+      spotlightColor="rgba(255, 215, 0, 0.4)"
+    >
+      <div className="w-full p-6 flex flex-col items-center text-center">
+        <Icon size={48} className="text-orange-500 mb-4" />
+        <h4 className={`text-xl font-bold text-black mb-2 ${lexend.className}`}>
+          {title}
+        </h4>
+        <p className="text-gray-700 text-base leading-relaxed">{description}</p>
       </div>
-      <h4 className={`font-bold text-black text-xl mb-3 ${lexend.className}`}>
-        {title}
-      </h4>
-      <p className="font-normal text-base text-gray-700 leading-relaxed">
-        {description}
-      </p>
-    </div>
+    </SpotlightCard>
   );
 }
 
 function WhyChooseUS() {
   return (
-    <div className="padd-cont flexCenter flex-col">
-      <h3 className={`text-black text-center mb-16 ${lexend.className}`}>
-        Why You'll Love Choosing shoPan for <br />
-        Your Japan Orders
+    <section className="py-16 flex flex-col items-center">
+      <h3
+        className={`text-2xl md:text-3xl text-center font-semibold mb-12 ${lexend.className}`}
+      >
+        Why shoPan Is Best for Japan Orders
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
         {features.map((feature, index) => (
-          <div key={index} className="flex">
-            <FeatureCard
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
-          </div>
+          <FeatureCard
+            key={index}
+            icon={feature.icon}
+            title={feature.title}
+            description={feature.description}
+          />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

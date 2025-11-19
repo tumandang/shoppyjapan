@@ -62,41 +62,20 @@ function FAQ() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center px-4 h-screen md:px-10 my-10">
-      <div className={`text-black text-center ${lexend.className}`}>
+    <div className="flex flex-col items-center justify-center px-4 h-screen md:px-10  bg-[#1f1f1f]">
+      <div className={`text-white text-center ${lexend.className}`}>
         <h3 className="text-2xl md:text-3xl font-semibold">
           Frequently Asked Questions
         </h3>
       </div>
       <div className={`${sansation.className} text-center mt-2`}>
-        <p>
+        <p className="text-gray-300">
           These are the most commonly asked questions for Shopee Japan.
           <br />
           Can't find what you are looking for?{" "}
           <span className="font-semibold">Chat with our chatbot - Aika</span>
         </p>
       </div>
-      {/* <div className="flex flex-row gap-x-3 mt-8">
-        <Button className="rounded-3xl">General</Button>
-        <Button
-          variant="outline"
-          className="rounded-3xl border border-black hover:bg-black hover:text-white transition-all duration-500"
-        >
-          Ordering
-        </Button>
-        <Button
-          variant="outline"
-          className="rounded-3xl border border-black hover:bg-black hover:text-white transition-all duration-500"
-        >
-          Delivery
-        </Button>
-        <Button
-          variant="outline"
-          className="rounded-3xl border border-black hover:bg-black hover:text-white transition-all duration-500"
-        >
-          Payment
-        </Button>
-      </div> */}
       <div className="flex flex-col gap-y-5 mt-8 w-full max-w-3xl">
         {faqGeneral.map((item, index) => {
           const isOpen = selectedQ === index;
@@ -106,7 +85,7 @@ function FAQ() {
               key={index}
               className="flex flex-row gap-x-5 h-[60px] cursor-pointer items-start "
             >
-              <div className="border border-gray-500 rounded-lg p-3 flexCenter">
+              <div className="border border-gray-800 bg-white rounded-lg p-3 flexCenter">
                 {item.icon}
               </div>
 
@@ -116,7 +95,7 @@ function FAQ() {
                   onClick={() => toggleAnswer(index)}
                 >
                   <h4
-                    className={`${lexend.className} flex-1 text-lg md:text-xl `}
+                    className={`${lexend.className} flex-1 text-lg md:text-xl text-white `}
                   >
                     {item.question}
                   </h4>
@@ -125,7 +104,7 @@ function FAQ() {
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <ChevronDown />
+                    <ChevronDown className="text-white" />
                   </motion.div>
                 </div>
 
@@ -139,7 +118,7 @@ function FAQ() {
                       className="overflow-hidden"
                     >
                       <p
-                        className={`${sansation.className} text-gray-700 mt-1`}
+                        className={`${sansation.className} text-gray-100 mt-1 `}
                       >
                         {item.answer}
                       </p>

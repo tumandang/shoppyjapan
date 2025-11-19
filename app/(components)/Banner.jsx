@@ -36,7 +36,7 @@ function Banner() {
           className="h-full w-full advanced-swiper"
         >
           {banner.map((i, index) => (
-            <SwiperSlide key={index} className="h-full! relative">
+            <SwiperSlide key={index} className="h-full! w-3/4 relative">
               <div className="absolute w-full h-full">
                 <Image
                   src={i.imgsrc}

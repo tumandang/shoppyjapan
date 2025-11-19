@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 
 function LayoutContainer() {
   return (
-    <div className="padd-cont flex flex-row gap-x-4 my-10">
+    <div className="padd-cont flex flex-row gap-x-4 my-5">
       <div className="w-1/4 rounded-lg bg-white py-5 shadow-lg">
         <div className="flex flex-col px-5 gap-y-2 ">
           <h4 className="text-orange-500">Integrated Shop</h4>

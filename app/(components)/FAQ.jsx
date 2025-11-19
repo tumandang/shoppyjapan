@@ -18,7 +18,7 @@ const lexend = Lexend({
 });
 const sansation = Sansation({
   variable: "--font-Sansation",
-  subsets: ["latin"],
+  subsets:["latin"],
   weight: ["400"],
 });
 

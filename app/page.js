@@ -7,12 +7,15 @@ import WhyChooseUS from "./(components)/WhyChooseUS";
 import FAQ from "./(components)/FAQ";
 import LayoutContainer from "./(components)/LayoutContainer";
 
+
 function Page() {
   return (
     <main>
-      <LayoutContainer/>
-      {/* <Hero></Hero>
-      <Banner/> */}
+      {/* <LayoutContainer/> */}
+      <Hero></Hero>
+      {/* <Banner/> */}
+      
+      
       <WhyChooseUS/>
       <UsageBuy/>
       <FAQ/>

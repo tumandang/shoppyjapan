@@ -1,13 +1,13 @@
 import React from 'react'
 import HeroContent from './HeroContent'
 import Banner from './Banner'
-// import GlassmorphNav from './GlassmorphNav'
+
 
 
 function Hero() {
   return (
     <section className="relative w-full h-[80vh]  ">
-      {/* <GlassmorphNav/> */}
+   
       <img
         src="/gradient.png"
         alt="Background"

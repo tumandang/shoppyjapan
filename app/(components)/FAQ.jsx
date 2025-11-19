@@ -10,7 +10,6 @@ import {
   Waypoints,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],

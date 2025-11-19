@@ -152,9 +152,9 @@ function UsageBuy() {
                     </p>
                   </div>
                   <img
-                    src="/assets/4278441.jpg"
+                    src="/assets/4278441.webp"
                     className="img relative w-full h-full object-cover"
-                    alt=""
+                    alt="step1"
                   />
                 </div>
               </DialogTrigger>
@@ -212,9 +212,9 @@ function UsageBuy() {
                 </p>
               </div>
               <img
-                src="/assets/step1.jpg"
+                src="/assets/step1.webp"
                 className="img relative w-full h-full object-cover"
-                alt=""
+                alt="step2"
               />
             </div>
             <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
@@ -226,9 +226,9 @@ function UsageBuy() {
                 </p>
               </div>
               <img
-                src="/assets/step2.jpg"
+                src="/assets/step2.webp"
                 className="img relative w-full h-full object-cover"
-                alt=""
+                alt="step3"
               />
             </div>
             <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
@@ -240,9 +240,9 @@ function UsageBuy() {
                 </p>
               </div>
               <img
-                src="/assets/8401659.jpg"
+                src="/assets/8401659.webp"
                 className="img relative w-full h-full object-cover"
-                alt=""
+                alt="step4"
               />
             </div>
             <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
@@ -254,9 +254,9 @@ function UsageBuy() {
                 </p>
               </div>
               <img
-                src="/assets/4305991.jpg"
+                src="/assets/4305991.webp"
                 className="img relative w-full h-full object-cover"
-                alt=""
+                alt="step5"
               />
             </div>
           </div>

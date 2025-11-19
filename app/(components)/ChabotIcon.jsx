@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence, spring, easeOut } from "framer-motion";
+import { motion, AnimatePresence} from "framer-motion";
 import { ArrowDownCircle, Bot, MessageCircle, SendIcon, X } from "lucide-react";
 import {
   Card,
@@ -12,7 +12,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { Input } from "@/components/ui/input";
 import { Asimovian , Lexend } from "next/font/google";

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { BookOpenCheck, ShoppingBagIcon, UserPlus, Users2 } from "lucide-react";
+import { BookOpenCheck, Users2 } from "lucide-react";
 import React from "react";
 import { Inter, Lexend } from "next/font/google";
 import SplitText from "@/components/react-bits/SplitText";
@@ -23,10 +23,10 @@ function HeroContent() {
           text="Discover Japan, Delivered to You"
           className={`${lexend.className} font-lexend text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-wider  text-black`}
           
-          delay={100}
+          delay={200}
           duration={0.7}
           ease="power3.out"
-          splitType="chars"
+          splitType="words"
           from={{ opacity: 0, y: 40 }}
           to={{ opacity: 1, y: 0 }}
           threshold={0.1}

@@ -2,8 +2,6 @@ import {
   Coins,
   QrCode,
   ShieldEllipsis,
-  ShoppingBag,
-  Smartphone,
   Trophy,
 } from "lucide-react";
 import Link from "next/link";

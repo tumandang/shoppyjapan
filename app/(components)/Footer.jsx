@@ -2,10 +2,7 @@ import {
   Facebook,
   Instagram,
   Mail,
-  MapIcon,
   Phone,
-  PhoneCall,
-  Pointer,
   Twitter,
   Youtube,
 } from "lucide-react";

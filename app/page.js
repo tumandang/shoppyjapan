@@ -5,6 +5,7 @@ import Banner from "./(components)/Banner";
 import UsageBuy from "./(components)/UsageBuy";
 import WhyChooseUS from "./(components)/WhyChooseUS";
 import FAQ from "./(components)/FAQ";
+import Separator from "./(components)/widget/Separator";
 // import LayoutContainer from "./(components)/LayoutContainer";
 
 
@@ -13,8 +14,8 @@ function Page() {
     <main>
       {/* <LayoutContainer/> */}
       <Hero></Hero>
-      <Banner/>
-      
+      {/* <Banner/>
+      <Separator/> */}
       <UsageBuy/>
       <WhyChooseUS/>
       

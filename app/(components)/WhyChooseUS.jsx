@@ -11,6 +11,7 @@ import {
   Trophy,
 } from "lucide-react";
 import SpotlightCard from "@/components/react-bits/SpotlightCard";
+import FadeContent from "@/components/react-bits/FadeContent";
 
 const lexend = Lexend({
   variable: "--font-Lexend",
@@ -73,6 +74,7 @@ function FeatureCard({ icon: Icon, title, description }) {
 
 function WhyChooseUS() {
   return (
+    <FadeContent blur={true} duration={1500} easing="ease-out" initialOpacity={0}>
     <section className="py-16 flex flex-col items-center">
       <h3
         className={`text-2xl md:text-3xl text-center font-semibold mb-12 ${lexend.className}`}
@@ -91,6 +93,7 @@ function WhyChooseUS() {
         ))}
       </div>
     </section>
+    </FadeContent>
   );
 }
 

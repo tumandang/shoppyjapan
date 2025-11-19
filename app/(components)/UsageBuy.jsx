@@ -17,6 +17,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Link from "next/link";
+import AnimatedContent from "@/components/react-bits/AnimatedContent";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -125,7 +126,7 @@ function UsageBuy() {
   return (
     // CONTAINER
     <ReactLenis root>
-      <div className=" bg-[#1f1f1f]" ref={container}>
+      <div className="bg-[#1f1f1f]" ref={container}>
         <section className="sticky-card relative w-screen h-screen p-[2em] overflow-hidden flexCenter bg-[#1f1f1f] text-white ">
           <div
             className={`intro absolute top-10 left-1/2 -translate-x-1/2 opacity-0 text-center  ${dm_sans.className}`}
@@ -138,7 +139,7 @@ function UsageBuy() {
           {/* STICKY CARD */}
           <div className="relative w-full max-w-lg h-1/2 aspect-video overflow-hidden rounded-md">
             {/* CARD CONTAINER*/}
-            
+
             <Dialog>
               <DialogTrigger asChild>
                 <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
@@ -158,11 +159,28 @@ function UsageBuy() {
                   />
                 </div>
               </DialogTrigger>
-              
+              <AnimatedContent
+                distance={300}
+                direction="horizontal"
+                reverse={false}
+                duration={1.5}
+                ease="power3.out"
+                initialOpacity={0}
+                animateOpacity
+                scale={1}
+                threshold={0.1}
+                delay={1}
+              >
                 <DialogContent className="min-w-screen h-3/4 fixed bottom-0 left-1/2 -translate-x-1/2 translate-y-0 top-auto rounded-t-lg">
                   <DialogHeader>
-                    <DialogTitle className={`${dm_sans_bold.className} font-bold text-3xl flexCenter`}>Register the ShoPan account</DialogTitle>
-                    <DialogDescription className={`${lexend.className} text-center`}>
+                    <DialogTitle
+                      className={`${dm_sans_bold.className} font-bold text-3xl flexCenter`}
+                    >
+                      Register the ShoPan account
+                    </DialogTitle>
+                    <DialogDescription
+                      className={`${lexend.className} text-center`}
+                    >
                       Create your ShoPan account to start purchasing items from
                       Japan securely and efficiently.
                     </DialogDescription>
@@ -170,26 +188,30 @@ function UsageBuy() {
                   <div className="">
                     <h4>1. Complete Your Registration Form</h4>
                     <p>
-                      Fill in your personal information on the ShoPan registration
-                      page, including your name, email address, and preferred
-                      password. Make sure everything is correct, as this
-                      information will be used for order confirmation and
+                      Fill in your personal information on the ShoPan
+                      registration page, including your name, email address, and
+                      preferred password. Make sure everything is correct, as
+                      this information will be used for order confirmation and
                       shipping.
                     </p>
                   </div>
                   <div className="">
                     <h4>2. Verify Your Email Address</h4>
                     <p>
-                      After submitting the form, ShoPan will automatically send a verification email to the address you provided.
-                      Open the email and click "Activate ShoPan User" to confirm your account.
-                      This step ensures that your account is valid and secure before you make any purchases.
+                      After submitting the form, ShoPan will automatically send
+                      a verification email to the address you provided. Open the
+                      email and click "Activate ShoPan User" to confirm your
+                      account. This step ensures that your account is valid and
+                      secure before you make any purchases.
                     </p>
                   </div>
                   <div className="">
                     <h4>3. Log In to Your ShoPan Dashboard</h4>
                     <p>
-                      Once your email is successfully verified, return to ShoPan and log in using your registered email and password.
-                      You'll now have access to your dashboard, where you can start browsing, adding items, and managing your orders.
+                      Once your email is successfully verified, return to ShoPan
+                      and log in using your registered email and password.
+                      You'll now have access to your dashboard, where you can
+                      start browsing, adding items, and managing your orders.
                     </p>
                   </div>
                   <DialogFooter>
@@ -199,10 +221,11 @@ function UsageBuy() {
                     <Link href="">
                       <Button>Register the Account</Button>
                     </Link>
-                    
                   </DialogFooter>
                 </DialogContent>
+              </AnimatedContent>
             </Dialog>
+
             <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
               <div className="absolute top-1 left-1 p-2 m-2 w-auto  rounded-sm bg-[#1f1f1f] z-1">
                 <p

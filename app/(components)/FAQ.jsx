@@ -10,6 +10,7 @@ import {
   Waypoints,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import AnimatedContent from "@/components/react-bits/AnimatedContent";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -17,7 +18,7 @@ const lexend = Lexend({
 });
 const sansation = Sansation({
   variable: "--font-Sansation",
-  subsets:["latin"],
+  subsets: ["latin"],
   weight: ["400"],
 });
 
@@ -62,6 +63,18 @@ function FAQ() {
 
   return (
     <div className="flex flex-col items-center justify-center px-4 h-screen md:px-10  bg-[#1f1f1f]">
+      <AnimatedContent
+        distance={300}
+        direction="horizontal"
+        reverse={false}
+        duration={1.5}
+        ease="power3.out"
+        initialOpacity={0}
+        animateOpacity
+        scale={1}
+        threshold={0.1}
+        delay={1}
+      >
       <div className={`text-white text-center ${lexend.className}`}>
         <h3 className="text-2xl md:text-3xl font-semibold">
           Frequently Asked Questions
@@ -129,6 +142,7 @@ function FAQ() {
           );
         })}
       </div>
+      </AnimatedContent>
     </div>
   );
 }

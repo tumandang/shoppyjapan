@@ -23,7 +23,7 @@ function HeroContent() {
           text="Discover Japan, Delivered to You"
           className={`${lexend.className} font-lexend text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-wider  text-black`}
           
-          delay={10}
+          delay={100}
           duration={0.7}
           ease="power3.out"
           splitType="chars"

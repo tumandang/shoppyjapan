@@ -1,9 +1,6 @@
-import React from 'react'
-import HeroContent from './HeroContent'
-import Image from 'next/image'
-
-
-
+import React from "react";
+import HeroContent from "./HeroContent";
+import Image from "next/image";
 
 function Hero() {
   return (
@@ -21,8 +18,25 @@ function Hero() {
       blur-[250px] -rotate-30 -z-10"
       ></div>
       <HeroContent />
+
+      <Image
+        src="/assets/drone.png"
+        alt="Hero Right"
+        width={600}
+        height={600}
+        priority
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 object-contain  w-1/2 h-full"
+      />
+      {/* <video
+        src="/assets/dron.webp"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 object-contain w-lg h-auto mr-10"
+      ></video> */}
     </section>
   );
 }
 
-export default Hero
+export default Hero;

@@ -73,7 +73,7 @@ function FAQ() {
         animateOpacity
         scale={1}
         threshold={0.1}
-        delay={1}
+        delay={0.3}
       >
       <div className={`text-white text-center ${lexend.className}`}>
         <h3 className="text-2xl md:text-3xl font-semibold">

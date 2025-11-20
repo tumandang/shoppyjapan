@@ -1,7 +1,7 @@
 // app/about/page.js
 export default function About() {
   return (
-    <div className="px-6 py-12 max-w-5xl mx-auto">
+    <div className="px-6 py-12 max-w-5xl mx-auto flexCenter flex-col">
       <h1 className="text-4xl font-bold mb-6">About Shopan</h1>
       
       <p className="text-lg mb-4">

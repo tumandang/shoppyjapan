@@ -1,21 +1,21 @@
 
 import React from "react";
-import Hero from "./(components)/hero";
-import Banner from "./(components)/Banner";
+// import Hero from "./(components)/hero";
+// import Banner from "./(components)/Banner";
 import UsageBuy from "./(components)/UsageBuy";
 import WhyChooseUS from "./(components)/WhyChooseUS";
 import FAQ from "./(components)/FAQ";
-import Separator from "./(components)/widget/Separator";
-// import LayoutContainer from "./(components)/LayoutContainer";
+// import Separator from "./(components)/widget/Separator";
+import LayoutContainer from "./(components)/LayoutContainer";
 
 
 function Page() {
   return (
     <main>
-      {/* <LayoutContainer/> */}
-      <Hero></Hero>
+      <LayoutContainer/>
+      {/* <Hero></Hero>
       {/* <Banner/>
-      <Separator/> */}
+      <Separator/> */} 
       <UsageBuy/>
       <WhyChooseUS/>
       

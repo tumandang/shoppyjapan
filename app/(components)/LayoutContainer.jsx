@@ -1,9 +1,4 @@
-import {
-  Coins,
-  QrCode,
-  ShieldEllipsis,
-  Trophy,
-} from "lucide-react";
+import { Coins, QrCode, ShieldEllipsis, Trophy } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import Banner from "./Banner";
@@ -13,8 +8,8 @@ import { Button } from "@/components/ui/button";
 function LayoutContainer() {
   return (
     <div className="padd-cont flex flex-row gap-x-4 my-5">
-      <div className="w-1/4 rounded-lg bg-white py-5 shadow-lg">
-        <div className="flex flex-col px-5 gap-y-2 ">
+      <div className="w-1/4  flex flex-col gap-y-2">
+        <div className="flex flex-col px-5 gap-y-2 rounded-lg bg-white py-5 shadow-lg ">
           <h4 className="text-orange-500">Integrated Shop</h4>
           <Link href="/">
             <div className="flex flex-row gap-x-2">
@@ -52,8 +47,23 @@ function LayoutContainer() {
               <span>Yahoo Auction</span>
             </div>
           </Link>
+          <div className="">
+            <span>
+              Not found the marketplace
+            </span>
+            <span>List of Website</span>
+          </div>
+        </div>
 
-          <div className="bg-red-400">LIST OF WEBSITE</div>
+        <div className="bg-white rounded-lg shadow-lg  flexCenter flex-col p-2 gap-y-5">
+          <h4>Our APP</h4>
+          <QrCode width={100} height={100}></QrCode>
+          <Button
+            variant="outline"
+            className="  border border-gray-400 px-2 py-1 shadow-md rounded-lg "
+          >
+            Android
+          </Button>
         </div>
       </div>
       <div className="w-3/4 flex flex-col p-x-2 gap-y-4">
@@ -75,16 +85,6 @@ function LayoutContainer() {
                 className="absolute  bottom-4 left-1/2 -translate-x-1/2 bg-white hover:bg-gray-100 text-black font-semibold shadow-lg transition-colors duration-200"
               >
                 Calculate Shipping
-              </Button>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg  flexCenter flex-col p-2 gap-y-5">
-              <h4>Our APP</h4>
-              <QrCode width={100} height={100}></QrCode>
-              <Button
-                variant="outline"
-                className="  border border-gray-400 px-2 py-1 shadow-md rounded-lg "
-              >
-                Android
               </Button>
             </div>
           </div>

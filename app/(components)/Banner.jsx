@@ -18,7 +18,7 @@ function Banner() {
 
   return (
     <div className="w-full flexCenter">
-      <div className="absolute w-[800px] h-[450px] overflow-hidden rounded-xl  border border-white/10 mb-3">
+      <div className="w-[800px] h-[450px] overflow-hidden rounded-xl  border border-white/10 mb-3">
         <Swiper
           modules={[Pagination, Autoplay, Navigation]}
           slidesPerView={1}

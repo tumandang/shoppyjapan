@@ -18,16 +18,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={` antialiased overflow-x-hidden`}
+        className={`antialiased overflow-x-hidden flex flex-col min-h-screen `}
         
       >
         <Headerbar/>
         <Header/>
         <Navbar/>
         
-       
-        
+        <main className="grow">
           {children}
+        </main>
+        
+          
          <ChabotIcon/>
         <Footer></Footer>
       </body>

@@ -42,7 +42,7 @@ function HeroContent() {
           ]}
           className={`${inter.className} text-base sm:text-lg tracking-wider text-black max-w-100 lg:max-w-120`}
           typingSpeed={40}
-          pauseDuration={15000}
+          pauseDuration={1500000}
           showCursor={true}
           cursorCharacter="|"
         />

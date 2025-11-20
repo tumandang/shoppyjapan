@@ -152,6 +152,9 @@
   .padd-cont{
     @apply py-3 px-[5%] lg:px-[9%]
   }
+  .padd-cont-img{
+    @apply py-3 pl-[5%] lg:pl-[9%]
+  }
   
   @layer utilities{
     h1{

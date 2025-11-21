@@ -14,11 +14,13 @@ function Banner() {
     { imgsrc: "/assets/banner1.webp", name: "Banner 11.11", desc: "Big Sale From Japan" },
     { imgsrc: "/assets/banner2.webp", name: "Banner Product", desc: "Authentic Japan Products" },
     { imgsrc: "/assets/banner3.webp", name: "Tokyo Travel", desc: "Contact: +81 90-616 3990" },
+    { imgsrc: "/assets/banner5.jpg", name: "Delivery", desc: "Fast and secure international shipping." },
+    { imgsrc: "/assets/banner6.jpg", name: "Safety", desc: "Safety assured with professional handling." },
   ];
 
   return (
     <div className="w-full flexCenter">
-      <div className="w-[800px] h-[450px] overflow-hidden rounded-xl  border border-white/10 mb-3">
+      <div className="w-[900px] h-[450px] overflow-hidden rounded-xl  border border-white/10 mb-3">
         <Swiper
           modules={[Pagination, Autoplay, Navigation]}
           slidesPerView={1}

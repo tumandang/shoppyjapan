@@ -38,16 +38,16 @@ function Headerbar() {
 
           <div className="flex items-center gap-4 ml-auto">
             <Link
-              href="#"
+              href="/about"
               className="text-gray-600 hover:text-gray-900 transition-colors font-medium hidden sm:block"
             >
-              Delivery Policy
+              About Shopan
             </Link>
             
             <div className="w-px h-4 bg-gray-300 hidden sm:block" />
 
             <Link
-              href="#"
+              href="/help"
               className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
             >
               First Time?

@@ -16,12 +16,12 @@ import Image from "next/image";
 const platforms = [
   { label: "Rakuten", value: "rakuten" },
   { label: "Rakuten Rakuma", value: "rakuma" },
-  { label: "Yahoo Auction", value: "yahoo" },
+  { label: "JDirect Auction", value: "JDirect Auction" },
 ];
   const shopLinks = [
     { href: "/rakuten", label: "Rakuten" },
     { href: "/rakuma", label: "Rakuten Rakuma" },
-    { href: "/yahoo-auction", label: "Yahoo Auction" },
+    { href: "/yahoo-auction", label: "JDirect Auction" },
   ];
 
 

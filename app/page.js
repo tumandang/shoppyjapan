@@ -1,24 +1,21 @@
 
 import React from "react";
-// import Hero from "./(components)/hero";
-// import Banner from "./(components)/Banner";
-import UsageBuy from "./(components)/UsageBuy";
-import WhyChooseUS from "./(components)/WhyChooseUS";
 import FAQ from "./(components)/FAQ";
-// import Separator from "./(components)/widget/Separator";
-import LayoutContainer from "./(components)/LayoutContainer";
+import LayoutContainer from "./(components)/widget/LayoutContainer";
+import RecentlyView from "./(components)/RecentlyView";
+import RakutenHome from "./(components)/Rakuten/components/RakutenHome";
+import RakumaHome from "./(components)/Rakuma/components/RakumaHome";
+import JDirectHome from "./(components)/JDirect/components/JDirectHome";
 
 
 function Page() {
   return (
     <main>
       <LayoutContainer/>
-      {/* <Hero></Hero>
-      {/* <Banner/>
-      <Separator/> */} 
-      <UsageBuy/>
-      <WhyChooseUS/>
-      
+      <RecentlyView/>
+      <JDirectHome/>
+      <RakutenHome/>
+      <RakumaHome/>
       <FAQ/>
     </main>
 

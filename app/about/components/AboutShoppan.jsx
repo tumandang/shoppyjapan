@@ -23,7 +23,7 @@ const dm_sans_bold = DM_Sans({
 });
 function AboutShoppan() {
   return (
-    <div className="h-full">
+    <div className="h-full bg-[#ffffff]">
       <section style={{ width: "100%", height: "600px", position: "relative" }}>
         <DotGrid
           dotSize={5}
@@ -36,7 +36,6 @@ function AboutShoppan() {
           resistance={750}
           returnDuration={1.5}
         />
-
         <div className="absolute inset-0 z-10 ">
           <div className="padd-cont flexCenter flex-col text-center py-7">
             <p
@@ -58,7 +57,7 @@ function AboutShoppan() {
           </div>
         </div>
       </section>
-      <section className="w-full bg-[#f5f5f5]  flex padd-cont-img gap-x-30 ">
+      <section className="w-full bg-[#ffffff]  flex padd-cont-img gap-x-30 ">
         <div className="flex flex-row gap-x-3 w-[1408px] ">
           <div className={`${sansation.className}  h-[54px] flexCenter `}>
             <span>01</span>
@@ -68,7 +67,10 @@ function AboutShoppan() {
               <h2>A Seamless Proxy Shopping Experience</h2>
               <div className="">
                 <p className="text-xl my-5">We act as your personal proxy:</p>
-                <ul role="list" className="list-disc marker:text-orange-400 mb-3">
+                <ul
+                  role="list"
+                  className="list-disc marker:text-orange-400 mb-3"
+                >
                   <li>
                     <p className="text-xl">You choose the item</p>
                   </li>
@@ -99,6 +101,52 @@ function AboutShoppan() {
             className="img relative w-full h-full object-cover"
             alt="step1"
           />
+        </div>
+      </section>
+      <section className="w-full bg-[#ffffff]  flex padd-cont-map gap-x-30 ">
+        <div className="bg-amber-300">
+          <img
+            src="/assets/4278441.webp"
+            className="img relative w-full h-full object-cover"
+            alt="step1"
+          />
+        </div>
+        <div className="flex flex-row gap-x-3 w-[1408px] ">
+          <div className={`${sansation.className}  h-[54px] flexCenter `}>
+            <span>01</span>
+          </div>
+          <div className="">
+            <div className="flex flex-col gap-y-6">
+              <h2>A Seamless Proxy Shopping Experience</h2>
+              <div className="">
+                <p className="text-xl my-5">We act as your personal proxy:</p>
+                <ul
+                  role="list"
+                  className="list-disc marker:text-orange-400 mb-3"
+                >
+                  <li>
+                    <p className="text-xl">You choose the item</p>
+                  </li>
+                  <li>
+                    <p className="text-xl ">
+                      We place the order or bid on Japanese online shops and
+                      auction sites
+                    </p>
+                  </li>
+                  <li>
+                    <p className="text-xl">
+                      We manage the purchase, inspection, packaging, and
+                      international shipping
+                    </p>
+                  </li>
+                </ul>
+                <p className="text-xl">
+                  Everything is handled end-to-end to ensure a smooth and
+                  reliable experience — even for first-time users.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

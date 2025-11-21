@@ -2,7 +2,6 @@
 import "./globals.css";
 import Header from "./(components)/Header";
 import Headerbar from "./(components)/headerbar";
-import Navbar from "./(components)/Navbar";
 import Footer from "./(components)/Footer";
 import ChabotIcon from "./(components)/ChabotIcon";
 
@@ -23,7 +22,7 @@ export default function RootLayout({ children }) {
       >
         <Headerbar/>
         <Header/>
-        <Navbar/>
+   
         
         <main className="grow">
           {children}

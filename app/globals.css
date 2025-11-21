@@ -155,6 +155,9 @@
   .padd-cont-img{
     @apply py-3 pl-[5%] lg:pl-[9%]
   }
+  .padd-cont-map{
+    @apply py-3 pr-[5%] lg:pr-[9%]
+  }
   
   @layer utilities{
     h1{

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -43,9 +43,13 @@ function Header() {
   const handleSelect = (platform) => {
     setSelectedPlatform(platform);
   };
-
+  const [link, setLink] = useState("");
+  const router = useRouter();
   const closeMobileMenu = () => setMobileMenuOpen(false);
-
+  const handleSearch = () => {
+    if (!link) return;
+    router.push(`/Shop/Rakuten/Product?url=${encodeURIComponent(link)}`);
+  };
   return (
     <header className="bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6 py-4">
@@ -89,11 +93,14 @@ function Header() {
           
               <input
                 type="text"
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
                 placeholder="Search by product or link URL"
                 className="flex-1 px-4 py-2.5 border-t border-b border-gray-300 outline-none focus:border-orange-500 transition-colors text-sm"
               />
 
               <button
+                onClick={handleSearch}
                 className="bg-orange-500 hover:bg-orange-600 transition-colors text-white px-6 rounded-r-lg flex items-center justify-center"
                 aria-label="Search"
               >

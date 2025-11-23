@@ -1,33 +1,28 @@
 "use client";
 import React, { useRef } from "react";
-import { Lexend, Sansation, DM_Sans } from "next/font/google";
+import { Lexend, DM_Sans } from "next/font/google";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Button } from "@/components/ui/button";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ReactLenis, useLenis } from "lenis/react";
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 import Link from "next/link";
-import AnimatedContent from "@/components/react-bits/AnimatedContent";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
   weight: ["600"],
 });
-const sansation = Sansation({
-  variable: "--font-Sansation",
-  subsets: ["latin"],
-  weight: ["400"],
-});
+
 const dm_sans = DM_Sans({
   variable: "--font-DM_Sans",
   subsets: ["latin"],
@@ -140,8 +135,8 @@ function UsageBuy() {
           <div className="relative w-full max-w-lg h-1/2 aspect-video overflow-hidden rounded-md">
             {/* CARD CONTAINER*/}
 
-            <Dialog>
-              <DialogTrigger asChild>
+            <Sheet>
+              <SheetTrigger asChild>
                 <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
                   {/* CARD */}
                   <div className="absolute top-1 left-1 p-2 m-2 w-auto  rounded-sm bg-[#1f1f1f] z-1">
@@ -158,33 +153,22 @@ function UsageBuy() {
                     alt="step1"
                   />
                 </div>
-              </DialogTrigger>
-              <AnimatedContent
-                distance={300}
-                direction="horizontal"
-                reverse={false}
-                duration={1.5}
-                ease="power3.out"
-                initialOpacity={0}
-                animateOpacity
-                scale={1}
-                threshold={0.1}
-                delay={1}
-              >
-                <DialogContent className="min-w-screen h-3/4 fixed bottom-0 left-1/2 -translate-x-1/2 translate-y-0 top-auto rounded-t-lg">
-                  <DialogHeader>
-                    <DialogTitle
+              </SheetTrigger>
+
+                <SheetContent className="p-4">
+                  <SheetHeader>
+                    <SheetTitle
                       className={`${dm_sans_bold.className} font-bold text-3xl flexCenter`}
                     >
                       Register the ShoPan account
-                    </DialogTitle>
-                    <DialogDescription
+                    </SheetTitle>
+                    <SheetDescription
                       className={`${lexend.className} text-center`}
                     >
                       Create your ShoPan account to start purchasing items from
                       Japan securely and efficiently.
-                    </DialogDescription>
-                  </DialogHeader>
+                    </SheetDescription>
+                  </SheetHeader>
                   <div className="">
                     <h4>1. Complete Your Registration Form</h4>
                     <p>
@@ -214,17 +198,16 @@ function UsageBuy() {
                       start browsing, adding items, and managing your orders.
                     </p>
                   </div>
-                  <DialogFooter>
-                    <DialogClose asChild>
+                  <SheetFooter>
+                    <SheetClose asChild>
                       <Button variant="outline">Cancel</Button>
-                    </DialogClose>
+                    </SheetClose>
                     <Link href="">
-                      <Button>Register the Account</Button>
+                      <Button>Register the Shopan Account Now</Button>
                     </Link>
-                  </DialogFooter>
-                </DialogContent>
-              </AnimatedContent>
-            </Dialog>
+                  </SheetFooter>
+                </SheetContent>
+            </Sheet>
 
             <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
               <div className="absolute top-1 left-1 p-2 m-2 w-auto  rounded-sm bg-[#1f1f1f] z-1">

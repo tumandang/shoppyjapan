@@ -1,4 +1,11 @@
-import { Coins, Compass, MessageCircle, QrCode, ShieldEllipsis, Trophy } from "lucide-react";
+import {
+  Coins,
+  Compass,
+  MessageCircle,
+  QrCode,
+  ShieldEllipsis,
+  Trophy,
+} from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import Banner from "./Banner";
@@ -51,9 +58,10 @@ function LayoutContainer() {
             <div className="flex flex-col">
               <h4 className="text-orange-500">Not found the marketplace</h4>
               <Link href="/marketplace">
-                  <span className="underline italic cursor-pointer">List of Website</span>
+                <span className="underline italic cursor-pointer">
+                  List of Website
+                </span>
               </Link>
-              
             </div>
           </div>
 
@@ -68,18 +76,21 @@ function LayoutContainer() {
             />
             <Button
               variant="outline"
-              className="  border border-gray-400 px-2 py-1 shadow-md rounded-lg "
+              asChild
+              className="border border-gray-400 px-2 py-1 shadow-md rounded-lg"
             >
-              Android
+              <Link 
+                target="_blank"
+              href="https://play.google.com/store/apps/details?id=com.shoppyjapan&hl=en">
+                 PlayStore
+              </Link>
             </Button>
           </div>
         </div>
         <div className="w-3/4 flex flex-col p-x-2 gap-y-4">
-          
-            <div className="bg-white rounded-lg shadow-lg w-full p-2 h-full flexCenter">
-              <Banner />
-            </div>
-         
+          <div className="bg-white rounded-lg shadow-lg w-full p-2 h-full flexCenter">
+            <Banner />
+          </div>
         </div>
       </div>
       <div className="bg-white rounded-lg shadow-lg  p-6">
@@ -100,7 +111,6 @@ function LayoutContainer() {
             <MessageCircle></MessageCircle>
             <h5>24/7 Support</h5>
           </div>
-
         </div>
       </div>
     </div>

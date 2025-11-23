@@ -141,13 +141,13 @@ function Header() {
             <Link href="/login">
               <Button
                 variant="outline"
-                className="rounded-lg px-5 py-2 border-gray-300 text-gray-700 hover:bg-gray-50"
+                className="rounded-lg px-5 py-2 border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer"
               >
                 Login
               </Button>
             </Link>
             <Link href="/register">
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg px-5 py-2">
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg px-5 py-2 cursor-pointer">
                 Register
               </Button>
             </Link>

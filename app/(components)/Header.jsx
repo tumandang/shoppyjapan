@@ -48,22 +48,29 @@ function Header() {
   const handleSearch = () => {
     if (!link) return;
 
-    try {
-      const url = new URL(link);
+    if (link.startsWith("http")) {
+      try {
+        const url = new URL(link);
 
-      
-      if (!url.hostname.includes("rakuten.co.jp")) {
+       
+        if (!url.hostname.includes("rakuten.co.jp")) {
+          router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
+          return;
+        }
+
+       
+        router.push(`/Shop/Rakuten/Product?url=${encodeURIComponent(link)}`);
+        return;
+      } catch (err) {
         router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
-        setError("Invalid link. Only Rakuten product links are allowed.");
         return;
       }
-
-      
-      router.push(`/Shop/Rakuten/Product?url=${encodeURIComponent(link)}`);
-    } catch (err) {
-      router.push(`/Invalid-Link`);
-      setError("Invalid URL format.");
     }
+
+   
+    const keyword = link.trim();
+
+    router.push(`/Shop/Rakuten/Search?keyword=${encodeURIComponent(keyword)}`);
   };
   return (
     <header className="bg-white border-b border-gray-200">
@@ -106,12 +113,12 @@ function Header() {
                 value={link}
                 onChange={(e) => setLink(e.target.value)}
                 placeholder="Search by product or link URL"
-                className="flex-1 px-4 py-2.5 border-t border-b border-gray-300 outline-none focus:border-orange-500 transition-colors text-sm"
+                className="flex-1 px-4 py-2.5 border-t border-b border-gray-300 outline-none focus:border-orange-500 transition-colors text-sm "
               />
 
               <button
                 onClick={handleSearch}
-                className="bg-orange-500 hover:bg-orange-600 transition-colors text-white px-6 rounded-r-lg flex items-center justify-center"
+                className="bg-orange-500 hover:bg-orange-600 transition-colors text-white px-6 rounded-r-lg flex items-center justify-center cursor-pointer"
                 aria-label="Search"
               >
                 <Search size={20} />

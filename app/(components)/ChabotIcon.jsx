@@ -49,7 +49,7 @@ function ChabotIcon() {
             ref={chatIconRef}
             onClick={toggleChat}
             size="icon"
-            className="rounded-full bg-orange-500 p-3 size-14 shadow-lg backdrop-blur-md"
+            className="rounded-full bg-orange-500 p-3 size-14 shadow-lg backdrop-blur-md hover:scale-110"
           >
             {!isChatOpen ? (
               <MessageCircle size={24} />

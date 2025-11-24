@@ -7,15 +7,53 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ArrowLeftToLine, ChevronDown, Grid } from "lucide-react";
+import {
+  ArrowLeftToLine,
+  ArrowRight,
+  Baby,
+  Banana,
+  BookOpen,
+  Cable,
+  Car,
+  Cat,
+  ChevronDown,
+  EyeClosed,
+  Heart,
+  HouseHeart,
+  Shirt,
+  Sofa,
+  ToolCase,
+  ToyBrick,
+  Volleyball,
+} from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { Toggle } from "@/components/ui/toggle";
 
 function ListingProduct() {
   const [bestseller, setbestseller] = useState([]);
   const [categories, setcategories] = useState([]);
-  
+  const rakutenCategories = [
+    { jp: "家電", en: "Electronics", icon: <Cable /> },
+    { jp: "ファッション", en: "Fashion", icon: <Shirt /> },
+    { jp: "美容・コスメ・香水", en: "Beauty & Cosmetics", icon: <EyeClosed/> },
+    { jp: "食品", en: "Food & Grocery", icon: <Banana /> },
+    {
+      jp: "スポーツ・アウトドア",
+      en: "Sports & Outdoor",
+      icon: <Volleyball />,
+    },
+    { jp: "キッズ・ベビー・マタニティ", en: "Kids & Baby", icon: <Baby /> },
+    { jp: "インテリア・収納", en: "Home & Interior", icon: <HouseHeart /> },
+    { jp: "ペット", en: "Pet Supplies", icon: <Cat /> },
+    { jp: "本・雑誌", en: "Books & Magazines", icon: <BookOpen /> },
+    { jp: "おもちゃ", en: "Toys", icon: <ToyBrick /> },
+    { jp: "DIY・工具", en: "DIY & Tools", icon: <ToolCase /> },
+    { jp: "車・バイク", en: "Auto & Motorbike", icon: <Car /> },
+    { jp: "健康・ダイエット", en: "Health & Diet", icon: <Heart /> },
+    { jp: "家具", en: "Furniture", icon: <Sofa /> },
+  ];
   useEffect(() => {
     fetch(
       "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=1004153375637600271"
@@ -59,25 +97,18 @@ function ListingProduct() {
           </div>
           <div className="p-2 flex flex-col  border-b border-gray-300">
             <h4>Categories</h4>
-            <div className="space-y-3 mt-4">
-              <p className="text-sm text-gray-600 hover:text-orange-500 cursor-pointer">
-                Fashion
-              </p>
-              <p className="text-sm text-gray-600 hover:text-orange-500 cursor-pointer">
-                Fashion
-              </p>
-              <p className="text-sm text-gray-600 hover:text-orange-500 cursor-pointer">
-                Fashion
-              </p>
-              <p className="text-sm text-gray-600 hover:text-orange-500 cursor-pointer">
-                Fashion
-              </p>
-              <p className="text-sm text-gray-600 hover:text-orange-500 cursor-pointer">
-                Fashion
-              </p>
-              <p className="text-sm text-gray-600 hover:text-orange-500 cursor-pointer">
-                Fashion
-              </p>
+            <div className="space-y-4 mt-4">
+              {rakutenCategories.map((jenis, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-md cursor-pointer transition"
+                >
+                  <span>{jenis.icon}</span>
+                  <p className="text-sm font-medium text-gray-700">
+                    {jenis.en}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -92,12 +123,8 @@ function ListingProduct() {
               if (!item) return null;
 
               return (
-                <Link
-                  key={index}
-                  href={`/product/${item.itemCode}`}
-                  
-                >
-                  <div className="group bg-white rounded-2xl p-4 border border-gray-100 hover:border-orange-200 transition hover:shadow-md">
+                <div className="group bg-white rounded-2xl p-4 border border-gray-100 hover:border-orange-200 transition hover:shadow-md">
+                  <Link key={index} href={`/product/${item.itemCode}`}>
                     <div className="flex justify-center items-center bg-neutral-50 rounded-xl h-[180px]">
                       <img
                         src={
@@ -107,21 +134,32 @@ function ListingProduct() {
                         className="object-contain group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <div className="mt-4 space-y-2">
-                      <p className="mt-2 text-sm font-semibold line-clamp-2">
-                        {item.itemName}
-                      </p>
-                      <span className="text-orange-600 font-semibold text-sm">
-                        ¥{item.itemPrice.toLocaleString()}
-                      </span>
-                    </div>
+                  </Link>
+                  <div className="mt-4 space-y-2  ">
+                    <p className="mt-2 text-sm font-semibold line-clamp-2">
+                      {item.itemName}
+                    </p>
                   </div>
-                </Link>
+                  <div className="flex items-center justify-between">
+                    <span className="text-orange-600 font-semibold text-sm">
+                      ¥{item.itemPrice.toLocaleString()}
+                    </span>
+                    <Toggle
+                      aria-label="Heart"
+                      size="sm"
+                      variant="outline"
+                      className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-red-500 data-[state=on]:*:[svg]:stroke-red-500"
+                    >
+                      <Heart />
+                    </Toggle>
+                  </div>
+                </div>
               );
             })}
           </div>
         </section>
       </div>
+
     </div>
   );
 }

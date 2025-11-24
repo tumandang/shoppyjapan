@@ -24,39 +24,66 @@ const dm_sans = DM_Sans({ subsets: ["latin"], weight: "400" });
 export default function Page() {
   const searchParams = useSearchParams();
   const producturl = searchParams.get("url");
-
+  const [error, setError] = useState(null);
   const [product, setProduct] = useState(null);
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const [link, setLink] = useState(producturl || "");
   // FETCH PRODUCT
   useEffect(() => {
     if (!producturl) return;
+    try{
+      const url = new URL(producturl);
+      if (!url.hostname.includes("rakuten.co.jp")) {
+        setError("Invalid link. Please paste a Rakuten product link.");
+        return;
+      }
+        const urlSegments = producturl.split("/");
+        const keyword = urlSegments[urlSegments.length - 2];
+        fetch(
+          `https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601?applicationId=1004153375637600271&keyword=${keyword}`
+        )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.Items?.length > 0) {
+            const item = data.Items[0].Item;
+            setProduct(item);
 
-    const urlSegments = producturl.split("/");
-    const keyword = urlSegments[urlSegments.length - 2]; // product code
+            // FIX: Handle missing images safely
+            const imgs = item.mediumImageUrls?.map((img) => img.imageUrl) || [];
+            setImages(imgs);
+            setSelectedImage(imgs[0]);
+          } else {
+            console.log("No items found:", data);
+            setError("Product not found on Rakuten.");
+          }
+      });
 
-    fetch(
-      `https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601?applicationId=1004153375637600271&keyword=${keyword}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.Items?.length > 0) {
-          const item = data.Items[0].Item;
-          setProduct(item);
-
-          // FIX: Handle missing images safely
-          const imgs = item.mediumImageUrls?.map((img) => img.imageUrl) || [];
-          setImages(imgs);
-          setSelectedImage(imgs[0]);
-        } else {
-          console.log("No items found:", data);
-        }
-      })
-      .catch((err) => console.error("Rakuten API error:", err));
+    } catch (err) {
+      setError("Invalid URL format.");
+    }
   }, [producturl]);
 
-
+   if (error) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
+        <p className="text-red-500">{error}</p>
+        <input
+          type="text"
+          value={link}
+          onChange={(e) => setLink(e.target.value)}
+          placeholder="Paste a Rakuten product link"
+          className="border px-4 py-2 rounded w-80"
+        />
+        <button
+          onClick={() => router.push(`/Shop/Rakuten/Product?url=${encodeURIComponent(link)}`)}
+          className="bg-orange-500 text-white px-6 py-2 rounded"
+        >
+          Search
+        </button>
+      </div>
+    );
+  }
   if (!product) {
     return (
       <div className="flexCenter flex-col min-h-[60vh] gap-y-4">

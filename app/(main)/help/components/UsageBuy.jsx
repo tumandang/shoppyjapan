@@ -15,7 +15,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
+} from "@/components/ui/sheet";
 import Link from "next/link";
 const lexend = Lexend({
   variable: "--font-Lexend",
@@ -155,74 +155,126 @@ function UsageBuy() {
                 </div>
               </SheetTrigger>
 
-                <SheetContent className="p-4">
-                  <SheetHeader>
-                    <SheetTitle
-                      className={`${dm_sans_bold.className} font-bold text-3xl flexCenter`}
-                    >
-                      Register the ShoPan account
-                    </SheetTitle>
-                    <SheetDescription
-                      className={`${lexend.className} text-center`}
-                    >
-                      Create your ShoPan account to start purchasing items from
-                      Japan securely and efficiently.
-                    </SheetDescription>
-                  </SheetHeader>
-                  <div className="">
-                    <h4>1. Complete Your Registration Form</h4>
-                    <p>
-                      Fill in your personal information on the ShoPan
-                      registration page, including your name, email address, and
-                      preferred password. Make sure everything is correct, as
-                      this information will be used for order confirmation and
-                      shipping.
-                    </p>
-                  </div>
-                  <div className="">
-                    <h4>2. Verify Your Email Address</h4>
-                    <p>
-                      After submitting the form, ShoPan will automatically send
-                      a verification email to the address you provided. Open the
-                      email and click "Activate ShoPan User" to confirm your
-                      account. This step ensures that your account is valid and
-                      secure before you make any purchases.
-                    </p>
-                  </div>
-                  <div className="">
-                    <h4>3. Log In to Your ShoPan Dashboard</h4>
-                    <p>
-                      Once your email is successfully verified, return to ShoPan
-                      and log in using your registered email and password.
-                      You'll now have access to your dashboard, where you can
-                      start browsing, adding items, and managing your orders.
-                    </p>
-                  </div>
-                  <SheetFooter>
-                    <SheetClose asChild>
-                      <Button variant="outline">Cancel</Button>
-                    </SheetClose>
-                    <Link href="">
-                      <Button>Register the Shopan Account Now</Button>
-                    </Link>
-                  </SheetFooter>
-                </SheetContent>
+              <SheetContent className="p-4">
+                <SheetHeader>
+                  <SheetTitle
+                    className={`${dm_sans_bold.className} font-bold text-3xl flexCenter`}
+                  >
+                    Register the ShoPan account
+                  </SheetTitle>
+                  <SheetDescription
+                    className={`${lexend.className} text-center`}
+                  >
+                    Create your ShoPan account to start purchasing items from
+                    Japan securely and efficiently.
+                  </SheetDescription>
+                </SheetHeader>
+                <div className="">
+                  <h4>1. Complete Your Registration Form</h4>
+                  <p>
+                    Fill in your personal information on the ShoPan registration
+                    page, including your name, email address, and preferred
+                    password. Make sure everything is correct, as this
+                    information will be used for order confirmation and
+                    shipping.
+                  </p>
+                </div>
+                <div className="">
+                  <h4>2. Verify Your Email Address</h4>
+                  <p>
+                    After submitting the form, ShoPan will automatically send a
+                    verification email to the address you provided. Open the
+                    email and click "Activate ShoPan User" to confirm your
+                    account. This step ensures that your account is valid and
+                    secure before you make any purchases.
+                  </p>
+                </div>
+                <div className="">
+                  <h4>3. Log In to Your ShoPan Dashboard</h4>
+                  <p>
+                    Once your email is successfully verified, return to ShoPan
+                    and log in using your registered email and password. You'll
+                    now have access to your dashboard, where you can start
+                    browsing, adding items, and managing your orders.
+                  </p>
+                </div>
+                <SheetFooter>
+                  <SheetClose asChild>
+                    <Button variant="outline">Cancel</Button>
+                  </SheetClose>
+                  <Link href="">
+                    <Button>Register the Shopan Account Now</Button>
+                  </Link>
+                </SheetFooter>
+              </SheetContent>
             </Sheet>
-
-            <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
-              <div className="absolute top-1 left-1 p-2 m-2 w-auto  rounded-sm bg-[#1f1f1f] z-1">
-                <p
-                  className={`uppercase ${lexend.className} text-xs text-white`}
-                >
-                  Add item to cart
-                </p>
-              </div>
-              <img
-                src="/assets/step1.webp"
-                className="img relative w-full h-full object-cover"
-                alt="step2"
-              />
-            </div>
+            <Sheet>
+              <SheetTrigger>
+                <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
+                  <div className="absolute top-1 left-1 p-2 m-2 w-auto  rounded-sm bg-[#1f1f1f] z-1">
+                    <p
+                      className={`uppercase ${lexend.className} text-xs text-white`}
+                    >
+                      Add item to cart
+                    </p>
+                  </div>
+                  <img
+                    src="/assets/step1.webp"
+                    className="img relative w-full h-full object-cover"
+                    alt="step2"
+                  />
+                </div>
+              </SheetTrigger>
+              <SheetContent className="p-4">
+                <SheetHeader>
+                  <SheetTitle
+                    className={`${dm_sans_bold.className} font-bold text-3xl flexCenter`}
+                  >
+                    Add Item to Cart
+                  </SheetTitle>
+                  <SheetDescription
+                    className={`${lexend.className} text-center`}
+                  >
+                    Add your desired Japanese products through ShoPan’s
+                    dashboard with two simple methods.
+                  </SheetDescription>
+                </SheetHeader>
+                <div className="">
+                  <h4>1. Browse & Add Directly</h4>
+                  <p>
+                    Click “Shop Now” from your dashboard to explore Japanese
+                    marketplaces. When you find an item you like, click “Add
+                    Order” to insert it into your cart.
+                  </p>
+                </div>
+                <div className="">
+                  <h4>2. Add Items Manually (URL Method)</h4>
+                  <p>
+                    If you’re browsing on another website:
+                    <ul>
+                      <li>Copy the product URL</li>
+                      <li>Paste both into your ShoPan dashboard</li>
+                      <li>Then click “Add Order”.</li>
+                    </ul>
+                  </p>
+                </div>
+                <div className="">
+                  <h4>3. Confirm Your Order</h4>
+                  <p>
+                    Review the displayed item information and click “Save”.
+                    Scroll down to the Batch Order section and select “Review Payment” to begin the payment process.
+                  </p>
+                </div>
+                <SheetFooter>
+                  <SheetClose asChild>
+                    <Button variant="outline">Cancel</Button>
+                  </SheetClose>
+                  <Link href="">
+                    <Button>Register the Shopan Account Now</Button>
+                  </Link>
+                </SheetFooter>
+              </SheetContent>
+            </Sheet>
             <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
               <div className="absolute top-1 left-1 p-2 m-2 w-auto  rounded-sm bg-[#1f1f1f] z-1">
                 <p

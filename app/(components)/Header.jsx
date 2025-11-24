@@ -18,13 +18,11 @@ const platforms = [
   { label: "Rakuten Rakuma", value: "rakuma" },
   { label: "JDirect Auction", value: "JDirect Auction" },
 ];
-  const shopLinks = [
-    { href: "/rakuten", label: "Rakuten" },
-    { href: "/rakuma", label: "Rakuten Rakuma" },
-    { href: "/yahoo-auction", label: "JDirect Auction" },
-  ];
-
-
+const shopLinks = [
+  { href: "/rakuten", label: "Rakuten" },
+  { href: "/rakuma", label: "Rakuten Rakuma" },
+  { href: "/yahoo-auction", label: "JDirect Auction" },
+];
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -44,19 +42,34 @@ function Header() {
     setSelectedPlatform(platform);
   };
   const [link, setLink] = useState("");
+  const [error, setError] = useState(null);
   const router = useRouter();
   const closeMobileMenu = () => setMobileMenuOpen(false);
   const handleSearch = () => {
     if (!link) return;
-    router.push(`/Shop/Rakuten/Product?url=${encodeURIComponent(link)}`);
+
+    try {
+      const url = new URL(link);
+
+      
+      if (!url.hostname.includes("rakuten.co.jp")) {
+        router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
+        setError("Invalid link. Only Rakuten product links are allowed.");
+        return;
+      }
+
+      
+      router.push(`/Shop/Rakuten/Product?url=${encodeURIComponent(link)}`);
+    } catch (err) {
+      router.push(`/Invalid-Link`);
+      setError("Invalid URL format.");
+    }
   };
   return (
     <header className="bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-6">
-        
           <Link href="/" className="shrink-0">
-            
             <Image
               src="/logoshoppyJapan.png"
               width={160}
@@ -66,10 +79,8 @@ function Header() {
             />
           </Link>
 
-          
           <div className="hidden lg:flex flex-1 max-w-2xl">
             <div className="flex w-full shadow-sm">
-             
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 border border-r-0 border-gray-300 hover:bg-gray-50 transition-colors rounded-l-lg text-sm font-medium text-gray-700 outline-none min-w-[160px]">
                   <span className="flex-1 text-left">
@@ -90,7 +101,6 @@ function Header() {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-          
               <input
                 type="text"
                 value={link}
@@ -109,9 +119,7 @@ function Header() {
             </div>
           </div>
 
-
           <div className="hidden lg:flex items-center gap-3">
-
             <Link
               href="/wishlist"
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
@@ -144,7 +152,6 @@ function Header() {
               <span className="sr-only">Cart ({cartCount} items)</span>
             </Link>
 
-  
             <Link href="/login">
               <Button
                 variant="outline"
@@ -160,9 +167,7 @@ function Header() {
             </Link>
           </div>
 
-
           <div className="lg:hidden flex items-center gap-3">
- 
             <Link
               href="/wishlist"
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -174,7 +179,6 @@ function Header() {
                 </span>
               )}
             </Link>
-
 
             <Link
               href="/cart"

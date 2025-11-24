@@ -12,7 +12,6 @@ function Page() {
   return (
     <main>
       <LayoutContainer/>
-      <RecentlyView/>
       <JDirectHome/>
       <RakutenHome/>
       <RakumaHome/>

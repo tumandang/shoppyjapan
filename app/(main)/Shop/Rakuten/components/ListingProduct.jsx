@@ -52,26 +52,22 @@ function ListingProduct() {
   const [bestseller, setbestseller] = useState([]);
   const [expanded, setexpanded] = useState(true);
 
-  const rakutenCategories = [
-    { jp: "家電", en: "Electronics", icon: <Cable /> },
-    { jp: "ファッション", en: "Fashion", icon: <Shirt /> },
-    { jp: "美容・コスメ・香水", en: "Beauty & Cosmetics", icon: <EyeClosed /> },
-    { jp: "食品", en: "Food & Grocery", icon: <Banana /> },
-    {
-      jp: "スポーツ・アウトドア",
-      en: "Sports & Outdoor",
-      icon: <Volleyball />,
-    },
-    { jp: "キッズ・ベビー・マタニティ", en: "Kids & Baby", icon: <Baby /> },
-    { jp: "インテリア・収納", en: "Home & Interior", icon: <HouseHeart /> },
-    { jp: "ペット", en: "Pet Supplies", icon: <Cat /> },
-    { jp: "本・雑誌", en: "Books & Magazines", icon: <BookOpen /> },
-    { jp: "おもちゃ", en: "Toys", icon: <ToyBrick /> },
-    { jp: "DIY・工具", en: "DIY & Tools", icon: <ToolCase /> },
-    { jp: "車・バイク", en: "Auto & Motorbike", icon: <Car /> },
-    { jp: "健康・ダイエット", en: "Health & Diet", icon: <Heart /> },
-    { jp: "家具", en: "Furniture", icon: <Sofa /> },
-  ];
+const rakutenCategories = [
+  { id: "electronics", jp: "家電", en: "Electronics", icon: <Cable /> },
+  { id: "fashion", jp: "ファッション", en: "Fashion", icon: <Shirt /> },
+  { id: "beauty", jp: "美容・コスメ・香水", en: "Beauty & Cosmetics", icon: <EyeClosed /> },
+  { id: "food", jp: "食品", en: "Food & Grocery", icon: <Banana /> },
+  { id: "sports", jp: "スポーツ・アウトドア", en: "Sports & Outdoor", icon: <Volleyball /> },
+  { id: "kids", jp: "キッズ・ベビー・マタニティ", en: "Kids & Baby", icon: <Baby /> },
+  { id: "home", jp: "インテリア・収納", en: "Home & Interior", icon: <HouseHeart /> },
+  { id: "pet", jp: "ペット", en: "Pet Supplies", icon: <Cat /> },
+  { id: "books", jp: "本・雑誌", en: "Books & Magazines", icon: <BookOpen /> },
+  { id: "toys", jp: "おもちゃ", en: "Toys", icon: <ToyBrick /> },
+  { id: "diy", jp: "DIY・工具", en: "DIY & Tools", icon: <ToolCase /> },
+  { id: "auto", jp: "車・バイク", en: "Auto & Motorbike", icon: <Car /> },
+  { id: "health", jp: "健康・ダイエット", en: "Health & Diet", icon: <Heart /> },
+  { id: "furniture", jp: "家具", en: "Furniture", icon: <Sofa /> },
+];
 
   useEffect(() => {
     fetch(
@@ -110,7 +106,7 @@ function ListingProduct() {
       <div className="flex gap-6 mt-6">
         <aside className={`transition-all duration-300 border-r pr-4 ${expanded ? "w-64" : "w-14"}`}>
           <div className="flexBetween pb-3 border-b">
-            <h4 className={`text-lg font-semibold transition-all ${dm_sans_bold.className} ${expanded ? "opacity-100" : "opacity-0"}`}>
+            <h4 className={`text-lg font-semibold transition-all ${dm_sans_bold.className} ${expanded ? "opacity-100" : "opacity-0 w-0"}`}>
               Filters
             </h4>
             <button
@@ -128,28 +124,25 @@ function ListingProduct() {
 
             <div className="space-y-2">
               {rakutenCategories.map((cat, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition"
-                >
-                  <span className="text-gray-600">{cat.icon}</span>
-                  {expanded && (
-                    <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
-                      {cat.en}
-                    </p>
-                  )}
-                </div>
+                <Link key={index}  href={`/Shop/Rakuten/Category/${cat.id}`}>
+                  <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
+                    <span className="text-gray-600">{cat.icon}</span>
+                    {expanded && (
+                      <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
+                        {cat.en}
+                      </p>
+                    )}
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
         </aside>
-
-      
         <section className="flex-1">
           <div className="flex items-center justify-between mb-4">
             <h3 className={`font-semibold text-lg ${dm_sans_bold.className}`}>Best Seller Products</h3>
             <Link
-              href="/"
+              href="/Shop/Rakuten/Product/Ranking"
               className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group"
             >
               <span>View All</span>

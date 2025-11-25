@@ -4,6 +4,7 @@ import { Lexend, DM_Sans } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import CardJDirect from '../widget/CardJDirect';
+import { ArrowRight } from 'lucide-react';
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -25,8 +26,12 @@ function JDirectHome() {
       <div className=" flex-col  p-5 rounded-lg bg-white px-5 shadow-lg ">
         <div className=" flexBetween">
             <p className={`${lexend.className} text-xl text-black`}>JDirectItems Auction</p>
-            <Link href="">
-                    <p className="underline">View All</p>
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group"
+            >
+              <span>View All</span>
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           
         </div>

@@ -3,6 +3,7 @@ import { Lexend, DM_Sans } from "next/font/google";
 import CardRakuma from '../widget/CardRakuma';
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from 'lucide-react';
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -30,9 +31,12 @@ function RakumaHome() {
             alt="Rakuten"
             className="rounded"
           />
-          <Link href="">
-                <p className="underline">View All</p>
-          </Link>
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group">
+              <span>View All</span>
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           
         </div>
         <div className="grid grid-cols-6 gap-4">

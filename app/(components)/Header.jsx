@@ -52,14 +52,29 @@ function Header() {
       try {
         const url = new URL(link);
 
-       
         if (!url.hostname.includes("rakuten.co.jp")) {
           router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
           return;
         }
 
-       
-        router.push(`/Shop/Rakuten/Product?url=${encodeURIComponent(link)}`);
+        
+        const pathSegments = url.pathname.split("/").filter(Boolean); // remove empty strings
+        const shopCode = pathSegments[0]; // e.g., "supplyshop"
+
+        
+        const itemCode =
+          url.searchParams.get("xuseflg_ichiba01") ||
+          pathSegments[pathSegments.length - 1];
+
+        if (!itemCode) {
+          router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
+          return;
+        }
+
+        
+        const productID = `${shopCode}:${itemCode}`;
+
+        router.push(`/Shop/Rakuten/Product/${encodeURIComponent(productID)}`);
         return;
       } catch (err) {
         router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
@@ -67,9 +82,8 @@ function Header() {
       }
     }
 
-   
+    // Handle normal keyword search
     const keyword = link.trim();
-
     router.push(`/Shop/Rakuten/Search?keyword=${encodeURIComponent(keyword)}`);
   };
   return (

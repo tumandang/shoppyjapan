@@ -2,7 +2,22 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
+import { Lexend, DM_Sans } from "next/font/google";
+const lexend = Lexend({
+  variable: "--font-Lexend",
+  subsets: ["latin"],
+  weight: ["600"],
+});
+const dm_sans = DM_Sans({
+  variable: "--font-DM_Sans",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+const dm_sans_bold = DM_Sans({
+  variable: "--font-DM_Sans",
+  subsets: ["latin"],
+  weight: ["800"],
+});
 function QuickGuide() {
   const steps = [
     {
@@ -33,7 +48,7 @@ function QuickGuide() {
 
   return (
     <section className="padd-cont my-12">
-      {/* Header */}
+     
       <div className="flex items-center justify-between mb-8">
         <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
           How It Works
@@ -47,19 +62,19 @@ function QuickGuide() {
         </Link>
       </div>
 
-      {/* Steps Grid */}
+      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {steps.map((step, index) => (
           <div
             key={index}
             className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
           >
-            {/* Step Number Badge */}
+            
             <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-100 text-orange-600 font-bold text-sm mb-4">
               {index + 1}
             </div>
 
-            {/* Image */}
+            
             <div className="flex justify-center mb-4">
               <Image
                 width={160}
@@ -70,11 +85,11 @@ function QuickGuide() {
               />
             </div>
 
-            {/* Content */}
-            <h5 className="text-lg font-semibold text-gray-900 mb-2">
+
+            <h5 className={`text-lg font-semibold text-gray-900 mb-2 ${lexend.className}`}>
               {step.title}
             </h5>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className={`text-sm text-gray-600 leading-relaxed ${dm_sans.className}`}>
               {step.description}
             </p>
           </div>

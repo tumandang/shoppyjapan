@@ -11,11 +11,31 @@ import "swiper/css/navigation";
 
 function Banner() {
   const banner = [
-    { imgsrc: "/assets/banner1.webp", name: "Banner 11.11", desc: "Big Sale From Japan" },
-    { imgsrc: "/assets/banner2.webp", name: "Banner Product", desc: "Authentic Japan Products" },
-    { imgsrc: "/assets/banner3.webp", name: "Tokyo Travel", desc: "Contact: +81 90-616 3990" },
-    { imgsrc: "/assets/banner5.jpg", name: "Delivery", desc: "Fast and secure international shipping." },
-    { imgsrc: "/assets/banner6.jpg", name: "Safety", desc: "Safety assured with professional handling." },
+    {
+      imgsrc: "/assets/banner1.webp",
+      name: "Banner 11.11",
+      desc: "Big Sale From Japan",
+    },
+    {
+      imgsrc: "/assets/banner2.webp",
+      name: "Banner Product",
+      desc: "Authentic Japan Products",
+    },
+    {
+      imgsrc: "/assets/banner3.webp",
+      name: "Tokyo Travel",
+      desc: "Contact: +81 90-616 3990",
+    },
+    {
+      imgsrc: "/assets/banner5.jpg",
+      name: "Delivery",
+      desc: "Fast and secure international shipping.",
+    },
+    {
+      imgsrc: "/assets/banner6.jpg",
+      name: "Safety",
+      desc: "Safety assured with professional handling.",
+    },
   ];
 
   return (
@@ -42,6 +62,7 @@ function Banner() {
                   src={i.imgsrc}
                   alt={i.name}
                   fill
+                  sizes="small"
                   className=" object-fill transition-all duration-5000ms ease-out scale-100 swiper-zoom-image rounded-lg"
                   priority={index === 0}
                 />
@@ -53,10 +74,8 @@ function Banner() {
               </div>
             </SwiperSlide>
           ))}
-
         </Swiper>
       </div>
-
     </div>
   );
 }

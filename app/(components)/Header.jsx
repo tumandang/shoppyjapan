@@ -56,12 +56,8 @@ function Header() {
           router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
           return;
         }
-
-        
-        const pathSegments = url.pathname.split("/").filter(Boolean); // remove empty strings
-        const shopCode = pathSegments[0]; // e.g., "supplyshop"
-
-        
+        const pathSegments = url.pathname.split("/").filter(Boolean);
+        const shopCode = pathSegments[0]; 
         const itemCode =
           url.searchParams.get("xuseflg_ichiba01") ||
           pathSegments[pathSegments.length - 1];
@@ -70,10 +66,7 @@ function Header() {
           router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
           return;
         }
-
-        
         const productID = `${shopCode}:${itemCode}`;
-
         router.push(`/Shop/Rakuten/Product/${encodeURIComponent(productID)}`);
         return;
       } catch (err) {
@@ -82,7 +75,6 @@ function Header() {
       }
     }
 
-    // Handle normal keyword search
     const keyword = link.trim();
     router.push(`/Shop/Rakuten/Search?keyword=${encodeURIComponent(keyword)}`);
   };

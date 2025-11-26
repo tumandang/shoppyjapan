@@ -1,12 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   ArrowLeftToLine,
   ArrowRight,
@@ -14,16 +6,29 @@ import {
   Baby,
   Banana,
   BookOpen,
-  Cable,
+  Briefcase,
+  Camera,
   Car,
   Cat,
   ChevronDown,
+  CookingPot,
+  Disc3,
   EyeClosed,
+  Flower2,
+  Footprints,
+  Gamepad,
+  Gem,
+  GlassWater,
+  Guitar,
   Heart,
+  HeartPulse,
   HouseHeart,
+  KeySquare,
+  Laptop,
+  Lollipop,
+  MonitorSmartphone,
   Shirt,
-  Sofa,
-  ToolCase,
+  Smartphone,
   ToyBrick,
   Volleyball,
 } from "lucide-react";
@@ -52,21 +57,34 @@ function ListingProduct() {
   const [bestseller, setbestseller] = useState([]);
   const [expanded, setexpanded] = useState(true);
 
-const rakutenCategories = [
-  { id: "electronics", jp: "家電", en: "Electronics", icon: <Cable /> },
-  { id: "fashion", jp: "ファッション", en: "Fashion", icon: <Shirt /> },
-  { id: "beauty", jp: "美容・コスメ・香水", en: "Beauty & Cosmetics", icon: <EyeClosed /> },
-  { id: "food", jp: "食品", en: "Food & Grocery", icon: <Banana /> },
-  { id: "sports", jp: "スポーツ・アウトドア", en: "Sports & Outdoor", icon: <Volleyball /> },
-  { id: "kids", jp: "キッズ・ベビー・マタニティ", en: "Kids & Baby", icon: <Baby /> },
-  { id: "home", jp: "インテリア・収納", en: "Home & Interior", icon: <HouseHeart /> },
-  { id: "pet", jp: "ペット", en: "Pet Supplies", icon: <Cat /> },
-  { id: "books", jp: "本・雑誌", en: "Books & Magazines", icon: <BookOpen /> },
-  { id: "toys", jp: "おもちゃ", en: "Toys", icon: <ToyBrick /> },
-  { id: "diy", jp: "DIY・工具", en: "DIY & Tools", icon: <ToolCase /> },
-  { id: "auto", jp: "車・バイク", en: "Auto & Motorbike", icon: <Car /> },
-  { id: "health", jp: "健康・ダイエット", en: "Health & Diet", icon: <Heart /> },
-  { id: "furniture", jp: "家具", en: "Furniture", icon: <Sofa /> },
+ const rakutenCategories = [
+  { id: "womens", jp: "レディースファッション", en: "Women's Fashion", icon: <Shirt/> },
+   { id: "bags", jp: "バッグ・小物・ブランド雑貨", en: "Bags & Accessories", icon: <Briefcase/> },
+  { id: "mens", jp: "メンズファッション", en: "Men's Fashion", icon: <Shirt/> },
+  { id: "shoes", jp: "靴", en: "Shoes", icon: <Footprints/> },
+  { id: "jewelry", jp: "ジュエリー・アクセサリー", en: "Jewelry & Accessories", icon: <Gem/> },
+  { id: "kids", jp: "キッズ・ベビー・マタニティ", en: "Kids & Baby", icon: <Baby/> },
+  { id: "toys", jp: "おもちゃ", en: "Toys", icon: <ToyBrick/> },
+  { id: "sports", jp: "スポーツ・アウトドア", en: "Sports & Outdoor", icon: <Volleyball/> },
+  { id: "home", jp: "家電", en: "Home Appliances", icon: <HouseHeart/> },
+  { id: "tv", jp: "TV・オーディオ・カメラ", en: "TV Audio & Camera", icon: <Camera/> },
+  { id: "computers", jp: "パソコン・周辺機器", en: "Computers & Peripherals", icon: <Laptop/> },
+  { id: "smartphones", jp: "スマートフォン・タブレット", en: "Smartphones & Tablets", icon: <Smartphone/> },
+  { id: "internet", jp: "光回線・モバイル通信", en: "Internet & Mobile Services", icon: <MonitorSmartphone/> },
+  { id: "food", jp: "食品", en: "Food", icon: <Banana/> },
+  { id: "sweets", jp: "スイーツ・お菓子", en: "Sweets & Snacks", icon: <Lollipop/> },
+  { id: "water", jp: "水・ソフトドリンク", en: "Water & Soft Drinks", icon: <GlassWater/> },
+  { id: "kitchen", jp: "キッチン用品・食器・調理器具", en: "Kitchenware", icon: <CookingPot/> },
+  { id: "books", jp: "本・雑誌・コミック", en: "Books & Comics", icon: <BookOpen/> },
+  { id: "cd", jp: "CD・DVD", en: "CD & DVD", icon: <Disc3/> },
+  { id: "video", jp: "テレビゲーム", en: "Video Games", icon: <Gamepad/> },
+  { id: "musical", jp: "楽器・音響機器", en: "Musical Instruments", icon: <Guitar/> },
+  { id: "cars", jp: "車・バイク", en: "Cars & Motorcycles", icon: <Car/> },
+  { id: "car", jp: "車用品・バイク用品", en: "Car Accessories", icon: <KeySquare/>},
+  { id: "beauty", jp: "美容・コスメ・香水", en: "Beauty & Cosmetics", icon: <EyeClosed/> },
+  { id: "medicine", jp: "医薬品・コンタクト・介護", en: "Medical & Care", icon: <HeartPulse/> },
+  { id: "pets", jp: "ペット・ペットグッズ", en: "Pets & Supplies", icon: <Cat/> },
+  { id: "flowers", jp: "花・ガーデン・DIY", en: "Flowers & Garden", icon: <Flower2/> },
 ];
 
   useEffect(() => {
@@ -85,22 +103,6 @@ const rakutenCategories = [
           <span className={`font-medium ${lexend.className}`}>Rakuten Official</span>
         </div>
 
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="flex items-center gap-1">
-              Sort <ChevronDown size={16} />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuGroup>
-              <DropdownMenuItem>Most Popular</DropdownMenuItem>
-              <DropdownMenuItem>Best Rating</DropdownMenuItem>
-              <DropdownMenuItem>Newest</DropdownMenuItem>
-              <DropdownMenuItem>Price: Low to High</DropdownMenuItem>
-              <DropdownMenuItem>Price: High to Low</DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
 
       <div className="flex gap-6 mt-6">
@@ -151,7 +153,7 @@ const rakutenCategories = [
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {bestseller.slice(0, 6).map((itemObj, index) => {
+            {bestseller.slice(0,9 ).map((itemObj, index) => {
               const item = itemObj.Item;
               if (!item) return null;
 

@@ -10,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, Heart, Search, ShoppingBag, Menu, X } from "lucide-react";
+import { ChevronDown, Heart, Search, ShoppingBag, Menu, X, Link2 } from "lucide-react";
 import Image from "next/image";
 
 const platforms = [
@@ -133,6 +133,21 @@ function Header() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/link-form"
+              className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
+            >
+              <Link2
+                size={24}
+                className="text-gray-700 group-hover:text-orange-500 transition-colors"
+              />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  {wishlistCount}
+                </span>
+              )}
+              <span className="sr-only">Wishlist ({wishlistCount} items)</span>
+            </Link>
             <Link
               href="/wishlist"
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"

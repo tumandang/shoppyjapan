@@ -275,10 +275,8 @@ function CategoryProduct({ categoryID }) {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 mb-5">
-            {bestseller
-              .slice((page - 1) * itemsPerPage, page * itemsPerPage)
-              .map((itemObj, index) => {
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 mb-5">
+            {bestseller.map((itemObj, index) => {
                 const item = itemObj.Item;
                 if (!item) return null;
 

@@ -52,7 +52,7 @@ function ListingSearch({ Search }) {
       .then((res) => res.json())
       .then((data) => {
         setbestseller(data.Items || []);
-        setTotalPages(data.pageCount || 1); // ← inside .then
+        setTotalPages(data.pageCount || 1); 
       })
       .catch((err) => console.error("Rakuten API error:", err));
   }, [Search, page]);
@@ -92,10 +92,8 @@ function ListingSearch({ Search }) {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
-            {bestseller
-              .slice((page - 1) * itemsPerPage, page * itemsPerPage)
-              .map((itemObj, index) => {
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 mb-4">
+            {bestseller.map((itemObj, index) => {
                 const item = itemObj.Item;
                 if (!item) return null;
 

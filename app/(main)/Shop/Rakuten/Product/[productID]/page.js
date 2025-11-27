@@ -72,7 +72,7 @@ export default function ProductDetails() {
                 <img
                   src={selectedImage}
                   alt="Product"
-                  className="w-full h-full object-contain"
+                  className="min-w-full min-h-full object-contain"
                 />
               </div>
 

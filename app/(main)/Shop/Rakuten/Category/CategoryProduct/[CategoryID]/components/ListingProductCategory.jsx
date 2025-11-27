@@ -238,6 +238,7 @@ function CategoryProduct({ categoryID }) {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setbestseller(data.Items || []);
         setTotalPages(data.pageCount || 1); 
       });
@@ -263,16 +264,9 @@ function CategoryProduct({ categoryID }) {
             <h3 className={`font-semibold text-lg ${dm_sans_bold.className}`}>
               {SelectedCategory}
             </h3>
-            <p className="text-sm text-gray-500">
-              Total products: {bestseller.length}
+            <p className={`text-sm text-gray-500 italic ${lexend.className}`}>
+              Total products: {bestseller.length} per page
             </p>
-            <Link
-              href="/Shop/Rakuten/Product/Ranking"
-              className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group"
-            >
-              <span>View All</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 mb-5">

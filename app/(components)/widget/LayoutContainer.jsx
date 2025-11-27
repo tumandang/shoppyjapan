@@ -82,7 +82,7 @@ function LayoutContainer() {
           </div>
 
           <div className="bg-white rounded-lg shadow-lg  flexCenter flex-col p-2 gap-y-5">
-            <h4 className={`${lexend.className}`}>Our APP</h4>
+            <h4 className={`${lexend.className}`}>Our Application</h4>
             <Image
               src="/assets/Shopan_App.png"
               width={100}

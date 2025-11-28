@@ -28,25 +28,25 @@ function ListWebsite() {
       <aside className="sticky top-5 self-start bg-white flex flex-col p-4 w-1/4 rounded-lg">
         <h5 className={`${lexend.className} text-lg`}>List Of Website</h5>
         <div className="flex flex-col space-y-5 mt-3">
-          <ScrollLink to="Ecommerce" smooth={true} duration={500} offset={-10}  className="cursor-pointer hover:text-orange-500 transition-colors duration-200">
+          <ScrollLink to="Ecommerce" smooth={true} duration={500} offset={-10}  className={`cursor-pointer hover:text-orange-500 transition-colors duration-200 ${dm_sans.className}`}>
             E-Commerce
           </ScrollLink>
-          <ScrollLink to="Fashion" smooth duration={500} offset={-10} className="cursor-pointer hover:text-orange-500 transition-colors duration-200">
+          <ScrollLink to="Fashion" smooth duration={500} offset={-10} className={`cursor-pointer hover:text-orange-500 transition-colors duration-200 ${dm_sans.className}`}>
             Fashion
           </ScrollLink>
-          <ScrollLink to="Shoes" smooth duration={500} offset={-10} className="cursor-pointer hover:text-orange-500 transition-colors duration-200">
+          <ScrollLink to="Shoes" smooth duration={500} offset={-10} className={`cursor-pointer hover:text-orange-500 transition-colors duration-200 ${dm_sans.className}`}>
             Shoes
           </ScrollLink>
-          <ScrollLink to="Sneaker" smooth duration={500} offset={-10} className="cursor-pointer hover:text-orange-500 transition-colors duration-200">
+          <ScrollLink to="Sneaker" smooth duration={500} offset={-10} className={`cursor-pointer hover:text-orange-500 transition-colors duration-200 ${dm_sans.className}`}>
             Sneaker / Second-hand
           </ScrollLink>
-          <ScrollLink to="Auto" smooth duration={500} offset={-10} className="cursor-pointer hover:text-orange-500 transition-colors duration-200">
+          <ScrollLink to="Auto" smooth duration={500} offset={-10} className={`cursor-pointer hover:text-orange-500 transition-colors duration-200 ${dm_sans.className}`}>
             Automotive / Lifestyle Gear
           </ScrollLink>
-          <ScrollLink to="Anime" smooth duration={500} offset={-10} className="cursor-pointer hover:text-orange-500 transition-colors duration-200">
+          <ScrollLink to="Anime" smooth duration={500} offset={-10} className={`cursor-pointer hover:text-orange-500 transition-colors duration-200 ${dm_sans.className}`}>
             Anime / Otaku / Figures / Collectibles
           </ScrollLink>
-          <ScrollLink to="Card" smooth duration={500} offset={-10} className="cursor-pointer hover:text-orange-500 transition-colors duration-200 ">
+          <ScrollLink to="Card" smooth duration={500} offset={-10} className={`cursor-pointer hover:text-orange-500 transition-colors duration-200 ${dm_sans.className}`}>
             Cards / Collectibles (Secondary Market)
           </ScrollLink>
         </div>
@@ -75,10 +75,10 @@ function ListWebsite() {
                         className="object-contain max-h-full max-w-full"
                       />
                     </div>
-                    <h5 className="font-semibold text-sm text-center">
+                    <h5 className={`${lexend.className} font-semibold text-sm text-center`}>
                       {card.name}
                     </h5>
-                    <p className="text-xs text-gray-600 text-center">
+                    <p className={`${dm_sans.className} text-xs text-gray-600 text-center`}>
                       {card.desc}
                     </p>
                   </Link>
@@ -110,10 +110,10 @@ function ListWebsite() {
                         className="object-contain max-h-full max-w-full"
                       />
                     </div>
-                    <h5 className="font-semibold text-sm text-center">
+                    <h5 className={`${lexend.className} font-semibold text-sm text-center`}>
                       {card.name}
                     </h5>
-                    <p className="text-xs text-gray-600 text-center">
+                    <p className={`${dm_sans.className} text-xs text-gray-600 text-center`}>
                       {card.desc}
                     </p>
                   </Link>
@@ -145,10 +145,10 @@ function ListWebsite() {
                         className="object-contain max-h-full max-w-full"
                       />
                     </div>
-                    <h5 className="font-semibold text-sm text-center">
+                    <h5 className={`${lexend.className} font-semibold text-sm text-center`}>
                       {card.name}
                     </h5>
-                    <p className="text-xs text-gray-600 text-center">
+                    <p className={`${dm_sans.className} text-xs text-gray-600 text-center`}>
                       {card.desc}
                     </p>
                   </Link>
@@ -180,7 +180,7 @@ function ListWebsite() {
                         className="object-contain max-h-full max-w-full"
                       />
                     </div>
-                    <h5 className="font-semibold text-sm text-center">
+                    <h5 className={`${lexend.className} font-semibold text-sm text-center`}>
                       {card.name}
                     </h5>
                     <p className="text-xs text-gray-600 text-center">

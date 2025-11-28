@@ -47,10 +47,10 @@ function CartCard() {
   const subtotal = items.reduce((acc, item) => acc + item.price * item.qty, 0);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 mt-14">
 
       <div>
-        <p className="text-sm text-gray-500">Breadcrumb</p>
+        {/* <p className="text-sm text-gray-500">Breadcrumb</p> */}
         <h2 className={`text-2xl font-semibold ${lexend.className}`}>
           Your Cart
         </h2>

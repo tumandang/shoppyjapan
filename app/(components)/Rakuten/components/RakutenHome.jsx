@@ -23,7 +23,7 @@ function RakutenHome() {
   return (
     <section className="padd-cont  w-full">
       <div className=" flex-col  p-5 rounded-lg bg-white px-5 shadow-lg ">
-        <div className=" flexBetween">
+        <div className=" flexBetween mb-5">
           <Image
             src="/logo/Rakuten.png"
             width={100}
@@ -32,7 +32,7 @@ function RakutenHome() {
             className="rounded"
           />
             <Link
-              href="/"
+              href="/Shop/Rakuten/Product/Ranking"
               className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group"
             >
               <span>View All</span>
@@ -40,7 +40,7 @@ function RakutenHome() {
             </Link>
           
         </div>
-        <div className="grid grid-cols-6 gap-4">
+        <div className="">
           <CardRakuten />
         </div>
       </div>

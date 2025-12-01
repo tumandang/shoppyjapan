@@ -71,6 +71,31 @@ const invoices = [
 
 function Calculator() {
   const [table, settable] = useState([]);
+  const [width, setwidth] = useState("");
+  const [height, setheight] = useState("");
+  const [length, setlength] = useState("");
+  const [weight, setweight] = useState("");
+  const [shipping, setshipping] = useState("");
+  const calculate = () => {
+    if (weight === ""  || width === "" || length === "" || height === ""){
+      return ;
+    }
+    else{
+      const dimesion = (width * length * height)/ 6000;
+      const volume_weight = (dimesion + weight) / 2;
+        let x;
+      if (dimesion > weight){
+        x = volume_weight
+      }
+      else{
+        x = weight
+      }
+      const shippingestimate = x * 42 
+      const total = shippingestimate + 40 + 20 + 21.12;
+
+      setshipping(total.toFixed(2));
+    }
+  }
   return (
     <div className="min-h-screen  mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <Tabs defaultValue="Air Freight">
@@ -103,26 +128,26 @@ function Calculator() {
               <div className="grid grid-cols-2 gap-2">
                 <div className="flex flex-col gap-y-2">
                   <Label>Length (cm)</Label>
-                  <Input placeholder="12" />
+                  <Input placeholder="12" value={length} onChange = {(e) => setlength(e.target.value)}/>
                 </div>
                 <div className="flex flex-col gap-y-2">
                   <Label>Height (cm)</Label>
-                  <Input placeholder="21" />
+                  <Input placeholder="21" value={height} onChange = {(e) => setheight(e.target.value)}/>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div className="flex flex-col gap-y-2">
                   <Label>Width (cm)</Label>
-                  <Input placeholder="21" />
+                  <Input placeholder="21" value={width} onChange = {(e) => setwidth(e.target.value)} />
                 </div>
                 <div className="flex flex-col gap-y-2">
                   <Label>Actual Weight (Kg)</Label>
-                  <Input placeholder="1.3" />
+                  <Input placeholder="1.3" value={weight}  onChange={(e) => setweight(e.target.value)} />
                 </div>
               </div>
             </CardContent>
             <CardFooter>
-              <Button className="w-full">Calculate</Button>
+              <Button className="w-full" onClick ={calculate}>Calculate</Button>
             </CardFooter>
           </Card>
         </TabsContent>
@@ -145,28 +170,34 @@ function Calculator() {
           <TableCaption>A Estimate Result of your Shipping</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px]">Invoice</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Method</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
+              <TableHead className="w-[100px]">Item</TableHead>
+              <TableHead className="text-right">Shipping Fee (RM)</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {invoices.map((invoice) => (
-              <TableRow key={invoice.invoice}>
-                <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                <TableCell>{invoice.paymentStatus}</TableCell>
-                <TableCell>{invoice.paymentMethod}</TableCell>
-                <TableCell className="text-right">
-                  {invoice.totalAmount}
-                </TableCell>
+            
+              <TableRow>
+                <TableCell className="font-medium">Shipping</TableCell>
+                <TableCell className="text-right">{}</TableCell>
               </TableRow>
-            ))}
+              <TableRow>
+                <TableCell className="font-medium">LineClearExp</TableCell>
+                <TableCell className="text-right">40</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Handling</TableCell>
+                <TableCell className="text-right">20</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Domestic Post, warehouse Hiroshima to warehouse osaka</TableCell>
+                <TableCell className="text-right">21.12</TableCell>
+              </TableRow>
+           
           </TableBody>
           <TableFooter>
             <TableRow>
-              <TableCell colSpan={3}>Total</TableCell>
-              <TableCell className="text-right">$2,500.00</TableCell>
+              <TableCell >Total</TableCell>
+              <TableCell className="text-right">{shipping}</TableCell>
             </TableRow>
           </TableFooter>
         </Table>

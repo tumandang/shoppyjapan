@@ -8,13 +8,15 @@ import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 function Banner() {
   const banner = [
     {
-      imgsrc: "/assets/banner1.webp",
-      name: "Banner 11.11",
-      desc: "Big Sale From Japan",
+      imgsrc: "/assets/banner7.jpg",
+      name: "Banner 12.12",
+      desc: "December Big Sale From Japan",
     },
     {
       imgsrc: "/assets/banner2.webp",
@@ -25,6 +27,7 @@ function Banner() {
       imgsrc: "/assets/banner3.webp",
       name: "Tokyo Travel",
       desc: "Contact: +81 90-616 3990",
+      web: "https://shopantravel.lovestoblog.com/",
     },
     {
       imgsrc: "/assets/banner5.jpg",
@@ -68,9 +71,14 @@ function Banner() {
                 />
               </div>
 
-              <div className=" absolute bottom-6 left-6 bg-black/35 backdrop-blur-md text-white p-4 rounded-lg max-w-xs z-30">
+              <div className=" absolute bottom-6 left-6 bg-black/35 backdrop-blur-md text-white p-4 rounded-lg max-w-xs z-30 space-y-4">
                 <h2 className="text-xl font-bold">{i.name}</h2>
                 <p className="text-sm text-white">{i.desc}</p>
+                {i.name === "Tokyo Travel" && (
+                  <Link href={i.web}>
+                    <Button className="cursor-pointer w-full">Visit Web</Button>
+                  </Link>
+                )}
               </div>
             </SwiperSlide>
           ))}

@@ -27,7 +27,7 @@ function Banner() {
       imgsrc: "/assets/banner3.webp",
       name: "Tokyo Travel",
       desc: "Contact: +81 90-616 3990",
-      web: "https://shopantravel.lovestoblog.com/",
+      web: "https://shopantravel.great-site.net/",
     },
     {
       imgsrc: "/assets/banner5.jpg",

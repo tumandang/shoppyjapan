@@ -1,7 +1,9 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { Lexend, DM_Sans } from "next/font/google";
 import Link from "next/link";
+import axiosInstance from "@/lib/axios";
 import {
   Field,
   FieldDescription,
@@ -11,6 +13,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -27,11 +30,23 @@ const dm_sans_bold = DM_Sans({
   weight: ["800"],
 });
 function Login() {
+
+  const [form, setform] = useState({email: '',password:''});
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+    try{
+      await axiosInstance.post ('/login',form);
+      alert ('Login successfully');
+    }
+    catch (error){
+      alert(error.response?.data?.message || 'Login failed');
+    }
+  };
   return (
     <div className="bg-background flex min-h-screen flex-col flexCenter gap-6 p-6 md:p-10">
       <div className="w-full max-w-sm">
         <div className="flex flex-col gap-6">
-          <form action="post">
+          <form onSubmit={handlesubmit}>
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
                 <Link href="/" className="shrink-0">
@@ -55,13 +70,14 @@ function Login() {
                   type="email"
                   placeholder="mm@example.com"
                   required
+                  onChange={e => setform({...form, email: e.target.value})}
                 />
                 <FieldLabel htmlFor="password">Password</FieldLabel>
-                <Input id="password" type="password" required />
+                <Input id="password" type="password" required onChange={e => setform({...form, password: e.target.value})} />
                 <a className={`${dm_sans.className} text-xs underline`} href="/">Forgot Your Password?</a>
               </Field>
               <Field>
-                <Button type="submit">Login</Button>
+                <Button type="submit" className="cursor-pointer">Login</Button>
               </Field>
               <FieldSeparator>Or</FieldSeparator>
               <Field className="">

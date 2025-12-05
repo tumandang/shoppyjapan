@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Check, Home, KeyRound, MoveLeft, MoveRight, User } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import axiosInstance from "@/lib/axios";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -51,6 +52,33 @@ function Register() {
       setCurrentStep((steps) => steps - 1);
     }
   };
+    const [form, setform] = useState({
+    name: "",
+    fullname: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
+    telephone: "",
+    address1: "",
+    address2: "",
+    address3: "",
+    postcode: "",
+    city: "",
+    state: "",
+    country: "",
+  });
+
+  const handlesubmit = async (e)=> {
+    e.preventDefault();
+    try{
+      await axiosInstance.post ('/register',form);
+      alert ('Register successfully');
+    }
+    catch(error){
+      alert(error.response?.data?.message || 'Register failed');
+    }
+    
+  }
   return (
     <div className="bg-white flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm md:max-w-4xl">
@@ -65,7 +93,7 @@ function Register() {
                 />
                
               </div>
-              <form className="p-6 md:p-8">
+              <form className="p-6 md:p-8" onSubmit={handlesubmit}>
                 {CurrentStep === 0 && (
                   <motion.div
                     initial={{ x: delta >= 0 ? "50%" : "-50%", opacity: 0 }}
@@ -88,12 +116,25 @@ function Register() {
                       </div>
 
                       <Field>
-                        <FieldLabel htmlFor="name">Name</FieldLabel>
+                        <FieldLabel htmlFor="name">Username</FieldLabel>
+                        <Input
+                          id="name"
+                          type="text"
+                          placeholder="AhmadMustaqimcool123"
+                          required
+                          value={form.name}
+                          onChange={e => setform({...form, name: e.target.value})}
+                        />
+                      </Field>
+                      <Field>
+                        <FieldLabel htmlFor="name">Fullname</FieldLabel>
                         <Input
                           id="name"
                           type="text"
                           placeholder="Ahmad Mustaqim"
                           required
+                          value={form.fullname}
+                          onChange={e => setform({...form, fullname: e.target.value})}
                         />
                       </Field>
                       <Field>
@@ -103,6 +144,8 @@ function Register() {
                           type="email"
                           placeholder="m@example.com"
                           required
+                          value={form.email}
+                          onChange={e => setform({...form, email: e.target.value})}
                         />
                       </Field>
                       <Field>
@@ -112,6 +155,8 @@ function Register() {
                           type="number"
                           placeholder="0123456943"
                           required
+                          value={form.telephone}
+                          onChange={e => setform({...form, telephone: e.target.value})}
                         />
                       </Field>
                       <Field>
@@ -153,6 +198,8 @@ function Register() {
                           type="text"
                           placeholder="NO 1234"
                           required
+                          value={form.address1}
+                          onChange={e => setform({...form, address1: e.target.value})}
                         />
                       </Field>
                       <Field>
@@ -162,6 +209,8 @@ function Register() {
                           type="text"
                           placeholder="Jalan Jati 4/5"
                           required
+                          value={form.address2}
+                          onChange={e => setform({...form, address2: e.target.value})}
                         />
                       </Field>
                       <Field>
@@ -171,6 +220,8 @@ function Register() {
                           type="text"
                           placeholder="Bandar Selayang"
                           required
+                          value={form.address3}
+                          onChange={e => setform({...form, address3: e.target.value})}
                         />
                       </Field>
                       <div className="grid grid-cols-2 gap-x-4">
@@ -181,6 +232,8 @@ function Register() {
                             type="number"
                             placeholder="83000"
                             required
+                            value={form.postcode}
+                            onChange={e => setform({...form, postcode: e.target.value})}
                           />
                         </Field>
                         <Field>
@@ -190,6 +243,8 @@ function Register() {
                             type="text"
                             placeholder="Taiping"
                             required
+                            value={form.city}
+                            onChange={e => setform({...form, city: e.target.value})}
                           />
                         </Field>
                       </div>
@@ -201,6 +256,8 @@ function Register() {
                             type="text"
                             placeholder="dropdown nanti"
                             required
+                            value={form.state}
+                            onChange={e => setform({...form, state: e.target.value})}
                           />
                         </Field>
                         <Field>
@@ -210,6 +267,8 @@ function Register() {
                             type="text"
                             placeholder="dropdown nanti"
                             required
+                            value={form.country}
+                            onChange={e => setform({...form, country: e.target.value})}
                           />
                         </Field>
                       </div>
@@ -258,6 +317,8 @@ function Register() {
                           type="password"
                           placeholder="Enter your password"
                           required
+                          value={form.password}
+                          onChange={e => setform({...form, password: e.target.value})}
                         />
                         <FieldDescription>
                           Must be at least 8 characters long
@@ -272,6 +333,8 @@ function Register() {
                           type="password"
                           placeholder="Re-enter your password"
                           required
+                          value={form.password_confirmation}
+                          onChange={e => setform({...form, password_confirmation: e.target.value})}
                         />
                       </Field>
                       <div className="flexBetween gap-x-4">

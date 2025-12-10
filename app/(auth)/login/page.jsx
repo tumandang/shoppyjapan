@@ -3,7 +3,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { Lexend, DM_Sans } from "next/font/google";
 import Link from "next/link";
-import axiosInstance from "@/lib/axios";
+import { useRouter } from "next/navigation";
+
 import {
   Field,
   FieldDescription,
@@ -13,6 +14,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/AuthContext";
 
 const lexend = Lexend({
   variable: "--font-Lexend",
@@ -24,29 +26,36 @@ const dm_sans = DM_Sans({
   subsets: ["latin"],
   weight: ["400"],
 });
-const dm_sans_bold = DM_Sans({
-  variable: "--font-DM_Sans",
-  subsets: ["latin"],
-  weight: ["800"],
-});
-function Login() {
 
-  const [form, setform] = useState({email: '',password:''});
-  const handlesubmit = async (e) => {
+function Login() {
+  const router = useRouter();
+  const { login } = useAuth();
+  const [form, setForm] = useState({ email: '', password: '' });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      await axiosInstance.post ('/login',form);
-      alert ('Login successfully');
-    }
-    catch (error){
+    setLoading(true);
+    setError('');
+    
+    try {
+      await login(form.email, form.password);
+      alert('Login successful');
+      router.push('/profile'); 
+    } catch (error) {
+      setError(error.response?.data?.message || 'Login failed');
       alert(error.response?.data?.message || 'Login failed');
+    } finally {
+      setLoading(false);
     }
   };
+
   return (
     <div className="bg-background flex min-h-screen flex-col flexCenter gap-6 p-6 md:p-10">
       <div className="w-full max-w-sm">
         <div className="flex flex-col gap-6">
-          <form onSubmit={handlesubmit}>
+          <form onSubmit={handleSubmit}>
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
                 <Link href="/" className="shrink-0">
@@ -63,6 +72,13 @@ function Login() {
                   Don&apos;t have an account <a href="/register">Sign up</a>
                 </FieldDescription>
               </div>
+              
+              {error && (
+                <div className="bg-red-50 text-red-600 p-3 rounded text-sm">
+                  {error}
+                </div>
+              )}
+
               <Field>
                 <FieldLabel htmlFor="email">Email</FieldLabel>
                 <Input
@@ -70,18 +86,35 @@ function Login() {
                   type="email"
                   placeholder="mm@example.com"
                   required
-                  onChange={e => setform({...form, email: e.target.value})}
+                  value={form.email}
+                  onChange={e => setForm({ ...form, email: e.target.value })}
                 />
                 <FieldLabel htmlFor="password">Password</FieldLabel>
-                <Input id="password" type="password" required onChange={e => setform({...form, password: e.target.value})} />
-                <a className={`${dm_sans.className} text-xs underline`} href="/">Forgot Your Password?</a>
+                <Input 
+                  id="password" 
+                  type="password" 
+                  required 
+                  value={form.password}
+                  onChange={e => setForm({ ...form, password: e.target.value })} 
+                />
+                <a className={`${dm_sans.className} text-xs underline`} href="/">
+                  Forgot Your Password?
+                </a>
               </Field>
+              
               <Field>
-                <Button type="submit" className="cursor-pointer">Login</Button>
+                <Button 
+                  type="submit" 
+                  className="cursor-pointer" 
+                  disabled={loading}
+                >
+                  {loading ? 'Logging in...' : 'Login'}
+                </Button>
               </Field>
+              
               <FieldSeparator>Or</FieldSeparator>
-              <Field className="">
-
+              
+              <Field>
                 <Button variant="outline" type="button">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path

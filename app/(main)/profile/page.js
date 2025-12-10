@@ -1,11 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Lexend, DM_Sans } from "next/font/google";
 
 import { useAuth } from "@/context/AuthContext";
+import { ArrowLeftToLine, ArrowRightToLine, Calculator, Heart, Link2, ShoppingBasketIcon, User } from "lucide-react";
+import Link from "next/link";
 
 const lexend = Lexend({
   variable: "--font-Lexend",
@@ -19,10 +21,16 @@ const dm_sans = DM_Sans({
   weight: ["400"],
 });
 
+const dm_sans_bold = DM_Sans({
+  variable: "--font-DM_Sans",
+  subsets: ["latin"],
+  weight: ["800"],
+});
+
 export default function ProfilePage() {
   const { user, loading, logout } = useAuth();
   const router = useRouter();
-
+  const [expanded, setexpanded] = useState(true);
   useEffect(() => {
     if (!loading && !user) {
       router.push('/login');
@@ -54,8 +62,86 @@ export default function ProfilePage() {
       
 
    
-      <main className="container mx-auto px-6 py-12">
-        <div className="mx-auto max-w-4xl">
+      <main className="flex gap-6 mt-6">
+        <aside className={`transition-all duration-300 border-r pr-4 ${expanded ? "w-64" : "w-14"}`}>
+          <div className="flexBetween pb-3 border-b">
+            <h4 className={`text-lg font-semibold transition-all ${dm_sans_bold.className} ${expanded ? "opacity-100" : "opacity-0 w-0"}`}>
+              My Dashboard
+            </h4>
+            <button
+              onClick={() => setexpanded((prev) => !prev)}
+              className="p-1 hover:bg-gray-100 rounded-md ">
+              {expanded ? <ArrowLeftToLine /> : <ArrowRightToLine  />}
+            </button>
+          </div>
+
+          <div className="mt-5">
+            <div className="space-y-2">
+              <Link href="/profile">
+                    <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
+                      <span className="text-gray-600">
+                        <User></User>
+                      </span>
+                      {expanded && (
+                        <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
+                          My Profile
+                        </p>
+                      )}
+                    </div>
+              </Link>
+              <Link href="/">
+                    <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
+                      <span className="text-gray-600">
+                        <Link2></Link2>
+                      </span>
+                      {expanded && (
+                        <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
+                          Insert URL
+                        </p>
+                      )}
+                    </div>
+              </Link>
+              <Link href="/">
+                    <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
+                      <span className="text-gray-600">
+                        <ShoppingBasketIcon/>
+                      </span>
+                      {expanded && (
+                        <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
+                          My Orders
+                        </p>
+                      )}
+                    </div>
+              </Link>
+                 <Link href="/">
+                    <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
+                      <span className="text-gray-600">
+                        <Heart/>
+                      </span>
+                      {expanded && (
+                        <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
+                          Wishlist
+                        </p>
+                      )}
+                    </div>
+              </Link>
+              <Link href="/shipping_calculator">
+                    <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
+                      <span className="text-gray-600">
+                        <Calculator/>
+                      </span>
+                      {expanded && (
+                        <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
+                          Calculate Courier Fee
+                        </p>
+                      )}
+                    </div>
+              </Link>
+           
+            </div>
+          </div>
+        </aside>
+        <div className="mx-auto max-w-4xl flex-1">
         
           <div className="mb-8">
             <h1 className={`${lexend.className} text-4xl mb-2`}>My Profile</h1>
@@ -63,8 +149,21 @@ export default function ProfilePage() {
               Manage your account information and preferences
             </p>
           </div>
-
-       
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-7">
+            <div className="bg-white rounded-lg border p-6 text-center">
+              <div className="text-3xl font-bold text-primary mb-2">0</div>
+              <p className={`${dm_sans.className} text-gray-600`}>Total Orders</p>
+            </div>
+            <div className="bg-white rounded-lg border p-6 text-center">
+              <div className="text-3xl font-bold text-primary mb-2">0</div>
+              <p className={`${dm_sans.className} text-gray-600`}>Wishlist Items</p>
+            </div>
+            <div className="bg-white rounded-lg border p-6 text-center">
+              <div className="text-3xl font-bold text-primary mb-2">RM 0.00</div>
+              <p className={`${dm_sans.className} text-gray-600`}>Total Spent</p>
+            </div>
+          </div>            
+                      
           <div className="bg-white rounded-lg border shadow-sm overflow-hidden mb-6">
        
             <div className="bg-linear-to-r from-orange-500 to-red-600 px-8 py-12 text-white">
@@ -172,20 +271,7 @@ export default function ProfilePage() {
           </div>
 
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg border p-6 text-center">
-              <div className="text-3xl font-bold text-primary mb-2">0</div>
-              <p className={`${dm_sans.className} text-gray-600`}>Total Orders</p>
-            </div>
-            <div className="bg-white rounded-lg border p-6 text-center">
-              <div className="text-3xl font-bold text-primary mb-2">0</div>
-              <p className={`${dm_sans.className} text-gray-600`}>Wishlist Items</p>
-            </div>
-            <div className="bg-white rounded-lg border p-6 text-center">
-              <div className="text-3xl font-bold text-primary mb-2">RM 0.00</div>
-              <p className={`${dm_sans.className} text-gray-600`}>Total Spent</p>
-            </div>
-          </div>
+
         </div>
       </main>
     </div>

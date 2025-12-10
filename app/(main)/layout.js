@@ -14,23 +14,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`antialiased overflow-x-hidden flex flex-col min-h-screen `}
-        
-      >
-        <Headerbar/>
-        <Header/>
-   
-        
-        <main className="grow">
-          {children}
-        </main>
-        
+
+        <div className="flex flex-col min-h-screen">
+          <Headerbar/>
+          <Header/>
           
-         <ChabotIcon/>
-        <Footer></Footer>
-      </body>
-    </html>
+          <main className="grow">
+            {children}
+          </main>
+          
+          
+           <ChabotIcon/>
+          <Footer></Footer>
+        </div>
+
   );
 }

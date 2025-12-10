@@ -3,13 +3,14 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axiosInstance from '@/lib/axios';
 
+// nak masukkan data ( user , auth )
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Check if user is authenticated on mount
+  
   useEffect(() => {
     checkAuth();
   }, []);
@@ -38,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     });
     
     if (response.data.status) {
-      // Store token in localStorage
+      
       const token = response.data.token;
       localStorage.setItem('token', token);
       

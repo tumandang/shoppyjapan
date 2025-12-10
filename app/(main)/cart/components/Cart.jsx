@@ -1,7 +1,12 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import { DM_Sans, Lexend } from "next/font/google";
 import Image from "next/image";
 import { Trash, Minus, Plus } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+import { Spinner } from "@/components/ui/spinner";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -14,6 +19,14 @@ const dm_sans = DM_Sans({
 });
 
 function CartCard() {
+  const {user, loading, logout} = useAuth();
+  const router = useRouter();
+  useEffect(() => {
+    if(!loading && !user){
+      router.push('/login');
+    }
+  }, [user, loading, router])
+  
   const items = [
     {
       image: "/Product_Example/arsenal_jersey.webp",
@@ -45,6 +58,18 @@ function CartCard() {
   ];
 
   const subtotal = items.reduce((acc, item) => acc + item.price * item.qty, 0);
+
+    if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <Spinner></Spinner>
+      </div>
+    );
+  }
+
+    if (!user) {
+    return null;
+  }
 
   return (
     <div className="space-y-6 mt-14">

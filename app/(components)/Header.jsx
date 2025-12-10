@@ -10,8 +10,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, Heart, Search, ShoppingBag, Menu, X, Link2, Calculator } from "lucide-react";
+import { ChevronDown, Heart, Search, ShoppingBag, Menu, X, Link2, Calculator, User, LogOut } from "lucide-react";
 import Image from "next/image";
+import { useAuth } from "@/context/AuthContext";
 
 const platforms = [
   { label: "Rakuten", value: "rakuten" },
@@ -37,12 +38,15 @@ function Header() {
   const isActive = (path) => pathname === path;
   const [cartCount] = useState(0);
   const [wishlistCount] = useState(0);
-
+  const { user, logout } = useAuth();
   const handleSelect = (platform) => {
     setSelectedPlatform(platform);
   };
   const [link, setLink] = useState("");
-  const [error, setError] = useState(null);
+    const handleLogout = async () => {
+    await logout();
+    router.push('/');
+  };
   const router = useRouter();
   const closeMobileMenu = () => setMobileMenuOpen(false);
   const handleSearch = () => {
@@ -174,7 +178,29 @@ function Header() {
               <span className="sr-only">Cart ({cartCount} items)</span>
             </Link>
 
-            <Link href="/login">
+            {user ? (
+              <div className="flex flex-row gap-x-4">
+                <Link href="/profile">
+                  <Button
+                    variant="outline"
+                    className="rounded-lg px-5 py-2 border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer flex items-center gap-2"
+                  >
+                    <User size={18} />
+                    {user.name}
+                  </Button>
+                </Link>
+                <Button 
+                  onClick={handleLogout}
+                  variant="destructive"
+                  className="bg-red-500 hover:bg-red-600 text-white rounded-lg px-5 py-2 cursor-pointer flex items-center gap-2"
+                >
+                  <LogOut size={18} />
+                  Logout
+                </Button>
+              </div>
+            ):(
+             <div className="flex flex-row gap-x-4">
+               <Link href="/login">
               <Button
                 variant="outline"
                 className="rounded-lg px-5 py-2 border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer"
@@ -187,6 +213,10 @@ function Header() {
                 Register
               </Button>
             </Link>
+             </div>
+            )}
+
+           
           </div>
 
           <div className="lg:hidden flex items-center gap-3">

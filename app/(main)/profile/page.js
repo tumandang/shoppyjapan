@@ -4,8 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Lexend, DM_Sans } from "next/font/google";
-import Image from "next/image";
-import Link from "next/link";
+
 import { useAuth } from "@/context/AuthContext";
 
 const lexend = Lexend({

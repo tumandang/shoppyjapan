@@ -16,6 +16,17 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import Link from "next/link";
 const lexend = Lexend({
   variable: "--font-Lexend",
@@ -262,7 +273,8 @@ function UsageBuy() {
                   <h4>3. Confirm Your Order</h4>
                   <p>
                     Review the displayed item information and click “Save”.
-                    Scroll down to the Batch Order section and select “Review Payment” to begin the payment process.
+                    Scroll down to the Batch Order section and select “Review
+                    Payment” to begin the payment process.
                   </p>
                 </div>
                 <SheetFooter>
@@ -275,20 +287,81 @@ function UsageBuy() {
                 </SheetFooter>
               </SheetContent>
             </Sheet>
-            <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
-              <div className="absolute top-1 left-1 p-2 m-2 w-auto  rounded-sm bg-[#1f1f1f] z-1">
-                <p
-                  className={`uppercase ${lexend.className} text-xs text-white`}
-                >
-                  Make payment & Check item availability
-                </p>
-              </div>
-              <img
-                src="/assets/step2.webp"
-                className="img relative w-full h-full object-cover"
-                alt="step3"
-              />
-            </div>
+            <Drawer>
+              <DrawerTrigger>
+                <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
+                  <div className="absolute top-1 left-1 p-2 m-2 w-auto  rounded-sm bg-[#1f1f1f] z-1">
+                    <p
+                      className={`uppercase ${lexend.className} text-xs text-white`}
+                    >
+                      Make payment & Check item availability
+                    </p>
+                  </div>
+                  <img
+                    src="/assets/step2.webp"
+                    className="img relative w-full h-full object-cover"
+                    alt="step3"
+                  />
+                </div>
+              </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader>
+                  <DrawerTitle>
+                    Make payment & Check item availability
+                  </DrawerTitle>
+                  <DrawerDescription>
+                    Ensure your orders are confirmed and ready for processing
+                    with these simple steps.
+                  </DrawerDescription>
+                </DrawerHeader>
+
+                <div className="flex flex-col items-center gap-5 text-left">
+                  <div className="max-w-md w-full">
+                    <h4 className="font-semibold">1. Review Your Cart</h4>
+                    <p>
+                      Go to your ShoPan dashboard and open the cart. Verify all
+                      items, quantities, and prices to ensure everything is
+                      correct.
+                    </p>
+                  </div>
+
+                  <div className="max-w-md w-full">
+                    <h4 className="font-semibold">
+                      2. Check Item Availability
+                    </h4>
+                    <p>
+                      ShoPan will automatically check the stock for each item.
+                      If an item is unavailable, you’ll receive a notification
+                      and suggested alternatives.
+                    </p>
+                  </div>
+
+                  <div className="max-w-md w-full">
+                    <h4 className="font-semibold">3. Proceed to Payment</h4>
+                    <p>
+                      Select “Review Payment” in the Batch Order section. Choose
+                      your preferred payment method and complete the transaction
+                      securely.
+                    </p>
+                  </div>
+
+                  <div className="max-w-md w-full">
+                    <h4 className="font-semibold">4. Confirmation</h4>
+                    <p>
+                      Once payment is successful, you’ll receive an order
+                      confirmation with estimated shipping details. Keep an eye
+                      on your dashboard for updates.
+                    </p>
+                  </div>
+                </div>
+                <DrawerFooter>
+                  <DrawerClose>
+                    <Button variant="outline">Cancel</Button>
+                  </DrawerClose>
+                </DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+
             <div className="card absolute w-full h-full overflow-hidden rounded-md cursor-pointer">
               <div className="absolute top-1 left-1 p-2 m-2 w-auto  rounded-sm bg-[#1f1f1f] z-1">
                 <p

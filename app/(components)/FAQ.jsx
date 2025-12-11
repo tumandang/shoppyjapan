@@ -91,7 +91,6 @@ function FAQ() {
       <div className="flex flex-col gap-y-5 mt-8 w-full max-w-3xl">
         {faqGeneral.map((item, index) => {
           const isOpen = selectedQ === index;
-
           return (
             <div
               key={index}

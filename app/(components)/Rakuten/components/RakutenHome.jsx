@@ -1,27 +1,13 @@
 import React from "react";
-import { Lexend, DM_Sans } from "next/font/google";
+
 import CardRakuten from "../widget/CardRakuten";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-const lexend = Lexend({
-  variable: "--font-Lexend",
-  subsets: ["latin"],
-  weight: ["600"],
-});
-const dm_sans = DM_Sans({
-  variable: "--font-DM_Sans",
-  subsets: ["latin"],
-  weight: ["400"],
-});
-const dm_sans_bold = DM_Sans({
-  variable: "--font-DM_Sans",
-  subsets: ["latin"],
-  weight: ["800"],
-});
+
 function RakutenHome() {
   return (
-    <section className="padd-cont  w-full">
+    <section className="padd-cont  w-full mb-15">
       <div className=" flex-col  p-5 rounded-lg bg-white px-5 shadow-lg ">
         <div className=" flexBetween mb-5">
           <Image

@@ -7,6 +7,7 @@ import ChabotIcon from "../(components)/ChabotIcon";
 
 
 
+
 export const metadata = {
   title: "Shopan",
   description: "Proxy-Buyying from Japan to Malaysia",
@@ -21,9 +22,10 @@ export default function RootLayout({ children }) {
           
           <main className="grow">
             {children}
+            
           </main>
           
-          
+            
            <ChabotIcon/>
           <Footer></Footer>
         </div>

@@ -136,7 +136,7 @@ function LayoutContainer() {
           </div>
           <div className="">
             <Link
-              href="/"
+              href="/announcement"
               className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group"
             >
               <span>View All</span>

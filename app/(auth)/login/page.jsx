@@ -42,7 +42,7 @@ function Login() {
     try {
       await login(form.email, form.password);
       alert('Login successful');
-      router.push('/profile'); 
+      router.push('/dashboard/profile'); 
     } catch (error) {
       setError(error.response?.data?.message || 'Login failed');
       alert(error.response?.data?.message || 'Login failed');

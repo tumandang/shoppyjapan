@@ -77,7 +77,7 @@ export default function ProfilePage() {
 
           <div className="mt-5">
             <div className="space-y-2">
-              <Link href="/profile">
+              <Link href="/dashboard/profile">
                     <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
                       <span className="text-gray-600">
                         <User></User>
@@ -89,7 +89,7 @@ export default function ProfilePage() {
                       )}
                     </div>
               </Link>
-              <Link href="/">
+              <Link href="/dashboard/insertlink">
                     <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
                       <span className="text-gray-600">
                         <Link2></Link2>

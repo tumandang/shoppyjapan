@@ -50,7 +50,7 @@ function Annoncement() {
           <h2
             className={`text-2xl font-bold md:text-4xl md:leading-tight dark:text-white ${lexend.className}`}
           >
-            The Blog
+            The Announcement
           </h2>
           <p
             className={`mt-2 text-gray-600 dark:text-neutral-400 ${dm_sans.className}`}

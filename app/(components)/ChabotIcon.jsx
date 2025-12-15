@@ -88,14 +88,16 @@ function ChabotIcon() {
         >
           <Button
             ref={chatIconRef}
+            
             onClick={toggleChat}
             size="icon"
             className="rounded-full bg-orange-500 p-3 size-14 shadow-lg backdrop-blur-md hover:scale-110"
+            aria-label={isChatOpen ? "Close chat" : "Open chat"} 
           >
             {!isChatOpen ? (
-              <MessageCircle size={24} />
+              <MessageCircle size={24} aria-hidden="true" />
             ) : (
-              <ArrowDownCircle size={24} />
+              <ArrowDownCircle size={24} aria-hidden="true" />
             )}
           </Button>
         </motion.div>
@@ -140,6 +142,7 @@ function ChabotIcon() {
                       size="icon"
                       variant="ghost"
                       className="px-2 py-0"
+                      aria-label="Close chat"
                     >
                       <X size={10} strokeWidth={3}></X>
                       <span className="sr-only">Close Chat</span>
@@ -209,6 +212,7 @@ function ChabotIcon() {
                           type="button"
                           className="underline"
                           onClick={() => stop()}
+                          aria-label="Stop sending message"
                         >
                           Stop
                         </button>
@@ -222,6 +226,7 @@ function ChabotIcon() {
                           type="button"
                           className="underline"
                           onClick={handleSend}
+                          aria-label="Retry sending message"
                         >
                           Retry
                         </button>

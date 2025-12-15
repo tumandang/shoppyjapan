@@ -29,7 +29,7 @@ function LayoutContainer() {
       <div className=" flex flex-row gap-x-4 my-2">
         <div className="w-1/4  flex flex-col gap-y-2 ">
           <div className="flex flex-col px-5 gap-y-2 rounded-lg bg-white py-5 shadow-lg ">
-            <h4 className={`text-orange-500 ${lexend.className}`}>
+            <h4 className={`text-orange-700 ${lexend.className}`}>
               Integrated Shop
             </h4>
             <Link href="/Shop/Rakuten/">
@@ -75,7 +75,7 @@ function LayoutContainer() {
               </div>
             </Link>
             <div className="flex flex-col ">
-              <h4 className={`text-orange-500 ${lexend.className}`}>
+              <h4 className={`text-orange-700 ${lexend.className}`}>
                 Not found the marketplace
               </h4>
               <Link

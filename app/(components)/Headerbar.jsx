@@ -17,7 +17,6 @@ const langs = [
 
 function Headerbar() {
   const [selectedLang, setSelectedLang] = useState(langs[0]);
-  const [showBanner, setShowBanner] = useState(true);
 
   const handleSelect = (lang) => {
     setSelectedLang(lang);

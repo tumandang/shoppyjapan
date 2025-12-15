@@ -155,6 +155,7 @@ function Header() {
             <Link
               href="/shipping_calculator"
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
+              aria-label="Go to shipping calculator" 
             >
               <Calculator
                 size={24}

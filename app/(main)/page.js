@@ -15,12 +15,10 @@ function Page() {
   return (
     <main>
       <LayoutContainer/>
-     
       <RakutenHome/>
-      
-      <ShopNow/>
       <DataMatric/>
       <ClientSay/>
+      <ShopNow/>
       <FAQ/>
     </main>
 

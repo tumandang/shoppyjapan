@@ -66,7 +66,7 @@ function Banner() {
                   alt={i.name}
                   fill
                   sizes="small"
-                  className=" object-fill transition-all duration-5000ms ease-out scale-100 swiper-zoom-image rounded-lg"
+                  className=" object-fill transition-all duration-2500ms ease-out scale-100 swiper-zoom-image rounded-lg"
                   priority={index === 0}
                 />
               </div>

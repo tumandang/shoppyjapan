@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import React from 'react';
 import { Lexend, DM_Sans } from "next/font/google";
+import Link from 'next/link';
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -41,10 +42,13 @@ function ShopNow() {
           <p className={`text-lg text-white/90 ${dm_sans.className}`}>
             Shop top Japanese brands at the best prices, shipped straight to you.
           </p>
-          <button className={`bg-transparent border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer
-             ${lexend.className}`}>
-            SHOP NOW
-          </button>
+          <Link href="/Shop/Rakuten" className='flexCenter'>
+            <div  className={`bg-transparent backdrop-blur-sm border border-white text-white px-4 py-2 rounded-full w-fit hover:bg-white hover:text-black transition-all duration-300 cursor-pointer
+              ${lexend.className}`}>
+              SHOP NOW
+            </div>
+          </Link>
+
         </div>
       </div>
       

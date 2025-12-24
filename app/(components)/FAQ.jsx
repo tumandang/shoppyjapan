@@ -62,7 +62,7 @@ function FAQ() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center px-4 h-screen md:px-10  bg-[#1f1f1f]">
+    <div className="flex flex-col items-center justify-center px-4 h-screen md:px-10  bg-[#041E1C]">
       <AnimatedContent
         distance={300}
         direction="horizontal"

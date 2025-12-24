@@ -4,6 +4,7 @@ import { Lexend, DM_Sans } from "next/font/google";
 import Link from "next/link";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 import {
   Field,
   FieldDescription,
@@ -38,6 +39,7 @@ const steps = [
   { id: 1, name: "Complete", icon: <Check /> },
 ];
 function Register() {
+  const router = useRouter();
   const [CurrentStep, setCurrentStep] = useState(0);
   const [delta, setDelta] = useState(0);
   const next = () => {
@@ -73,6 +75,7 @@ function Register() {
     try{
       await axiosInstance.post ('/register',form);
       alert ('Register successfully');
+      router.push('/login'); 
     }
     catch(error){
       alert(error.response?.data?.message || 'Register failed');
@@ -377,21 +380,21 @@ function Register() {
                         <div className="bg-slate-50 rounded-lg p-4 text-left space-y-3 text-sm">
                           <div className="flex justify-between">
                             <span className="text-muted-foreground">Name:</span>
-                            <span className="font-medium">Ahmad Mustaqim</span>
+                            <span className="font-medium">{form.name}</span>
                           </div>
                           <div className="flex justify-between">
                             <span className="text-muted-foreground">
                               Email:
                             </span>
                             <span className="font-medium">
-                              ahmad@example.com
+                              {form.email}
                             </span>
                           </div>
                           <div className="flex justify-between">
                             <span className="text-muted-foreground">
                               Phone:
                             </span>
-                            <span className="font-medium">012-345-6789</span>
+                            <span className="font-medium">{form.telephone}</span>
                           </div>
                         </div>
                         <div className="flex gap-3">
@@ -403,7 +406,10 @@ function Register() {
                             <MoveLeft className="mr-2 h-4 w-4" />
                             Back
                           </Button>
-                          <Button className="flex-1">
+                          <Button className="flex-1 cursor-pointer"
+                                            type="submit" 
+                   >
+                            
                             Create Account
                             <Check className="ml-2 h-4 w-4" />
                           </Button>

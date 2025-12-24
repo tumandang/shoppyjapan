@@ -26,9 +26,10 @@ const dm_sans_bold = DM_Sans({
 function LayoutContainer() {
   return (
     <div className=" padd-cont flex flex-col">
-      <div className=" flex flex-row gap-x-4 my-2">
-        <div className="w-1/4  flex flex-col gap-y-2 ">
-          <div className="flex flex-col px-5 gap-y-2 rounded-lg bg-white py-5 shadow-lg ">
+      <div className="flex flex-col lg:flex-row gap-2 my-2">
+        {/* sidebar */}
+        <div className="w-full lg:w-1/4 flex flex-col gap-y-2">
+          <div className="flex flex-col px-3 py-3 sm:px-5 sm:py-5 gap-y-2 rounded-lg bg-white  shadow-lg ">
             <h4 className={`text-orange-700 ${lexend.className}`}>
               Integrated Shop
             </h4>
@@ -39,7 +40,7 @@ function LayoutContainer() {
                   width={200}
                   height={200}
                   alt="Rakuten Logo"
-                  className=" w-8 h-8 rounded-lg"
+                  className="w-7 h-7 sm:w-8 sm:h-8"
                 />
                 <span className={` ${dm_sans.className} flex items-center`}>
                   Rakuten
@@ -110,31 +111,37 @@ function LayoutContainer() {
             </Button>
           </div>
         </div>
-        <div className="w-3/4 flex flex-col p-x-2 gap-y-4">
+        {/* Main Content */}
+        <div className="w-full lg:w-3/4 flex flex-col px-2 gap-y-4">
           <div className="bg-white rounded-lg shadow-lg w-full p-2 h-full flexCenter">
             <Banner />
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-lg shadow-lg  p-2">
-        <div className=" flexBetween w-full">
-          <div className="flexCenter  gap-10 px-4 py-3">
-            <div className={`${lexend.className}`}>
-              <h4>Announcement</h4>
-            </div>
-            <div className="flex flex-row gap-2">
+      <div className="bg-white rounded-lg shadow-lg p-2">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 w-full">
+
+          {/* Left content */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 px-4 py-3">
+
+            <h4 className={`${lexend.className} text-base`}>
+              Announcement
+            </h4>
+
+            <div className="flex gap-2 text-sm text-gray-600">
               <p>13/3/2025</p>
               <p>13:43</p>
             </div>
-            <div className="text-nowrap">
-              <p
-                className={`text-sm font-semibold line-clamp-2 text-gray-800 ${lexend.className}`}
-              >
-                UPDATED SHIPPING FEE POLICY
-              </p>
-            </div>
+
+            <p
+              className={`text-sm font-semibold line-clamp-2 text-gray-800 ${lexend.className}`}
+            >
+              UPDATED SHIPPING FEE POLICY
+            </p>
           </div>
-          <div className="">
+
+          {/* View all */}
+          <div className="px-4 sm:px-0">
             <Link
               href="/announcement"
               className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group"
@@ -143,6 +150,7 @@ function LayoutContainer() {
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
+
         </div>
       </div>
     </div>

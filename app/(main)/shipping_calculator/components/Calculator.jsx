@@ -24,50 +24,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const invoices = [
-  {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
-  },
-];
+
 
 function Calculator() {
   const [table, settable] = useState([]);
@@ -97,7 +54,7 @@ function Calculator() {
     }
   }
   return (
-    <div className="min-h-screen  mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen my-4 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <Tabs defaultValue="Air Freight">
         <TabsList className="grid grid-cols-2 w-full">
           <TabsTrigger value="Air Freight" className="flex gap-3">
@@ -163,7 +120,7 @@ function Calculator() {
           </Card>
         </TabsContent>
       </Tabs>
-      <div className="bg-white mt-17 p-3 rounded-xl">
+      <div className="bg-white mt-5 p-3 rounded-xl">
         <h3>Summary Result</h3>
 
         <Table>

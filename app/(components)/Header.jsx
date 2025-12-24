@@ -14,11 +14,7 @@ import { ChevronDown, Heart, Search, ShoppingBag, Menu, X, Link2, Calculator, Us
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
 
-const platforms = [
-  { label: "Rakuten", value: "rakuten" },
-  { label: "Rakuten Rakuma", value: "rakuma" },
-  { label: "JDirect Auction", value: "JDirect Auction" },
-];
+
 const shopLinks = [
   { href: "/rakuten", label: "Rakuten" },
   { href: "/rakuma", label: "Rakuten Rakuma" },
@@ -33,7 +29,6 @@ const navLinks = [
 
 function Header() {
   const pathname = usePathname();
-  const [selectedPlatform, setSelectedPlatform] = useState(platforms[0]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isActive = (path) => pathname === path;
   const [cartCount] = useState(0);
@@ -97,33 +92,14 @@ function Header() {
           </Link>
 
           <div className="hidden lg:flex flex-1 max-w-2xl">
-            <div className="flex w-full shadow-sm">
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 border border-r-0 border-gray-300 hover:bg-gray-50 transition-colors rounded-l-lg text-sm font-medium text-gray-700 outline-none min-w-[160px]">
-                  <span className="flex-1 text-left">
-                    {selectedPlatform.label}
-                  </span>
-                  <ChevronDown size={16} className="text-gray-500" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg min-w-40 ">
-                  {platforms.map((platform) => (
-                    <DropdownMenuItem
-                      key={platform.value}
-                      className="cursor-pointer hover:bg-gray-50 px-4 py-2"
-                      onClick={() => handleSelect(platform)}
-                    >
-                      <span className="font-medium">{platform.label}</span>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+            <div className="flex w-full px-4">
 
               <input
                 type="text"
                 value={link}
                 onChange={(e) => setLink(e.target.value)}
                 placeholder="Search by product or link URL"
-                className="flex-1 px-4 py-2.5 border-t border-b border-gray-300 outline-none focus:border-orange-500 transition-colors text-sm "
+                className="flex-1 px-4 py-2.5 border border-gray-300 outline-none focus:border-orange-500 transition-colors text-sm rounded-l-lg"
               />
 
               <button
@@ -256,29 +232,11 @@ function Header() {
         </div>
 
         <div className="lg:hidden mt-4">
-          <div className="flex shadow-sm">
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-2 px-3 py-2 bg-white border border-r-0 border-gray-300 rounded-l-lg text-sm font-medium text-gray-700 outline-none">
-                <span className="text-xs">{selectedPlatform.label}</span>
-                <ChevronDown size={14} />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg">
-                {platforms.map((platform) => (
-                  <DropdownMenuItem
-                    key={platform.value}
-                    className="cursor-pointer hover:bg-gray-50"
-                    onClick={() => handleSelect(platform)}
-                  >
-                    {platform.label}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
+          <div className="flex ">
             <input
               type="text"
               placeholder="Search products..."
-              className="flex-1 px-3 py-2 border-t border-b border-gray-300 outline-none text-sm"
+              className="flex-1 px-3 py-2 border border-gray-300 outline-none text-sm rounded-l-lg"
             />
 
             <button

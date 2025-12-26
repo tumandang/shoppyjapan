@@ -157,7 +157,7 @@ function Header() {
 
             {user ? (
               <div className="flex flex-row gap-x-4">
-                <Link href="/profile">
+                <Link href="/dashboard/profile">
                   <Button
                     variant="outline"
                     className="rounded-lg px-5 py-2 border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer flex items-center gap-2"

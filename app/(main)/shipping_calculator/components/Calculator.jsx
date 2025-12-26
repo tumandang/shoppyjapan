@@ -49,7 +49,6 @@ function Calculator() {
       }
       const shippingestimate = x * 42 
       const total = shippingestimate + 40 + 20 + 21.12;
-
       setshipping(total.toFixed(2));
     }
   }

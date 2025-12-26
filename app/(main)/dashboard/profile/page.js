@@ -4,7 +4,18 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Lexend, DM_Sans } from "next/font/google";
-
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { useAuth } from "@/context/AuthContext";
 import { ArrowLeftToLine, ArrowRightToLine, Calculator, Heart, Link2, ShoppingBasketIcon, User } from "lucide-react";
 import Link from "next/link";
@@ -253,9 +264,79 @@ export default function ProfilePage() {
 
       
               <div className="flex gap-4 pt-4">
-                <Button variant="outline" className="flex-1 cursor-pointer">
-                  Edit Profile
-                </Button>
+
+                <Dialog>
+                  <form>
+                    <DialogTrigger asChild>
+                      <Button variant="outline" className="flex-1 cursor-pointer">
+                        Edit Profile
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle>Edit profile</DialogTitle>
+                        <DialogDescription>
+                          Make changes to your profile here. Click save when you&apos;re
+                          done.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="grid gap-4">
+                        <div className="grid gap-3">
+                          <Label htmlFor="name-1">Full Name</Label>
+                          <Input id="name-1" name="name" defaultValue={user.customer.Fullname} />
+                        </div>
+                        <div className="grid grid-cols-2 gap-3 ">
+                          <div className="grid gap-3 ">
+                            <Label htmlFor="username-1">Username</Label>
+                            <Input id="username-1" name="username" defaultValue={user.name} />
+                          </div>
+                          <div className=" grid gap-3 ">
+                            <Label htmlFor="notel">Telephone Number</Label>
+                            <Input id="notel" name="notel" defaultValue={user.customer.Notel} />
+                          </div>
+                        </div>
+                        <div className="grid gap-3">
+                          <Label htmlFor="address-1">Address 1</Label>
+                          <Input id="address-1" name="address1" defaultValue={user.customer.address.address1} />
+                        </div>
+                        <div className="grid gap-3">
+                          <Label htmlFor="address-2">Address 2</Label>
+                          <Input id="address-2" name="address2" defaultValue={user.customer.address.address2} />
+                        </div>
+                        <div className="grid gap-3">
+                          <Label htmlFor="address-3">Address 3</Label>
+                          <Input id="address-3" name="address3" defaultValue={user.customer.address.address3} />
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div className="grid gap-3">
+                            <Label htmlFor="postcode">Postcode</Label>
+                            <Input id="postcode" name="postcode" defaultValue={user.customer.address.postcode}/>
+                          </div>
+                          <div className="grid gap-3">
+                            <Label htmlFor="city">City</Label>
+                            <Input id="city" name="city" defaultValue={user.customer.address.city} />
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div className="grid gap-3">
+                            <Label htmlFor="state">State</Label>
+                            <Input id="state" name="state" defaultValue={user.customer.address.state}/>
+                          </div>
+                          <div className="grid gap-3">
+                            <Label htmlFor="country">Country</Label>
+                            <Input id="country" name="country" defaultValue={user.customer.address.country} />
+                          </div>
+                        </div>
+                      </div>
+                      <DialogFooter>
+                        <DialogClose asChild>
+                          <Button variant="outline">Cancel</Button>
+                        </DialogClose>
+                        <Button type="submit">Save changes</Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </form>
+                </Dialog>
                 <Button variant="outline" className="flex-1 cursor-pointer">
                   Change Password
                 </Button>

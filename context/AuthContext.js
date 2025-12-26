@@ -65,8 +65,19 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const editprofile = async (data) => {
+    const response = await axiosInstance.put('/profileupdate', data);
+
+    if (response.data.status) {
+      const profile = await axiosInstance.get('/profileupdate');
+      setUser(profile.data.user);
+    }
+
+    return response.data;
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth }}>
+    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth ,editprofile }}>
       {children}
     </AuthContext.Provider>
   );

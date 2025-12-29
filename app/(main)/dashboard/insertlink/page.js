@@ -143,14 +143,7 @@ export default function ProfilePage() {
               Make your order manually
             </p>
           </div>
-
           <LinkForm/>
-                      
-                      
-          
-
-
-
         </div>
       </main>
     </div>

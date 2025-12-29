@@ -136,10 +136,10 @@ export default function ProductDetails() {
               </div>
               
               <div className="flex gap-3">
-                <Button className="flex-1 h-12 text-base">
+                <Button className="flex-1 h-12 text-base cursor-pointer">
                   Order Now
                 </Button>
-                <Button variant="outline" size="icon" className="h-12 w-12">
+                <Button variant="outline" size="icon" className="h-12 w-12 cursor-pointer">
                   <ShoppingBag className="w-5 h-5" />
                 </Button>
               </div>
@@ -148,7 +148,7 @@ export default function ProductDetails() {
                 href={product.itemUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-blue-600 hover:text-blue-700 hover:underline inline-flex items-center gap-1"
+                className="text-sm text-blue-600 hover:text-blue-700 hover:underline inline-flex items-center gap-1 cursor-pointer"
               >
                 View on Rakuten →
               </a>

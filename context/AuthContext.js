@@ -69,11 +69,13 @@ export const AuthProvider = ({ children }) => {
     const response = await axiosInstance.put('/profileupdate', data);
 
     if (response.data.status) {
-      const profile = await axiosInstance.get('/profileupdate');
-      setUser(profile.data.user);
+      const profileRes = await axiosInstance.get('/profile');
+      if (profileRes.data.status) {
+        setUser(profileRes.data.user);
+      }
     }
 
-    return response.data;
+    return response;
   };
 
   return (

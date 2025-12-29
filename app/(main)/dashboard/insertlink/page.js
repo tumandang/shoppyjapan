@@ -56,9 +56,6 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-background padd-cont">
-      
-
-   
       <main className="flex gap-6 mt-6">
         <aside className={`transition-all duration-300 border-r pr-4 ${expanded ? "w-64" : "w-14"}`}>
           <div className="flexBetween pb-3 border-b">
@@ -110,7 +107,7 @@ export default function ProfilePage() {
                       )}
                     </div>
               </Link>
-                 <Link href="/">
+                 <Link href="/dashboard/wishlist">
                     <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
                       <span className="text-gray-600">
                         <Heart/>

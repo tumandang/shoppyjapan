@@ -1,49 +1,50 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
-
+import { bannerApi } from '@/lib/api';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Spinner } from "@/components/ui/spinner";
 
 function Banner() {
-  const banner = [
-    {
-      imgsrc: "/assets/banner7.jpg",
-      name: "Banner 12.12",
-      desc: "December Big Sale From Japan",
-    },
-    {
-      imgsrc: "/assets/banner2.webp",
-      name: "Banner Product",
-      desc: "Authentic Japan Products",
-    },
-    {
-      imgsrc: "/assets/banner3.webp",
-      name: "Tokyo Travel",
-      desc: "Contact: +81 90-616 3990",
-      web: "https://shopantravel.great-site.net/",
-    },
-    {
-      imgsrc: "/assets/banner5.jpg",
-      name: "Delivery",
-      desc: "Fast and secure international shipping.",
-    },
-    {
-      imgsrc: "/assets/banner6.jpg",
-      name: "Safety",
-      desc: "Safety assured with professional handling.",
-    },
-  ];
+  const [banners, setBanners] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    
+    const loadBanners = async () => {
+      try {
+        setLoading(true);
+        const data = await bannerApi.getAllImages();
+        setBanners(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadBanners(); 
+  }, []); 
+
+  if (loading) return (
+    <div className="flex flex-col items-center space-y-3 text-center p-8">
+      <Spinner className="w-6 h-6 text-orange-400"></Spinner>
+      Loading banners...
+    </div>
+  )
+  if (error) return <div className="text-red-500 p-8">Error: {error}</div>;
 
   return (
     <div className="w-full flexCenter">
-      <div className="w-[900px] h-[530px] overflow-hidden rounded-xl  border border-white/10 mb-3">
+      <div className="w-[900px] h-[530px] overflow-hidden rounded-xl border border-white/10 mb-3">
         <Swiper
           modules={[Pagination, Autoplay, Navigation]}
           slidesPerView={1}
@@ -56,29 +57,16 @@ function Banner() {
           }}
           navigation={true}
           pagination={{ clickable: true }}
-          className="h-full w-full "
+          className="h-full w-full"
         >
-          {banner.map((i, index) => (
-            <SwiperSlide key={index} className="h-full! w-3/4 relative ">
+          {banners.map((banner, index) => (
+            <SwiperSlide key={banner.id || index} className="h-full w-full relative">
               <div className="absolute w-full h-full">
-                <Image
-                  src={i.imgsrc}
-                  alt={i.name}
-                  fill
-                  sizes="small"
-                  className=" object-fill transition-all duration-2500ms ease-out scale-100 swiper-zoom-image rounded-lg"
-                  priority={index === 0}
+                 <img
+                  src={banner.url}
+                  alt={banner.title || 'Banner image'}
+                  className="w-full h-full object-cover transition-all duration-2500 ease-out scale-100 rounded-lg"
                 />
-              </div>
-
-              <div className=" absolute bottom-6 left-6 bg-black/35 backdrop-blur-md text-white p-4 rounded-lg max-w-xs z-30 space-y-4">
-                <h2 className="text-xl font-bold">{i.name}</h2>
-                <p className="text-sm text-white">{i.desc}</p>
-                {i.name === "Tokyo Travel" && (
-                  <Link href={i.web}>
-                    <Button className="cursor-pointer w-full">Visit Web</Button>
-                  </Link>
-                )}
               </div>
             </SwiperSlide>
           ))}

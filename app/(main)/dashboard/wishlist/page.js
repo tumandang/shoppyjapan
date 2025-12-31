@@ -2,13 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Lexend, DM_Sans } from "next/font/google";
-
 import { useAuth } from "@/context/AuthContext";
 import { ArrowLeftToLine, ArrowRightToLine, Calculator, Heart, Link2, Minus, Plus, ShoppingBasketIcon, User } from "lucide-react";
 import Link from "next/link";
-import LinkForm from "../../link-form/components/LinkForm";
 import Image from "next/image";
 
 const lexend = Lexend({
@@ -185,8 +182,7 @@ export default function WishlistPage(){
                                         className="w-full h-48 object-contain rounded-lg"
                                     />
                         
-                                    <button 
-                                        className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-red-50 hover:text-red-500 transition-all opacity-0 group-hover:opacity-100"
+                                    <button className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-red-50 hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 cursor-pointer"
                                         aria-label="Remove from wishlist">
                                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

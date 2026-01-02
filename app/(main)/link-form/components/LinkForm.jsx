@@ -158,7 +158,7 @@ function LinkForm() {
 
               
               <Field>
-                <Button type="submit" className={`${lexend.className} w-full`}>
+                <Button type="submit" className={`${lexend.className} w-full cursor-pointer`}>
                   Request Price Quote
                 </Button>
               </Field>

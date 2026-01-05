@@ -6,7 +6,7 @@ import { Lexend, DM_Sans } from "next/font/google";
 import { useAuth } from "@/context/AuthContext";
 import Image from "next/image";
 import Asidedashboard from "../components/asidedahsbord";
-
+import Tablerequest from "./components/tablerequest";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -97,7 +97,7 @@ export default function WishlistPage(){
                                 <div className="p-6 pb-4 border-b border-slate-200 bg-linear-to-r from-slate-50 to-white rounded-t-2xl">
                                     <div className="flexBetween">
                                         <h5 className="text-xl font-semibold text-slate-800">Request Table</h5>
-                                        <span className="px-3 py-1 text-sm font-medium text-orange-700 bg-orange-100 rounded-full" > 1 Requests</span>
+                                        
                                     </div>
                                 </div>
 
@@ -129,6 +129,9 @@ export default function WishlistPage(){
                                                     </th>
                                                 </tr>
                                             </thead>
+                                            <tbody>
+                                                <Tablerequest ></Tablerequest>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>

@@ -7,6 +7,7 @@ import RakutenHome from "../(components)/Rakuten/components/RakutenHome";
 import DataMatric from "../(components)/widget/DataMatric";
 import ShopNow from "../(components)/widget/shopnow";
 import ClientSay from "../(components)/widget/ClientSay";
+import Linkshop from "../(components)/LinkShop/linkshop";
 // import RakumaHome from "../(components)/Rakuma/components/RakumaHome";
 // import JDirectHome from "../(components)/JDirect/components/JDirectHome";
 
@@ -16,9 +17,9 @@ function Page() {
     <main>
       <LayoutContainer/>
       <RakutenHome/>
+      <Linkshop></Linkshop>
       <DataMatric/>
       <ClientSay/>
-      <ShopNow/>
       <FAQ/>
     </main>
 

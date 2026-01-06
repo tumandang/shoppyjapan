@@ -40,5 +40,17 @@ export const marketplaces = {
     { imagesrc: "/logo/marketplace/mandarake.webp", name: "Mandarake", desc: "Collector cards and rare items store", link: "https://www.mandarake.co.jp/" },
     { imagesrc: "/logo/marketplace/mercari.webp", name: "Mercari", desc: "Secondary marketplace for collectible cards", link: "https://www.mercari.com/jp/" },
     { imagesrc: "/logo/rakuma.webp", name: "Rakuma", desc: "Resale platform for TCG and hobby items", link: "https://fril.jp/" }
+  ],
+
+
+  popular:[
+    { imagesrc: "/logo/marketplace/amazonjp.webp", name: "Amazon JP", desc: "General online marketplace for all product types", link: "https://www.amazon.co.jp" },
+    { imagesrc: "/logo/marketplace/JDirect.webp", name: "JDirect Shopping", desc: "Shopping and auction platform in Japan", link: "https://shopping.yahoo.co.jp" },
+    { imagesrc: "/logo/marketplace/mercari.webp", name: "Mercari", desc: "Popular resale and thrift platform", link: "https://www.mercari.com/jp/" },
+    { imagesrc: "/logo/marketplace/NewEra.webp", name: "New Era JP", desc: "Cap and apparel brand from Japan", link: "https://www.neweracap.jp/" },
+    { imagesrc: "/logo/marketplace/uniqlo.webp", name: "Uniqlo", desc: "Casual and minimalist Japanese fashion brand", link: "https://www.uniqlo.com/jp/" },
+
   ]
+
+
 };

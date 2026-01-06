@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { requestApi } from "@/lib/api";
 import { Spinner } from "@/components/ui/spinner";
 import { useAuth } from "@/context/AuthContext";
-import Date from "@/components/date";
+import Date from "@/components/Date";
 
 function Tablerequest() {
   const [RequestList, setRequestList] = useState([]);
@@ -111,10 +111,7 @@ function Tablerequest() {
   return (
     <>
       {RequestList.map((request) => (
-        <tr
-          key={request.id}
-          className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
-        >
+        <tr key={request.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
           <td className="px-6 py-4">
             <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 text-slate-700">
               #{request.id}
@@ -123,10 +120,8 @@ function Tablerequest() {
           <td className="px-6 py-4">
             <div className="flex items-center gap-3 max-w-xs">
               <div className="flex flex-col min-w-0 flex-1">
-                <span 
-                  className="text-sm font-medium text-slate-800 truncate"
-                  title={request.product_name}
-                >
+                <span className="text-sm font-medium text-slate-800 truncate"
+                  title={request.product_name} >
                   {request.product_name}
                 </span>
               </div>
@@ -153,16 +148,12 @@ function Tablerequest() {
           </td>
           <td className="px-6 py-4">
             <div className="flex items-center gap-2">
-              <button
-                className="p-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-all duration-200 hover:scale-105"
-                title="View details"
-              >
-                <svg
-                  className="w-4 h-4"
+              <button className="p-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-all duration-200 hover:scale-105"
+                title="View details" >
+                <svg className="w-4 h-4"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
+                  stroke="currentColor" >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -177,10 +168,8 @@ function Tablerequest() {
                   />
                 </svg>
               </button>
-              <button
-                className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105"
-                title="Delete request"
-              >
+              <button className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105"
+                title="Delete request" >
                 <svg
                   className="w-4 h-4"
                   fill="none"

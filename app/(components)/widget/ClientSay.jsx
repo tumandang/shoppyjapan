@@ -1,6 +1,7 @@
 import React from "react";
 import { Quote } from "lucide-react";
 import { Lexend, DM_Sans } from "next/font/google";
+import { useTranslations } from "next-intl";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -17,23 +18,24 @@ const dm_sans_bold = DM_Sans({
   weight: ["800"],
 });
 function ClientSay() {
+  const test = useTranslations('Testimonials')
   const testimonials = [
     {
       id: 1,
-      text: "I am absolutely thrilled with the service I received from their company! They were attentive, responsive, and genuinely cared about meeting my needs. I highly recommend them.",
-      name: "Jon Moxley",
+      text: test('reviews.0.text'),
+      name: test('reviews.0.author'),
       image: "/Product_Example/male.jpg",
     },
     {
       id: 2,
-      text: "Exceptional quality and outstanding customer support. They went above and beyond to ensure my satisfaction. Will definitely use their services again!",
-      name: "Sarah Johnson",
+      text: test('reviews.1.text'),
+      name: test('reviews.1.author'),
       image: "/Product_Example/male.jpg",
     },
     {
       id: 3,
-      text: "Professional, reliable, and efficient. Their attention to detail and commitment to excellence sets them apart from the competition.",
-      name: "Michael Chen",
+      text: test('reviews.2.text'),
+      name: test('reviews.2.author'),
       image: "/Product_Example/male.jpg",
     },
   ];
@@ -45,11 +47,10 @@ function ClientSay() {
           <div className="space-y-8">
             <div className="space-y-4">
               <h2 className={`text-4xl md:text-5xl font-bold text-gray-900 ${lexend.className}`}>
-                What Our Customers Say
+                {test('title')}
               </h2>
               <p className={`text-lg text-gray-600 ${dm_sans.className}`}>
-                Discover the reasons why people love us and become your go-to
-                partner.
+                {test('subtitle')}
               </p>
             </div>
 

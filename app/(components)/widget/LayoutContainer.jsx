@@ -7,7 +7,7 @@ import Banner from "./Banner";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Lexend, DM_Sans } from "next/font/google";
-
+import { useTranslations } from 'next-intl';
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -24,6 +24,8 @@ const dm_sans_bold = DM_Sans({
   weight: ["800"],
 });
 function LayoutContainer() {
+  const LC = useTranslations('layoutContainer');
+  
   return (
     <div className=" padd-cont flex flex-col">
       <div className="flex flex-col lg:flex-row gap-2 my-2">
@@ -31,7 +33,7 @@ function LayoutContainer() {
         <div className="w-full lg:w-1/4 flex flex-col gap-y-2">
           <div className="flex flex-col px-3 py-3 sm:px-5 sm:py-5 gap-y-2 rounded-lg bg-white  shadow-lg ">
             <h4 className={`text-orange-700 ${lexend.className}`}>
-              Integrated Shop
+              {LC('integratedText')}
             </h4>
             <Link href="/Shop/Rakuten/">
               <div className="flex flex-row gap-x-2 hover:bg-gray-100 rounded-md p-2">
@@ -43,7 +45,7 @@ function LayoutContainer() {
                   className="w-7 h-7 sm:w-8 sm:h-8"
                 />
                 <span className={` ${dm_sans.className} flex items-center`}>
-                  Rakuten
+                  {LC('rakutenText')}
                 </span>
               </div>
             </Link>
@@ -57,7 +59,7 @@ function LayoutContainer() {
                   className=" w-8 h-8 rounded-lg"
                 />
                 <span className={` ${dm_sans.className} flex items-center`}>
-                  Rakuten Rakuma
+                  {LC('rakumaText')}
                 </span>
               </div>
             </Link>
@@ -71,25 +73,24 @@ function LayoutContainer() {
                   className=" w-8 h-8 rounded-lg"
                 />
                 <span className={` ${dm_sans.className} flex items-center`}>
-                  Yahoo Auction
+                  {LC('yahooText')}
                 </span>
               </div>
             </Link>
             <div className="flex flex-col ">
               <h4 className={`text-orange-700 ${lexend.className}`}>
-                Not found the marketplace
+                {LC('notFoundText')}
               </h4>
               <Link
                 href="/marketplace"
-                className=" hover:bg-gray-100 rounded-md p-2 "
-              >
-                <span className=" italic cursor-pointer">List of Website</span>
+                className=" hover:bg-gray-100 rounded-md p-2 " >
+                <span className=" italic cursor-pointer">{LC('listwebText')}</span>
               </Link>
             </div>
           </div>
 
           <div className="bg-white rounded-lg shadow-lg  flexCenter flex-col p-2 gap-y-5">
-            <h4 className={`${lexend.className}`}>Our Application</h4>
+            <h4 className={`${lexend.className}`}>{LC('appText')}</h4>
             <Image
               src="/assets/Shopan_App.png"
               width={100}
@@ -106,7 +107,7 @@ function LayoutContainer() {
                 target="_blank"
                 href="https://play.google.com/store/apps/details?id=com.shoppyjapan&hl=en"
               >
-                PlayStore
+                {LC('playText')}
               </Link>
             </Button>
           </div>

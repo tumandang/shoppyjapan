@@ -6,5 +6,103 @@
     "language1": "INGGERIS",
     "language2": "BAHASA MELAYU",
     "language3": "JEPUN"
+  },
+  "Header": {
+     "SearchPlaceHolder" : "Cari mengikut produk atau URL pautan",
+     "loginText" : "Log Masuk",
+     "registerText" : "Daftar"
+  },
+
+  "layoutContainer": {
+    "integratedText": "Kedai Berintegrasi",
+    "rakutenText": "Rakuten",
+    "rakumaText": "Rakuma",
+    "yahooText": "Yahoo Aution",
+    "notFoundText": "Lihat Semua Shop",
+    "listwebText": "Senarai Laman Web",
+    "appText": "Aplikasi Kami",
+    "playText": "Play Store"
+  },
+
+  "Metrics": {
+    "saving": "Penjimatan maksimum untuk beli-belah luar negara",
+    "countries": "Disokong di seluruh dunia",
+    "support": "Sokongan pelanggan tersedia 24/7"
+  },
+    "linkshop":{
+    "topText" : "Pasaran Teratas",
+    "viewText" : "Lihat Semua"
+  },
+"Testimonials": {
+    "title": "Apa Kata Pelanggan Kami",
+    "subtitle": "Jom tengok kenapa ramai suka kami dan jadikan kami rakan pilihan korang.",
+    "reviews": [
+      {
+        "text": "Saya memang sangat puas hati dengan servis yang diterima! Mereka prihatin, pantas, dan benar-benar peduli dengan keperluan saya. Highly recommend!",
+        "author": "Jon Moxley"
+      },
+      {
+        "text": "Kualiti terbaik dan support pelanggan mantap. Mereka buat lebih dari jangkaan untuk pastikan saya puas hati. Pasti akan guna servis mereka lagi!",
+        "author": "Sarah Johnson"
+      },
+      {
+        "text": "Profesional, boleh dipercayai dan efisien. Perhatian mereka terhadap detail dan komitmen terhadap kualiti memang menonjol.",
+        "author": "Michael Chen"
+      }
+    ]
+  },
+"Faq": {
+    "title": "Soalan Lazim",
+    "subtitle": "Ini adalah soalan-soalan paling selalu ditanya untuk ShoPan Japan.",
+    "cta": "Tak jumpa apa yang korang cari?",
+    "botText": "Chat dengan chatbot kami - Aika",
+    "general": {
+      "review": {
+        "question": "Kenapa Buy Requests perlu disemak oleh team ShoPan?",
+        "answer": "Buy Requests untuk keselamatan. Sesetengah item mungkin tak layak, terhad, atau nampak mencurigakan."
+      },
+      "shipping": {
+        "question": "Boleh hantar ke negara saya?",
+        "answer": "Boleh. ShoPan hantar ke seluruh dunia guna Japan Post, FedEx, dan DHL."
+      },
+      "authentic": {
+        "question": "Adakah barang yang dibeli melalui ShoPan asli?",
+        "answer": "ShoPan beli hanya dari marketplace Jepun yang sah dan penjual yang dipercayai."
+      },
+      "seller": {
+        "question": "ShoPan jual barang ini?",
+        "answer": "Tak. ShoPan hanya servis pembelian mewakili korang."
+      },
+      "support": {
+        "question": "ShoPan ada support pelanggan?",
+        "answer": "Ada. Support boleh didapati melalui dashboard dan channel komunikasi."
+      }
+    }
+  },
+   "Footer": {
+    "brandName": "Shoppe Japan",
+    "description": "ShoppeJapan adalah destinasi dipercayai anda untuk produk asli Jepun. Dari kecantikan dan fesyen hingga keperluan gaya hidup, kami bawa yang terbaik dari Jepun terus ke pintu rumah anda dengan kualiti yang boleh diharap.",
+    "quickLinks": {
+      "title": "Pautan Pantas",
+      "home": "Laman Utama",
+      "about": "Tentang Kami",
+      "contact": "Hubungi Kami",
+      "terms": "Terma & Syarat",
+      "getInTouch": "Hubungi Kami",
+      "email": "shopanhq@gmail.com"
+    },
+    "locations": {
+      "title": "Shoppe Japan Global",
+      "japan": {
+        "country": "Jepun",
+        "address": "739-0321 Hiroshima-ken, Hiroshima-Shi, Akiku, Nakano 6-29-10 Sun Heights Sumita B202",
+        "phone": "+8190-6437-2903"
+      },
+      "malaysia": {
+        "country": "Malaysia",
+        "address": "12A & 14A, Jalan Pulai Mutiara 9/5, Taman Pulai Mutiara 2, 81100 Johor Bahru, Johor",
+        "phone": "+60135987486"
+      }
+    }
   }
 }

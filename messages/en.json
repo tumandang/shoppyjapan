@@ -6,5 +6,113 @@
     "language1": "ENGLISH",
     "language2": "BAHASA MELAYU",
     "language3": "日本語"
+  },
+  "Header": {
+     "SearchPlaceHolder" : "Search by product or link URL",
+     "loginText" : "Login",
+     "registerText" : "Register"
+  },
+
+  "layoutContainer":{
+    "integratedText": "Integrated Shops",
+    "rakutenText" : "Rakuten",
+    "rakumaText" : "Rakuma",
+    "yahooText" : "Yahoo Auction",
+    "notFoundText": "Browse Shop",
+    "listwebText" : "List of Website",
+    "appText" : "Our Application",
+    "playText": "Play Store"
+  },
+  
+  "Metrics": {
+    "saving": "Maximum savings on overseas online shopping",
+    "countries": "Countries supported worldwide",
+    "support": "Customer support available 24/7"
+  },
+
+  "linkshop":{
+    "topText" : "Top Marketplace",
+    "viewText" : "View All"
+  },
+  "Testimonials": {
+    "title": "What Our Customers Say",
+    "subtitle": "Discover the reasons why people love us and become your go-to partner.",
+    "reviews": [
+      {
+        "text": "I am absolutely thrilled with the service I received from their company! They were attentive, responsive, and genuinely cared about meeting my needs. I highly recommend them.",
+        "author": "Jon Moxley"
+      },
+      {
+        "text": "Exceptional quality and outstanding customer support. They went above and beyond to ensure my satisfaction. Will definitely use their services again!",
+        "author": "Sarah Johnson"
+      },
+      {
+        "text": "Professional, reliable, and efficient. Their attention to detail and commitment to excellence sets them apart from the competition.",
+        "author": "Michael Chen"
+      }
+    ]
+  },
+
+  "Faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "These are the most commonly asked questions for ShoPan Japan.",
+    "cta": "Can't find what you are looking for?",
+    "botText" : "Chat with our chatbot - Aika",
+    "general": {
+      "review": {
+        "question": "Why do Buy Requests need to be reviewed by the ShoPan team?",
+        "answer": "Buy Requests ensure safety. Items may be ineligible, limited, or show suspicious red flags."
+      },
+      "shipping": {
+        "question": "Can you ship to my country?",
+        "answer": "Yes. ShoPan ships worldwide using Japan Post, FedEx, and DHL."
+      },
+      "authentic": {
+        "question": "Are items purchased through ShoPan authentic?",
+        "answer": "ShoPan purchases only from verified, reputable Japanese marketplaces and sellers."
+      },
+      "seller": {
+        "question": "Is ShoPan the seller of the items?",
+        "answer": "No. ShoPan is a proxy buying service that purchases items on your behalf."
+      },
+      "support": {
+        "question": "Does ShoPan provide customer support?",
+        "answer": "Yes. Support is available through your dashboard and contact channels."
+      }
+    }
+  },
+
+  "Footer": {
+    "brandName": "Shoppe Japan",
+    "description": "ShoppeJapan is your trusted destination for authentic Japanese products. From beauty and fashion to lifestyle essentials, we bring the best of Japan straight to your doorstep with quality you can count on.",
+    "quickLinks": {
+      "title": "Quick Links",
+      "home": "Home",
+      "about": "About Us",
+      "contact": "Contact Us",
+      "terms": "Terms and Conditions",
+      "getInTouch": "Get In Touch",
+      "email": "shopanhq@gmail.com"
+    },
+    "locations": {
+      "title": "Shoppe Japan Global",
+      "japan": {
+        "country": "Japan",
+        "address": "739-0321 Hiroshima-ken, Hiroshima-Shi, Akiku, Nakano 6-29-10 Sun Heights Sumita B202",
+        "phone": "+8190-6437-2903"
+      },
+      "malaysia": {
+        "country": "Malaysia",
+        "address": "12A & 14A, Jalan Pulai Mutiara 9/5, Taman Pulai Mutiara 2, 81100 Johor Bahru, Johor",
+        "phone": "+60135987486"
+      }
+    }
   }
+
+
+
+
+
+
+  
 }

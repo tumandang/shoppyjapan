@@ -1,5 +1,6 @@
 import React from 'react';
 import { Lexend, DM_Sans } from "next/font/google";
+import { useTranslations } from 'next-intl';
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -16,10 +17,12 @@ const dm_sans_bold = DM_Sans({
   weight: ["800"],
 });
 function DataMetric() {
+
+  const m = useTranslations('Metrics');
   const metrics = [
-    { value: '90%', label: 'Max. savings on online shopping abroad' },
-    { value: '150+', label: 'Countries supported worldwide' },
-    { value: '24/7', label: 'Customer support available' }
+    { value: '90%', label: m('saving') },
+    { value: '150+', label: m('countries') },
+    { value: '24/7', label: m('support') }
   ];
 
   return (

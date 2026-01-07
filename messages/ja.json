@@ -6,5 +6,107 @@
     "language1": "英語",
     "language2": "マレー語",
     "language3": "日本語"
+  },
+
+  "Header": {
+    "SearchPlaceHolder": "商品名またはURLで検索",
+    "loginText": "ログイン",
+    "registerText": "新規登録"
+  },
+
+   "layoutContainer": {
+    "integratedText": "統合ショップ",
+    "rakutenText": "楽天",
+    "rakumaText": "ラクマ",
+    "yahooText": "ヤフオク",
+    "notFoundText": "ショップを見る",
+    "listwebText": "対応ウェブサイト一覧",
+    "appText": "公式アプリ",
+    "playText": "Google Play"
+  },
+
+  "Metrics": {
+    "saving": "海外オンラインショッピングで最大割引",
+    "countries": "世界150か国以上に対応",
+    "support": "24時間365日カスタマーサポート"
+  },
+  "linkshop":{
+    "topText" : "トップマーケットプレイス",
+    "viewText" : "全て見る"
+  },
+
+  "Testimonials": {
+    "title": "お客様の声",
+    "subtitle": "なぜ多くの人々が私たちを愛し、頼れるパートナーに選ぶのかをご紹介します。",
+    "reviews": [
+      {
+        "text": "こちらの会社のサービスには大満足です！親切で迅速、私のニーズに真摯に応えてくれました。ぜひおすすめします。",
+        "author": "ジョン・モクスリー"
+      },
+      {
+        "text": "品質が素晴らしく、カスタマーサポートも優秀です。期待以上の対応で、また利用したいと思います。",
+        "author": "サラ・ジョンソン"
+      },
+      {
+        "text": "プロフェッショナルで信頼でき、効率的。細部へのこだわりと卓越したサービスで競合との差別化ができています。",
+        "author": "マイケル・チェン"
+      }
+    ]
+  },
+
+"Faq": {
+    "title": "よくある質問",
+    "subtitle": "ShoPan Japanでよくある質問はこちらです。",
+    "cta": "お探しの内容が見つかりませんか？",
+    "botText": "チャットボット「Aika」に相談する",
+    "general": {
+      "review": {
+        "question": "なぜ購入リクエストはShoPanチームによる確認が必要ですか？",
+        "answer": "購入リクエストは安全を確保するためです。商品によっては購入不可、数量制限あり、または怪しいリスクがある場合があります。"
+      },
+      "shipping": {
+        "question": "私の国へ配送可能ですか？",
+        "answer": "はい。ShoPanはJapan Post、FedEx、DHLを使用して世界中へ配送します。"
+      },
+      "authentic": {
+        "question": "ShoPanを通じて購入した商品は本物ですか？",
+        "answer": "ShoPanは、信頼できる日本のマーケットプレイスと販売者からのみ購入します。"
+      },
+      "seller": {
+        "question": "ShoPanが商品を販売していますか？",
+        "answer": "いいえ。ShoPanはあなたに代わって商品を購入する代理購入サービスです。"
+      },
+      "support": {
+        "question": "ShoPanはカスタマーサポートを提供していますか？",
+        "answer": "はい。サポートはダッシュボードおよび連絡チャネルを通じて利用可能です。"
+      }
+    }
+  },
+   "Footer": {
+    "brandName": "Shoppe Japan",
+    "description": "ShoppeJapanは、本物の日本製品をお届けする信頼のショッピング先です。美容やファッションからライフスタイル用品まで、日本の最高品質の商品をあなたの元へお届けします。",
+    "quickLinks": {
+      "title": "クイックリンク",
+      "home": "ホーム",
+      "about": "私たちについて",
+      "contact": "お問い合わせ",
+      "terms": "利用規約",
+      "getInTouch": "連絡する",
+      "email": "shopanhq@gmail.com"
+    },
+    "locations": {
+      "title": "Shoppe Japan Global",
+      "japan": {
+        "country": "日本",
+        "address": "739-0321 広島県広島市安芸区中野6-29-10 サンハイツ住田 B202",
+        "phone": "+8190-6437-2903"
+      },
+      "malaysia": {
+        "country": "マレーシア",
+        "address": "12A & 14A, Jalan Pulai Mutiara 9/5, Taman Pulai Mutiara 2, 81100 ジョホールバル, ジョホール",
+        "phone": "+60135987486"
+      }
+    }
   }
+
 }

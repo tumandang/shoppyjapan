@@ -4,7 +4,7 @@ import React from "react";
 import { marketplaces } from "@/app/(main)/marketplace/const/Marketplace";
 import { Lexend, DM_Sans } from "next/font/google";
 import Image from "next/image";
-
+import { useTranslations } from "next-intl";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -16,17 +16,25 @@ const dm_sans = DM_Sans({
   weight: ["400"],
 });
 function Linkshop() {
+  const ls = useTranslations('linkshop')
+  const popular = [
+    { imagesrc: "/logo/marketplace/amazonjp.webp", name: "Amazon JP", desc: "General online marketplace for all product types", link: "https://www.amazon.co.jp" },
+    { imagesrc: "/logo/marketplace/JDirect.webp", name: "JDirect Shopping", desc: "Shopping and auction platform in Japan", link: "https://shopping.yahoo.co.jp" },
+    { imagesrc: "/logo/marketplace/mercari.webp", name: "Mercari", desc: "Popular resale and thrift platform", link: "https://www.mercari.com/jp/" },
+    { imagesrc: "/logo/marketplace/NewEra.webp", name: "New Era JP", desc: "Cap and apparel brand from Japan", link: "https://www.neweracap.jp/" },
+    { imagesrc: "/logo/marketplace/uniqlo.webp", name: "Uniqlo", desc: "Casual and minimalist Japanese fashion brand", link: "https://www.uniqlo.com/jp/" },
+  ]
   return (
     <section className="padd-cont w-full mb-15">
       <div className="flex-col p-5 rounded-lg bg-white px-5 shadow-lg">
         <div className="flexBetween mb-5">
-          <h4>Top Marketplace</h4>
+          <h4>{ls('topText')}</h4>
 
           <Link
             href="/marketplace"
             className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group"
           >
-            <span>View All</span>
+            <span>{ls('viewText')}</span>
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

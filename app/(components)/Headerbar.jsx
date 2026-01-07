@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-
+import { useTranslations } from 'next-intl';
 const langs = [
   { code: "GB", label: "ENGLISH" },
   { code: "MY", label: "BAHASA MELAYU" },
@@ -17,7 +17,7 @@ const langs = [
 
 function Headerbar() {
   const [selectedLang, setSelectedLang] = useState(langs[0]);
-
+  const t = useTranslations('TopBar');
   const handleSelect = (lang) => {
     setSelectedLang(lang);
   };
@@ -28,10 +28,8 @@ function Headerbar() {
       <div className="w-full px-[5%] lg:px-[9%] bg-gray-50 border-b border-gray-200 text-sm">
         <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
           <div className="hidden md:flex items-center">
-            <div
-
-              className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
-              Shop in Japan easily from home with fast, reliable service.
+            <div className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+              <h5>{t('shortDesc')}</h5>
             </div>
           </div>
 
@@ -40,7 +38,7 @@ function Headerbar() {
               href="/about"
               className="text-gray-600 hover:text-gray-900 transition-colors font-medium hidden sm:block"
             >
-              About Shopan
+              {t('aboutText')}
             </Link>
             
             <div className="w-px h-4 bg-gray-300 hidden sm:block" />
@@ -49,7 +47,7 @@ function Headerbar() {
               href="/help"
               className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
             >
-              First Time?
+              {t('helpText')}
             </Link>
 
             <div className="w-px h-4 bg-gray-300" />

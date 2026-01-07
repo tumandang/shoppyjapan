@@ -111,5 +111,20 @@
         "phone": "+60135987486"
       }
     }
+  },
+    "Login": {
+    "welcomeText": "Selamat datang ke Shopan",
+    "registerText": "Belum ada akaun?",
+    "ctaRegister": "Daftar sekarang",
+    "emailText": "Emel",
+    "emailPlaceHolder": "nama@example.com",
+    "passwordText": "Kata laluan",
+    "forgotText": "Lupa kata laluan?",
+    "loginText": "Log masuk",
+    "loginPro" : "Sedang Log masuk...",
+    "agreeText": "Dengan meneruskan, anda bersetuju dengan",
+    "terms": "Terma Perkhidmatan",
+    "privacy": "Dasar Privasi"
+
   }
 }

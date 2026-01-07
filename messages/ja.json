@@ -114,6 +114,20 @@
         "phone": "+60135987486"
       }
     }
+  },
+  "Login": {
+    "welcomeText": "Shopanへようこそ",
+    "registerText": "アカウントをお持ちでないですか？",
+    "ctaRegister": "新規登録",
+    "emailText": "メールアドレス",
+    "emailPlaceHolder": "name@example.com",
+    "passwordText": "パスワード",
+    "forgotText": "パスワードをお忘れですか？",
+    "loginText": "ログイン",
+    "loginPro" : "ログインする...",
+    "agreeText": "「続行」をクリックすることで、",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー"
   }
 
 }

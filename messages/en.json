@@ -114,8 +114,22 @@
         "phone": "+60135987486"
       }
     }
-  }
+  },
 
+  "Login": {
+    "welcomeText": "Welcome to Shopan",
+    "registerText": "Don't have an account?",
+    "ctaRegister": "Sign up",
+    "emailText": "Email",
+    "emailPlaceHolder": "name@example.com",
+    "passwordText": "Password",
+    "forgotText": "Forgot your password?",
+    "loginText": "Login",
+    "loginPro" : "Logging in...",
+    "agreeText": "By clicking continue, you agree to our",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy"
+  }
 
 
 

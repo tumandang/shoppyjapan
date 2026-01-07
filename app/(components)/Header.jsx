@@ -13,7 +13,7 @@ import {
 import { ChevronDown, Heart, Search, ShoppingBag, Menu, X, Link2, Calculator, User, LogOut } from "lucide-react";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
-import { useTranslations } from 'next-intl';
+import { useLocale , useTranslations } from 'next-intl';
 
 const shopLinks = [
   { href: "/rakuten", label: "Rakuten" },
@@ -45,6 +45,7 @@ function Header() {
   };
   const router = useRouter();
   const closeMobileMenu = () => setMobileMenuOpen(false);
+  const locale = useLocale();
   const handleSearch = () => {
     if (!link) return;
 
@@ -178,19 +179,19 @@ function Header() {
               </div>
             ):(
              <div className="flex flex-row gap-x-4">
-               <Link href="/login">
-              <Button
-                variant="outline"
-                className="rounded-lg px-5 py-2 border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer"
-              >
-                {h('loginText')}
-              </Button>
-            </Link>
-            <Link href="/register">
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg px-5 py-2 cursor-pointer">
-                {h('registerText')}
-              </Button>
-            </Link>
+                <Link href={`/${locale}/login`}>
+                  <Button
+                    variant="outline"
+                    className="rounded-lg px-5 py-2 border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer"
+                  >
+                    {h('loginText')}
+                  </Button>
+                </Link>
+                <Link href={`/${locale}/register`}>
+                  <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg px-5 py-2 cursor-pointer">
+                    {h('registerText')}
+                  </Button>
+                </Link>
              </div>
             )}
 

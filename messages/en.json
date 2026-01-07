@@ -32,7 +32,14 @@
 
   "linkshop":{
     "topText" : "Top Marketplace",
-    "viewText" : "View All"
+    "viewText" : "View All",
+    "marketplace": {
+      "amazon": "General online marketplace for all product types",
+      "ydirect": "Shopping and auction platform in Japan",
+      "mercari": "Popular resale and thrift platform",
+      "newera": "Cap and apparel brand from Japan",
+      "uniqlo": "Casual and minimalist Japanese fashion brand"
+    }
   },
   "Testimonials": {
     "title": "What Our Customers Say",

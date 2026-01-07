@@ -31,7 +31,14 @@
   },
     "linkshop":{
     "topText" : "Pasaran Teratas",
-    "viewText" : "Lihat Semua"
+    "viewText" : "Lihat Semua",
+    "marketplace": {
+      "amazon": "Marketplace online serba lengkap untuk semua jenis produk",
+      "ydirect": "Platform beli-belah dan lelongan dari Jepun",
+      "mercari": "Platform popular untuk barangan preloved & resale",
+      "newera": "Jenama topi dan pakaian dari Jepun",
+      "uniqlo": "Jenama fesyen Jepun yang ringkas dan selesa"
+    }
   },
 "Testimonials": {
     "title": "Apa Kata Pelanggan Kami",

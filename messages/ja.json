@@ -128,6 +128,72 @@
     "agreeText": "「続行」をクリックすることで、",
     "terms": "利用規約",
     "privacy": "プライバシーポリシー"
+  },
+
+  "Register": {
+    "page1Title": "個人情報",
+    "page1Desc": "基本情報の入力から始めましょう",
+    "step1": "ステップ 1/4",
+    "step2": "ステップ 2/4",
+    "step3": "ステップ 3/4",
+    "step4": "ステップ 4/4",
+
+    "nameText": "ユーザー名",
+    "namePlace": "JohnDoe123",
+    "fullnameText": "氏名",
+    "fullnamePlace": "John Doe",
+    "emailText": "メールアドレス",
+    "emailPlace": "johndoe@gmail.com",
+    "notelText": "電話番号",
+    "notelPlace": "01129234038",
+
+    "page2": {
+      "title": "住所情報",
+      "desc": "商品のお届け先を入力してください",
+      "address1": "住所 1",
+      "addplace1": "1234",
+      "address2": "住所 2",
+      "addplace2": "Jalan Jati 1/3",
+      "address3": "住所 3",
+      "addplace3": "Bandar Selayang",
+      "postcode": "郵便番号",
+      "postcodeplace1": "87200",
+      "city": "市区町村",
+      "cityplace1": "Taiping",
+      "state": "州",
+      "stateplace": "Kedah",
+      "country": "国",
+      "countryplace": "マレーシア"
+    },
+
+    "page3": {
+      "title": "パスワードを作成",
+      "desc": "安全なパスワードを設定してください",
+      "passwordText": "パスワード",
+      "passwordPlace": "パスワードを入力",
+      "descpass": "8文字以上で入力してください",
+      "confirmPassText": "パスワード確認",
+      "confirmPlace": "もう一度入力してください"
+    },
+    "page4": {
+      "title": "準備完了",
+      "desc": "送信する前に入力内容を確認してください",
+      "email": "メールアドレス",
+      "name": "ユーザー名",
+      "phone": "電話番号"
+    },
+    "button": {
+      "Next": "次へ",
+      "Prev": "戻る",
+      "Back": "戻る",
+      "Create": "アカウント作成"
+    },
+    "footerText": "「続行」をクリックすることで、",
+    "terms": "利用規約",
+    "and": "および",
+    "privacy": "プライバシーポリシー",
+    "descfoot": "すでにアカウントをお持ちですか？",
+    "CTA-signIn": "ログイン"
   }
 
 }

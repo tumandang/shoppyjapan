@@ -4,6 +4,7 @@ import { Lexend, DM_Sans } from "next/font/google";
 import Link from "next/link";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import {
   Field,
@@ -40,6 +41,7 @@ const steps = [
 ];
 function Register() {
   const router = useRouter();
+  const rg = useTranslations('Register');
   const [CurrentStep, setCurrentStep] = useState(0);
   const [delta, setDelta] = useState(0);
   const next = () => {
@@ -105,58 +107,58 @@ function Register() {
                   >
                     <FieldGroup>
                       <div className="flex flex-col  gap-2 ">
-                        <h4 className="text-xl font-bold">Personal Detail</h4>
+                        <h4 className="text-xl font-bold">{rg('page1Title')}</h4>
                         <p className="text-muted-foreground text-balance">
-                          Let's start with your basic details
+                          {rg('page1Desc')}
                         </p>
                       </div>
                       <div className="">
                         <div className="flexBetween mb-3">
-                          <p>Step 1/4</p>
+                          <p>{rg('step1')}</p>
                           <p>25%</p>
                         </div>
                         <Progress value={25} className="w-full" />
                       </div>
 
                       <Field>
-                        <FieldLabel htmlFor="name">Username</FieldLabel>
+                        <FieldLabel htmlFor="name">{rg('nameText')}</FieldLabel>
                         <Input
                           id="name"
                           type="text"
-                          placeholder="AhmadMustaqimcool123"
+                          placeholder={rg('namePlace')}
                           required
                           value={form.name}
                           onChange={e => setform({...form, name: e.target.value})}
                         />
                       </Field>
                       <Field>
-                        <FieldLabel htmlFor="name">Fullname</FieldLabel>
+                        <FieldLabel htmlFor="fullname">{rg('fullnameText')}</FieldLabel>
                         <Input
-                          id="name"
+                          id="fullname"
                           type="text"
-                          placeholder="Ahmad Mustaqim"
+                          placeholder={rg('fullnamePlace')}
                           required
                           value={form.fullname}
                           onChange={e => setform({...form, fullname: e.target.value})}
                         />
                       </Field>
                       <Field>
-                        <FieldLabel htmlFor="email">Email</FieldLabel>
+                        <FieldLabel htmlFor="email">{rg('emailText')}</FieldLabel>
                         <Input
                           id="email"
                           type="email"
-                          placeholder="m@example.com"
+                          placeholder={rg('emailPlace')}
                           required
                           value={form.email}
                           onChange={e => setform({...form, email: e.target.value})}
                         />
                       </Field>
                       <Field>
-                        <FieldLabel htmlFor="notel">Telephon Number</FieldLabel>
+                        <FieldLabel htmlFor="notel">{rg('notelText')}</FieldLabel>
                         <Input
                           id="notel"
                           type="number"
-                          placeholder="0123456943"
+                          placeholder={rg('notelPlace')}
                           required
                           value={form.telephone}
                           onChange={e => setform({...form, telephone: e.target.value})}
@@ -164,12 +166,12 @@ function Register() {
                       </Field>
                       <Field>
                         <Button onClick={next}>
-                          Next <MoveRight className="flexCenter" />
+                          {rg('button.Next')} <MoveRight className="flexCenter" />
                         </Button>
                       </Field>
 
                       <FieldDescription className="text-center">
-                        Already have an account? <a href="/login">Sign In</a>
+                        {rg('descfoot')} <a href="/login">{rg('CTA-signIn')}</a>
                       </FieldDescription>
                     </FieldGroup>
                   </motion.div>
@@ -182,46 +184,46 @@ function Register() {
                   >
                     <FieldGroup className="gap-y-3">
                       <div className="flex flex-col  gap-2 ">
-                        <h3 className="text-xl font-bold">Address Details</h3>
+                        <h3 className="text-xl font-bold">{rg('page2.title')}</h3>
                         <p className="text-muted-foreground text-balance">
-                          Where should we deliver your orders?
+                          {rg('page2.desc')}
                         </p>
                       </div>
                       <div className="">
                         <div className="flexBetween mb-3">
-                          <p>Step 1/4</p>
+                          <p>{rg('step2')}</p>
                           <p>50%</p>
                         </div>
                         <Progress value={50} className="w-full" />
                       </div>
                       <Field>
-                        <FieldLabel htmlFor="Address">Address 1</FieldLabel>
+                        <FieldLabel htmlFor="Address">{rg('page2.address1')}</FieldLabel>
                         <Input
                           id="Address"
                           type="text"
-                          placeholder="NO 1234"
+                          placeholder={rg('page2.addplace1')}
                           required
                           value={form.address1}
                           onChange={e => setform({...form, address1: e.target.value})}
                         />
                       </Field>
                       <Field>
-                        <FieldLabel htmlFor="Address">Address 2</FieldLabel>
+                        <FieldLabel htmlFor="Address">{rg('page2.address2')}</FieldLabel>
                         <Input
                           id="Address"
                           type="text"
-                          placeholder="Jalan Jati 4/5"
+                          placeholder={rg('page2.addplace2')}
                           required
                           value={form.address2}
                           onChange={e => setform({...form, address2: e.target.value})}
                         />
                       </Field>
                       <Field>
-                        <FieldLabel htmlFor="Address">Address 3</FieldLabel>
+                        <FieldLabel htmlFor="Address">{rg('page2.address3')}</FieldLabel>
                         <Input
                           id="Address"
                           type="text"
-                          placeholder="Bandar Selayang"
+                          placeholder={rg('page2.addplace3')}
                           required
                           value={form.address3}
                           onChange={e => setform({...form, address3: e.target.value})}
@@ -229,7 +231,7 @@ function Register() {
                       </Field>
                       <div className="grid grid-cols-2 gap-x-4">
                         <Field>
-                          <FieldLabel htmlFor="postcode">Postcode</FieldLabel>
+                          <FieldLabel htmlFor="postcode">{rg('page2.postcode')}</FieldLabel>
                           <Input
                             id="postcode"
                             type="number"
@@ -240,11 +242,11 @@ function Register() {
                           />
                         </Field>
                         <Field>
-                          <FieldLabel htmlFor="city">City</FieldLabel>
+                          <FieldLabel htmlFor="city">{rg('page2.city')}</FieldLabel>
                           <Input
                             id="city"
                             type="text"
-                            placeholder="Taiping"
+                            placeholder={rg('page2.cityplace1')}
                             required
                             value={form.city}
                             onChange={e => setform({...form, city: e.target.value})}
@@ -253,18 +255,18 @@ function Register() {
                       </div>
                       <div className="grid grid-cols-2 gap-x-4">
                         <Field>
-                          <FieldLabel htmlFor="state">State</FieldLabel>
+                          <FieldLabel htmlFor="state">{rg('page2.state')}</FieldLabel>
                           <Input
                             id="state"
                             type="text"
-                            placeholder="dropdown nanti"
+                            placeholder={rg('page2.stateplace')}
                             required
                             value={form.state}
                             onChange={e => setform({...form, state: e.target.value})}
                           />
                         </Field>
                         <Field>
-                          <FieldLabel htmlFor="country">Country</FieldLabel>
+                          <FieldLabel htmlFor="country">{rg('page2.country')}</FieldLabel>
                           <Input
                             id="country"
                             type="text"
@@ -278,17 +280,17 @@ function Register() {
                       <div className="flexBetween gap-x-4">
                         <Field>
                           <Button onClick={prev}>
-                            <MoveLeft className="flexCenter" /> Prev
+                            <MoveLeft className="flexCenter" /> {rg('button.Prev')}
                           </Button>
                         </Field>
                         <Field>
                           <Button onClick={next}>
-                            Next <MoveRight className="flexCenter" />
+                            {rg('button.Next')} <MoveRight className="flexCenter" />
                           </Button>
                         </Field>
                       </div>
                       <FieldDescription className="text-center">
-                        Already have an account? <a href="/login">Sign In</a>
+                        {rg('descfoot')} <a href="/login">{rg('CTA-signIn')}</a>
                       </FieldDescription>
                     </FieldGroup>
                   </motion.div>
@@ -301,40 +303,40 @@ function Register() {
                   >
                     <FieldGroup>
                       <div className="flex flex-col  gap-2 ">
-                        <h4 className="text-xl font-bold">Create Password</h4>
+                        <h4 className="text-xl font-bold">{rg('page3.title')}</h4>
                         <p className="text-muted-foreground text-balance">
-                          Secure your account with a strong password
+                          {rg('page3.desc')}
                         </p>
                       </div>
                       <div className="">
                         <div className="flexBetween mb-3">
-                          <p>Step 1/4</p>
+                          <p>{rg('step3')}</p>
                           <p>75%</p>
                         </div>
                         <Progress value={75} className="w-full" />
                       </div>
                       <Field>
-                        <FieldLabel htmlFor="password">Password</FieldLabel>
+                        <FieldLabel htmlFor="password">{rg('page3.passwordText')}</FieldLabel>
                         <Input
                           id="password"
                           type="password"
-                          placeholder="Enter your password"
+                          placeholder={rg('page3.passwordPlace')}
                           required
                           value={form.password}
                           onChange={e => setform({...form, password: e.target.value})}
                         />
                         <FieldDescription>
-                          Must be at least 8 characters long
+                          {rg('page3.descpass')}
                         </FieldDescription>
                       </Field>
                       <Field>
                         <FieldLabel htmlFor="confirmPassword">
-                          Confirm Password
+                          {rg('page3.confirmPassText')}
                         </FieldLabel>
                         <Input
                           id="confirmPassword"
                           type="password"
-                          placeholder="Re-enter your password"
+                          placeholder={rg('page3.confirmPlace')}
                           required
                           value={form.password_confirmation}
                           onChange={e => setform({...form, password_confirmation: e.target.value})}
@@ -343,17 +345,17 @@ function Register() {
                       <div className="flexBetween gap-x-4">
                         <Field>
                           <Button onClick={prev}>
-                            <MoveLeft className="flexCenter" /> Prev
+                            <MoveLeft className="flexCenter" /> {rg('button.Prev')}
                           </Button>
                         </Field>
                         <Field>
                           <Button onClick={next}>
-                            Next <MoveRight className="flexCenter" />
+                            {rg('button.Next')} <MoveRight className="flexCenter" />
                           </Button>
                         </Field>
                       </div>
                       <FieldDescription className="text-center">
-                        Already have an account? <a href="/login">Sign In</a>
+                        {rg('descfoot')} <a href="/login">{rg('CTA-signIn')}</a>
                       </FieldDescription>
                     </FieldGroup>
                   </motion.div>
@@ -372,19 +374,19 @@ function Register() {
                           </div>
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold mb-2">All Set!</h3>
+                          <h3 className="text-2xl font-bold mb-2">{rg('page4.title')}</h3>
                           <p className="text-muted-foreground">
-                            Review your information before submitting
+                            {rg('page4.desc')}
                           </p>
                         </div>
                         <div className="bg-slate-50 rounded-lg p-4 text-left space-y-3 text-sm">
                           <div className="flex justify-between">
-                            <span className="text-muted-foreground">Name:</span>
+                            <span className="text-muted-foreground">{rg('name')}:</span>
                             <span className="font-medium">{form.name}</span>
                           </div>
                           <div className="flex justify-between">
                             <span className="text-muted-foreground">
-                              Email:
+                              {rg('page4.email')}:
                             </span>
                             <span className="font-medium">
                               {form.email}
@@ -392,7 +394,7 @@ function Register() {
                           </div>
                           <div className="flex justify-between">
                             <span className="text-muted-foreground">
-                              Phone:
+                              {rg('page4.phone')}:
                             </span>
                             <span className="font-medium">{form.telephone}</span>
                           </div>
@@ -404,13 +406,10 @@ function Register() {
                             className="flex-1"
                           >
                             <MoveLeft className="mr-2 h-4 w-4" />
-                            Back
+                            {rg('button.Back')}
                           </Button>
-                          <Button className="flex-1 cursor-pointer"
-                                            type="submit" 
-                   >
-                            
-                            Create Account
+                          <Button className="flex-1 cursor-pointer" type="submit" >    
+                           {rg('button.Create')}
                             <Check className="ml-2 h-4 w-4" />
                           </Button>
                         </div>
@@ -422,8 +421,8 @@ function Register() {
             </CardContent>
           </Card>
           <FieldDescription className="px-6 text-center">
-            By clicking continue, you agree to our{" "}
-            <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+            {rg('footerText')} 
+            <a href="#">{rg('terms')}</a>{rg('and')} <a href="#">{rg('privacy')}</a>.
           </FieldDescription>
         </div>
       </div>

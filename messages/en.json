@@ -200,6 +200,14 @@
     "descfoot" : "Already have an account?",
     "CTA-signIn" : "Log In"
 
+  },
+  "categoryTrans" :{
+    "viewText" :"View All",
+    "backbtn"  : "Back",
+    "filterText"    : "Filters",
+    "categoriesText": "Categories",
+    "shopText" : "Rakuten Official",
+    "bestseller": "Best Seller Products"
   }
 
 

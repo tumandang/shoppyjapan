@@ -27,6 +27,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { useLocale } from "next-intl";
 import { Lexend, DM_Sans } from "next/font/google";
 const lexend = Lexend({
   variable: "--font-Lexend",
@@ -49,6 +50,7 @@ function ListingRanking() {
   const [page, setpage] = useState(1);
   const itemsPerPage = 9;
   const totalPages = Math.ceil(bestseller.length / itemsPerPage);
+  const locale = useLocale();
   useEffect(() => {
     fetch(
       "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=1004153375637600271"
@@ -104,7 +106,7 @@ function ListingRanking() {
                     key={index}
                     className="group bg-white border rounded-xl p-4 hover:border-orange-300 hover:shadow-md transition"
                   >
-                    <Link href={`/Shop/Rakuten/Product/${item.itemCode}`}>
+                    <Link href={`/${locale}/Shop/Rakuten/Product/${item.itemCode}`}>
                       <div className="flex justify-center items-center bg-gray-50 rounded-xl h-[180px] overflow-hidden">
                         <img
                           src={

@@ -1,12 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   ArrowLeftToLine,
   ArrowRight,
@@ -15,7 +7,6 @@ import {
   Banana,
   BookOpen,
   Briefcase,
-  Cable,
   Camera,
   Car,
   Cat,
@@ -46,7 +37,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Toggle } from "@/components/ui/toggle";
 import { Lexend, DM_Sans } from "next/font/google";
-import { useParams } from "next/navigation";
+import { useLocale ,useTranslations } from "next-intl";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -63,245 +54,221 @@ const dm_sans_bold = DM_Sans({
   weight: ["800"],
 });
 
-function CategoryProduct({ categoryID }) {
+function ListingProduct() {
   const [bestseller, setbestseller] = useState([]);
   const [expanded, setexpanded] = useState(true);
-  const [SelectedCategory, setSelectedCategory] = useState("");
-
+  const locale = useLocale();
   const rakutenCategories = [
     {
       id: "womens",
       jp: "レディースファッション",
       en: "Women's Fashion",
+      ms: "Fesyen Wanita",
       icon: <Shirt />,
     },
     {
       id: "bags",
       jp: "バッグ・小物・ブランド雑貨",
       en: "Bags & Accessories",
+      ms: "Beg & Aksesori",
       icon: <Briefcase />,
     },
     {
       id: "mens",
       jp: "メンズファッション",
       en: "Men's Fashion",
+      ms: "Fesyen Lelaki",
       icon: <Shirt />,
     },
-    { id: "shoes", jp: "靴", en: "Shoes", icon: <Footprints /> },
+    {
+       id: "shoes", 
+       jp: "靴", en: 
+       "Shoes", ms: 
+       "Kasut", icon: 
+       <Footprints /> },
     {
       id: "jewelry",
       jp: "ジュエリー・アクセサリー",
       en: "Jewelry & Accessories",
+      ms: "Barang Kemas & Aksesori",
       icon: <Gem />,
     },
     {
       id: "kids",
       jp: "キッズ・ベビー・マタニティ",
       en: "Kids & Baby",
+      ms: "Kanak-kanak & Bayi",
       icon: <Baby />,
     },
-    { id: "toys", jp: "おもちゃ", en: "Toys", icon: <ToyBrick /> },
+    { id: "toys", jp: "おもちゃ", en: "Toys", ms: "Mainan", icon: <ToyBrick /> },
     {
       id: "sports",
       jp: "スポーツ・アウトドア",
       en: "Sports & Outdoor",
+      ms: "Sukan & Luar",
       icon: <Volleyball />,
     },
-    { id: "home", jp: "家電", en: "Home Appliances", icon: <HouseHeart /> },
+    {
+      id: "home",
+      jp: "家電",
+      en: "Home Appliances",
+      ms: "Peralatan Rumah",
+      icon: <HouseHeart />,
+    },
     {
       id: "tv",
       jp: "TV・オーディオ・カメラ",
       en: "TV Audio & Camera",
+      ms: "TV, Audio & Kamera",
       icon: <Camera />,
     },
     {
       id: "computers",
       jp: "パソコン・周辺機器",
       en: "Computers & Peripherals",
+      ms: "Komputer & Aksesori",
       icon: <Laptop />,
     },
     {
       id: "smartphones",
       jp: "スマートフォン・タブレット",
       en: "Smartphones & Tablets",
+      ms: "Telefon Pintar & Tablet",
       icon: <Smartphone />,
     },
     {
       id: "internet",
       jp: "光回線・モバイル通信",
       en: "Internet & Mobile Services",
+      ms: "Internet & Perkhidmatan Mudah Alih",
       icon: <MonitorSmartphone />,
     },
-    { id: "food", jp: "食品", en: "Food", icon: <Banana /> },
+    { id: "food", jp: "食品", en: "Food", ms: "Makanan", icon: <Banana /> },
     {
       id: "sweets",
       jp: "スイーツ・お菓子",
       en: "Sweets & Snacks",
+      ms: "Manisan & Snek",
       icon: <Lollipop />,
     },
     {
       id: "water",
       jp: "水・ソフトドリンク",
       en: "Water & Soft Drinks",
+      ms: "Air & Minuman Ringan",
       icon: <GlassWater />,
     },
     {
       id: "kitchen",
       jp: "キッチン用品・食器・調理器具",
       en: "Kitchenware",
+      ms: "Peralatan Dapur",
       icon: <CookingPot />,
     },
     {
       id: "books",
       jp: "本・雑誌・コミック",
       en: "Books & Comics",
+      ms: "Buku & Komik",
       icon: <BookOpen />,
     },
-    { id: "cd", jp: "CD・DVD", en: "CD & DVD", icon: <Disc3 /> },
-    { id: "video", jp: "テレビゲーム", en: "Video Games", icon: <Gamepad /> },
+    { id: "cd", jp: "CD・DVD", en: "CD & DVD", ms: "CD & DVD", icon: <Disc3 /> },
+    {
+      id: "video",
+      jp: "テレビゲーム",
+      en: "Video Games",
+      ms: "Permainan Video",
+      icon: <Gamepad />,
+    },
     {
       id: "musical",
       jp: "楽器・音響機器",
       en: "Musical Instruments",
+      ms: "Alat Muzik",
       icon: <Guitar />,
     },
     {
       id: "car",
       jp: "車用品・バイク用品",
       en: "Car Accessories",
+      ms: "Aksesori Kereta & Motosikal",
       icon: <KeySquare />,
     },
     {
       id: "beauty",
       jp: "美容・コスメ・香水",
       en: "Beauty & Cosmetics",
+      ms: "Kecantikan & Kosmetik",
       icon: <EyeClosed />,
     },
     {
       id: "medicine",
       jp: "医薬品・コンタクト・介護",
       en: "Medical & Care",
+      ms: "Perubatan & Penjagaan",
       icon: <HeartPulse />,
     },
     {
       id: "pets",
       jp: "ペット・ペットグッズ",
       en: "Pets & Supplies",
+      ms: "Haiwan Peliharaan & Keperluan",
       icon: <Cat />,
     },
     {
       id: "flowers",
       jp: "花・ガーデン・DIY",
       en: "Flowers & Garden",
+      ms: "Bunga & Taman",
       icon: <Flower2 />,
     },
-  ];
-
-  const genreMap = {
-    womens: 100371,
-    mens: 551177,
-    bags: 216131,
-    shoes: 558885,
-    jewelry: 216129,
-    kids: 100533,
-    toys: 566382,
-    sports: 101070,
-    home: 562637,
-    tv: 211742,
-    computers: 100026,
-    smartphones: 564500,
-    internet: 565004,
-    food: 100227,
-    sweets: 551167,
-    water: 100316,
-    kitchen: 558944,
-    books: 200162,
-    cd: 101240,
-    video: 101205,
-    musical: 112493,
-    car: 503190,
-    beauty: 100939,
-    medicine: 551169,
-    pets: 101213,
-    flowers: 100005,
-  };
+    ];
+  const BS = useTranslations('categoryTrans');
 
   useEffect(() => {
-    if (!categoryID) return;
-
-    const genreId = genreMap[categoryID];
-    if (!genreId) return;
-
-    const foundCategory = rakutenCategories.find(
-      (cat) => cat.id === categoryID
-    );
-
-    if (foundCategory) {
-      setSelectedCategory(foundCategory.en);
-    }
-
     fetch(
-      `https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=1004153375637600271&genreId=${genreId}`
+      "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=1004153375637600271"
     )
       .then((res) => res.json())
       .then((data) => setbestseller(data.Items || []));
-  }, [categoryID]);
+  }, []);
 
   return (
     <div className="min-h-screen rounded-xl shadow-sm bg-white mx-auto max-w-7xl px-6 py-6">
       <div className="flex items-center justify-between border-b pb-4">
         <div className="flex items-center gap-2 text-sm text-gray-700">
           <Image src="/rakutenlogo.png" width={26} height={26} alt="Rakuten" />
-          <span className={`font-medium ${lexend.className}`}>
-            Rakuten Official
-          </span>
+          <span className={`font-medium ${lexend.className}`}>{BS('shopText')}</span>
         </div>
-        <Link href="/Shop/Rakuten">
-          <Button>Back</Button>
-        </Link>
       </div>
 
       <div className="flex gap-6 mt-6">
-        <aside
-          className={`transition-all duration-300 border-r pr-4 ${
-            expanded ? "w-64" : "w-14"
-          }`}
-        >
+        <aside className={`transition-all duration-300 border-r pr-4 ${expanded ? "w-64" : "w-14"}`}>
           <div className="flexBetween pb-3 border-b">
-            <h4
-              className={`text-lg font-semibold transition-all ${
-                dm_sans_bold.className
-              } ${expanded ? "opacity-100" : "opacity-0 w-0"}`}
-            >
-              Filters
+            <h4 className={`text-lg font-semibold transition-all ${dm_sans_bold.className} ${expanded ? "opacity-100" : "opacity-0 w-0"}`}>
+              {BS('filterText')}
             </h4>
             <button
               onClick={() => setexpanded((prev) => !prev)}
-              className="p-1 hover:bg-gray-100 rounded-md "
-            >
-              {expanded ? <ArrowLeftToLine /> : <ArrowRightToLine />}
+              className="p-1 hover:bg-gray-100 rounded-md ">
+              {expanded ? <ArrowLeftToLine /> : <ArrowRightToLine  />}
             </button>
           </div>
 
           <div className="mt-5">
             <h4
-              className={`text-sm font-semibold text-gray-700 transition-all ${
-                dm_sans.className
-              }  ${expanded ? "opacity-100 mb-3" : "opacity-0"}`}
-            >
-              Categories
+              className={`text-sm font-semibold text-gray-700 transition-all ${dm_sans.className}  ${expanded ? "opacity-100 mb-3" : "opacity-0"}`}>
+              {BS('categoriesText')}
             </h4>
 
             <div className="space-y-2">
               {rakutenCategories.map((cat, index) => (
-                <Link key={index} href={`/Shop/Rakuten/Category/${cat.id}`}>
+                <Link key={index}  href={`/${locale}/Shop/Rakuten/Category/${cat.id}`}>
                   <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
                     <span className="text-gray-600">{cat.icon}</span>
                     {expanded && (
-                      <p
-                        className={`text-sm text-gray-700 font-medium ${lexend.className}`}
-                      >
-                        {cat.en}
+                      <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
+                        {locale === 'en' ? cat.en : locale === "ja" ? cat.jp : cat.ms}
                       </p>
                     )}
                   </div>
@@ -312,28 +279,25 @@ function CategoryProduct({ categoryID }) {
         </aside>
         <section className="flex-1">
           <div className="flex items-center justify-between mb-4">
-            <h3 className={`font-semibold text-lg ${dm_sans_bold.className}`}>
-              {SelectedCategory}
-            </h3>
+            <h3 className={`font-semibold text-lg ${dm_sans_bold.className}`}>{BS('bestseller')}</h3>
             <Link
-              href={`/Shop/Rakuten/Category/CategoryProduct/${categoryID}`}
+              href="/Shop/Rakuten/Product/Ranking"
               className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group"
             >
-              <span>View All</span>
+              <span>{BS('viewText')}</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {bestseller.slice(0, 12).map((itemObj, index) => {
+            {bestseller.slice(0,9 ).map((itemObj, index) => {
               const item = itemObj.Item;
               if (!item) return null;
 
               return (
                 <div
                   key={index}
-                  className="group bg-white border rounded-xl p-4 hover:border-orange-300 hover:shadow-md transition"
-                >
+                  className="group bg-white border rounded-xl p-4 hover:border-orange-300 hover:shadow-md transition">
                   <Link href={`/Shop/Rakuten/Product/${item.itemCode}`}>
                     <div className="flex justify-center items-center bg-gray-50 rounded-xl h-[180px] overflow-hidden">
                       <img
@@ -346,16 +310,12 @@ function CategoryProduct({ categoryID }) {
                     </div>
                   </Link>
 
-                  <p
-                    className={`mt-3 text-sm font-semibold line-clamp-2 text-gray-800 ${lexend.className}`}
-                  >
+                  <p className={`mt-3 text-sm font-semibold line-clamp-2 text-gray-800 ${lexend.className}`}>
                     {item.itemName}
                   </p>
 
                   <div className="flex items-center justify-between mt-2">
-                    <span
-                      className={`text-orange-600 font-bold ${dm_sans_bold.className}`}
-                    >
+                    <span className={`text-orange-600 font-bold ${dm_sans_bold.className}`}>
                       ¥{item.itemPrice.toLocaleString()}
                     </span>
 
@@ -378,4 +338,4 @@ function CategoryProduct({ categoryID }) {
   );
 }
 
-export default CategoryProduct;
+export default ListingProduct;

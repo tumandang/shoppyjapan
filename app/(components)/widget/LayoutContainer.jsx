@@ -7,7 +7,7 @@ import Banner from "./Banner";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Lexend, DM_Sans } from "next/font/google";
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -25,17 +25,16 @@ const dm_sans_bold = DM_Sans({
 });
 function LayoutContainer() {
   const LC = useTranslations('layoutContainer');
-  
+  const locale = useLocale();
   return (
     <div className=" padd-cont flex flex-col">
       <div className="flex flex-col lg:flex-row gap-2 my-2">
-        {/* sidebar */}
         <div className="w-full lg:w-1/4 flex flex-col gap-y-2">
           <div className="flex flex-col px-3 py-3 sm:px-5 sm:py-5 gap-y-2 rounded-lg bg-white  shadow-lg ">
             <h4 className={`text-orange-700 ${lexend.className}`}>
               {LC('integratedText')}
             </h4>
-            <Link href="/Shop/Rakuten/">
+            <Link href={`/${locale}/Shop/Rakuten/`}>
               <div className="flex flex-row gap-x-2 hover:bg-gray-100 rounded-md p-2">
                 <Image
                   src="/rakutenlogo.png"

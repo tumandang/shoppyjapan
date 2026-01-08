@@ -194,6 +194,14 @@
     "privacy": "プライバシーポリシー",
     "descfoot": "すでにアカウントをお持ちですか？",
     "CTA-signIn": "ログイン"
+  },
+  "categoryTrans" :{
+    "viewText" :"すべて見る",
+    "backbtn"  : "戻る",
+    "filterText"    : "フィルター",
+    "categoriesText": "カテゴリー",
+    "shopText" : "楽天公式",
+    "bestseller": "ベストセラー製品"
   }
 
 }

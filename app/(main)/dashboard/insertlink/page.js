@@ -7,7 +7,7 @@ import { Lexend, DM_Sans } from "next/font/google";
 
 import { useAuth } from "@/context/AuthContext";
 
-import LinkForm from "../../link-form/components/LinkForm";
+import LinkForm from "../../../[locale]/(main)/link-form/components/LinkForm";
 import Asidedashboard from "../components/asidedahsbord";
 const lexend = Lexend({
   variable: "--font-Lexend",

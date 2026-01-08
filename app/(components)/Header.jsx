@@ -54,7 +54,7 @@ function Header() {
         const url = new URL(link);
 
         if (!url.hostname.includes("rakuten.co.jp")) {
-          router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
+          router.push(`/${locale}/invalid-link?url=${encodeURIComponent(link)}`);
           return;
         }
         const pathSegments = url.pathname.split("/").filter(Boolean);
@@ -64,20 +64,20 @@ function Header() {
           pathSegments[pathSegments.length - 1];
 
         if (!itemCode) {
-          router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
+          router.push(`/${locale}/invalid-link?url=${encodeURIComponent(link)}`);
           return;
         }
         const productID = `${shopCode}:${itemCode}`;
-        router.push(`/Shop/Rakuten/Product/${encodeURIComponent(productID)}`);
+        router.push(`/${locale}/Shop/Rakuten/Product/${encodeURIComponent(productID)}`);
         return;
       } catch (err) {
-        router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
+        router.push(`/${locale}/invalid-link?url=${encodeURIComponent(link)}`);
         return;
       }
     }
 
     const keyword = link.trim();
-    router.push(`/Shop/Rakuten/Search?keyword=${encodeURIComponent(keyword)}`);
+    router.push(`/${locale}/Shop/Rakuten/Search?keyword=${encodeURIComponent(keyword)}`);
   };
   return (
     <header className="bg-white border-b border-gray-200">
@@ -116,7 +116,7 @@ function Header() {
 
           <div className="hidden lg:flex items-center gap-3">
             <Link
-              href="/link-form"
+              href={`/${locale}/link-form`}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
             >
               <Link2
@@ -131,7 +131,7 @@ function Header() {
               <span className="sr-only">Wishlist ({wishlistCount} items)</span>
             </Link>
             <Link
-              href="/shipping_calculator"
+              href={`/${locale}/shipping_calculator`}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
               aria-label="Go to shipping calculator" 
             >
@@ -142,7 +142,7 @@ function Header() {
             </Link>
 
             <Link
-              href="/cart"
+              href={`/${locale}/cart`}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
             >
               <ShoppingBag

@@ -43,7 +43,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Toggle } from "@/components/ui/toggle";
 import { Lexend, DM_Sans } from "next/font/google";
-
+import { useLocale } from "next-intl";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -61,6 +61,7 @@ function CategoryProduct({ categoryID }) {
   const [page, setpage] = useState(1);
   const itemsPerPage = 30;
   const [totalPages, setTotalPages] = useState(1);
+  const locale = useLocale();
   const rakutenCategories = [
     {
       id: "womens",
@@ -253,7 +254,7 @@ function CategoryProduct({ categoryID }) {
             Rakuten Official
           </span>
         </div>
-        <Link href="/Shop/Rakuten">
+        <Link href={`/${locale}/Shop/Rakuten`}>
           <Button>Back</Button>
         </Link>
       </div>
@@ -279,7 +280,7 @@ function CategoryProduct({ categoryID }) {
                     key={index}
                     className="group bg-white border rounded-xl p-4 hover:border-orange-300 hover:shadow-md transition"
                   >
-                    <Link href={`/Shop/Rakuten/Product/${item.itemCode}`}>
+                    <Link href={`/${locale}/Shop/Rakuten/Product/${item.itemCode}`}>
                       <div className="flex justify-center items-center bg-gray-50 rounded-xl h-[180px] overflow-hidden">
                         <img
                           src={

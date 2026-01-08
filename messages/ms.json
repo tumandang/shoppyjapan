@@ -193,5 +193,13 @@
     "privacy": "Dasar Privasi",
     "descfoot": "Dah ada akaun?",
     "CTA-signIn": "Log Masuk"
+  },
+  "categoryTrans" :{
+    "viewText" :"Lihat Semua",
+    "backbtn"  : "Kembali",
+    "filterText"    : "Penyaring",
+    "categoriesText": "Kategori",
+    "shopText" : "Rakuten Official",
+    "bestseller": "Produk Terlaris"
   }
 }

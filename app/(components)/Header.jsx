@@ -159,7 +159,7 @@ function Header() {
 
             {user ? (
               <div className="flex flex-row gap-x-4">
-                <Link href="/dashboard/profile">
+                <Link href={`/${locale}/dashboard/profile`}>
                   <Button
                     variant="outline"
                     className="rounded-lg px-5 py-2 border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer flex items-center gap-2"
@@ -200,7 +200,7 @@ function Header() {
 
           <div className="lg:hidden flex items-center gap-3">
             <Link
-              href="/wishlist"
+              href={`/${locale}/wishlist`}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <Heart size={24} className="text-gray-700" />
@@ -212,7 +212,7 @@ function Header() {
             </Link>
 
             <Link
-              href="/cart"
+              href={`/${locale}/cart`}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <ShoppingBag size={24} className="text-gray-700" />

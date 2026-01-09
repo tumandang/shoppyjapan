@@ -208,7 +208,50 @@
     "categoriesText": "Categories",
     "shopText" : "Rakuten Official",
     "bestseller": "Best Seller Products"
+  },
+
+  "WebCateg": {
+    "title": "List of Websites",
+    "ecommerce": "E-Commerce",
+    "fashion": "Fashion",
+    "shoes": "Shoes",
+    "sneaker": "Sneaker / Second-hand",
+    "auto": "Automotive / Lifestyle Gear",
+    "anime": "Anime / Otaku / Figures / Collectibles",
+    "card": "Cards / Collectibles (Secondary Market)"
+  },
+
+"marketplaceDesc": {
+    "amazon": "General online marketplace offering a wide range of products",
+    "jdirect": "Japanese shopping and auction platform",
+    "qoo10": "Online marketplace for fashion and lifestyle products",
+    "wowma": "Japanese multi-category online shopping platform",
+    "paypay": "Consumer-to-consumer flea market platform",
+    "mercari": "Popular Japanese resale and thrift marketplace",
+
+    "uniqlo": "Simple and functional Japanese fashion brand",
+    "supreme": "Globally popular high-end streetwear brand",
+    "bape": "Iconic Japanese streetwear fashion brand",
+    "zozotown": "Fashion-focused online shopping platform",
+    "newera": "Well-known cap and apparel brand",
+    "louisvuitton": "Luxury fashion and accessories brand",
+
+    "adidas": "Sports footwear and apparel brand",
+    "asics": "Japanese performance sports shoe brand",
+
+    "secondstreet": "Second-hand fashion and sneaker store",
+
+    "webike": "Online marketplace for motorcycle parts and riding gear",
+
+    "mandarake_anime": "Specialty store for anime, manga, and otaku goods",
+    "mandarake_card": "Specialty store for collectible cards and rare items",
+
+    "mercari_card": "Secondary marketplace for trading cards and collectibles",
+    "rakuma": "Resale platform for trading cards and hobby items"
   }
+
+
+  
 
 
 

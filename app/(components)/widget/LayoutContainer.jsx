@@ -81,7 +81,7 @@ function LayoutContainer() {
                 {LC('notFoundText')}
               </h4>
               <Link
-                href="/marketplace"
+                href={`/${locale}/marketplace`}
                 className=" hover:bg-gray-100 rounded-md p-2 " >
                 <span className=" italic cursor-pointer">{LC('listwebText')}</span>
               </Link>

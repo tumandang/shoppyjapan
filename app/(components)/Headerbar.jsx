@@ -45,7 +45,7 @@ function Headerbar() {
 
           <div className="flex items-center gap-4 ml-auto">
             <Link
-              href="/about"
+              href={`/${locale}/about`}
               className="text-gray-600 hover:text-gray-900 transition-colors font-medium hidden sm:block"
             >
               {t('aboutText')}
@@ -54,7 +54,7 @@ function Headerbar() {
             <div className="w-px h-4 bg-gray-300 hidden sm:block" />
 
             <Link
-              href="/help"
+              href={`/${locale}/help`}
               className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
             >
               {t('helpText')}

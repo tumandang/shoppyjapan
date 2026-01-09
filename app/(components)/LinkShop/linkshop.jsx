@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { marketplaces } from "@/app/(main)/marketplace/const/Marketplace";
+import { marketplaces } from "@/app/[locale]/(main)/marketplace/const/Marketplace";
 import { Lexend, DM_Sans } from "next/font/google";
 import Image from "next/image";
 import { useTranslations } from "next-intl";

@@ -201,5 +201,45 @@
     "categoriesText": "Kategori",
     "shopText" : "Rakuten Official",
     "bestseller": "Produk Terlaris"
+  },
+  "WebCateg": {
+    "title": "Senarai Website",
+    "ecommerce": "E-Dagang",
+    "fashion": "Fesyen",
+    "shoes": "Kasut",
+    "sneaker": "Sneaker / Preloved",
+    "auto": "Automotif / Gear Lifestyle",
+    "anime": "Anime / Otaku / Figure / Koleksi",
+    "card": "Kad & Koleksi (Pasaran Sekunder)"
+  },
+  "marketplaceDesc": {
+    "amazon": "Pasaran dalam talian yang menawarkan pelbagai jenis produk",
+    "jdirect": "Platform membeli-belah dan lelongan dari Jepun",
+    "qoo10": "Pasaran dalam talian untuk produk fesyen dan gaya hidup",
+    "wowma": "Platform beli-belah dalam talian pelbagai kategori dari Jepun",
+    "paypay": "Platform jual beli antara individu (pasar lambak)",
+    "mercari": "Platform jual semula dan barangan terpakai yang popular di Jepun",
+
+    "uniqlo": "Jenama fesyen Jepun yang ringkas dan praktikal",
+    "supreme": "Jenama streetwear premium yang terkenal di seluruh dunia",
+    "bape": "Jenama streetwear ikonik dari Jepun",
+    "zozotown": "Platform beli-belah dalam talian khusus untuk fesyen",
+    "newera": "Jenama topi dan pakaian yang terkenal",
+    "louisvuitton": "Jenama fesyen dan aksesori mewah",
+
+    "adidas": "Jenama kasut dan pakaian sukan",
+    "asics": "Jenama kasut sukan berprestasi tinggi dari Jepun",
+
+    "secondstreet": "Kedai fesyen dan kasut terpakai",
+    
+    "webike": "Pasaran dalam talian untuk alat ganti motosikal dan kelengkapan tunggangan",
+
+    "mandarake_anime": "Kedai khusus barangan anime, manga dan otaku",
+    "mandarake_card": "Kedai khusus untuk kad koleksi dan barangan rare",
+
+    "mercari_card": "Pasaran sekunder untuk kad koleksi dan barangan hobi",
+    "rakuma": "Platform jual semula untuk kad permainan dan barangan hobi"
   }
+
+ 
 }

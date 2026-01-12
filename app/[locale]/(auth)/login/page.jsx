@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Lexend, DM_Sans } from "next/font/google";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   Field,
   FieldDescription,
@@ -29,6 +29,7 @@ const dm_sans = DM_Sans({
 
 function Login() {
   const router = useRouter();
+  const locale = useLocale();
   const { login } = useAuth();
   const [form, setForm] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
@@ -42,7 +43,7 @@ function Login() {
     try {
       await login(form.email, form.password);
       alert('Login successful');
-      router.push('/dashboard/profile'); 
+      router.push(`/${locale}/dashboard/profile`); 
     } catch (error) {
       setError(error.response?.data?.message || 'Login failed');
       alert(error.response?.data?.message || 'Login failed');

@@ -4,7 +4,7 @@ import { Lexend, DM_Sans } from "next/font/google";
 import Link from "next/link";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { useTranslations } from "next-intl";
+import { useLocale,useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import {
   Field,
@@ -41,6 +41,7 @@ const steps = [
 ];
 function Register() {
   const router = useRouter();
+  const locale = useLocale();
   const rg = useTranslations('Register');
   const [CurrentStep, setCurrentStep] = useState(0);
   const [delta, setDelta] = useState(0);
@@ -77,7 +78,7 @@ function Register() {
     try{
       await axiosInstance.post ('/register',form);
       alert ('Register successfully');
-      router.push('/login'); 
+      router.push(`/${locale}/login`); 
     }
     catch(error){
       alert(error.response?.data?.message || 'Register failed');

@@ -88,7 +88,7 @@ export default function WishlistPage(){
                     <div className="mb-8">
                         <h1 className={`${lexend.className} text-4xl mb-2`}>Wishlist</h1>
                         <p className={`${dm_sans.className} text-gray-600`}>
-                        Your Wishlist product
+                            Your Wishlist product
                         </p>
                     </div>
                     

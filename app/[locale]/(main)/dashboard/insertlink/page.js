@@ -7,7 +7,7 @@ import { Lexend, DM_Sans } from "next/font/google";
 
 import { useAuth } from "@/context/AuthContext";
 
-import LinkForm from "../../../[locale]/(main)/link-form/components/LinkForm";
+import LinkFormPage from "../../link-form/page";
 import Asidedashboard from "../components/asidedahsbord";
 const lexend = Lexend({
   variable: "--font-Lexend",
@@ -65,7 +65,7 @@ export default function ProfilePage() {
               Make your order manually
             </p>
           </div>
-          <LinkForm/>
+          <LinkFormPage/>
         </div>
       </main>
     </div>

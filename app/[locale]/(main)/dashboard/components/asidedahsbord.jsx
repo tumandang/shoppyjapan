@@ -3,6 +3,7 @@ import React ,{useState} from 'react'
 import { ArrowLeftToLine, ArrowRightToLine, Calculator, Heart, Link2, Paperclip, ShoppingBasketIcon, User } from "lucide-react";
 import Link from "next/link";
 import { Lexend, DM_Sans } from "next/font/google";
+import { useLocale } from 'next-intl';
 
 const lexend = Lexend({
   variable: "--font-Lexend",
@@ -22,6 +23,7 @@ const dm_sans_bold = DM_Sans({
   weight: ["800"],
 });
 function Asidedashboard() {
+  const locale = useLocale();
   const [expanded, setexpanded] = useState(true);
   return (
     <aside className={`transition-all duration-300 border-r pr-4 ${expanded ? "w-64" : "w-14"}`}>
@@ -38,7 +40,7 @@ function Asidedashboard() {
 
           <div className="mt-5">
             <div className="space-y-2">
-              <Link href="/dashboard/profile">
+              <Link href={`/${locale}/dashboard/profile`}>
                     <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
                       <span className="text-gray-600">
                         <User></User>
@@ -50,7 +52,7 @@ function Asidedashboard() {
                       )}
                     </div>
               </Link>
-              <Link href="/dashboard/insertlink">
+              <Link href={`/${locale}/dashboard/insertlink`}>
                     <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
                       <span className="text-gray-600">
                         <Link2></Link2>
@@ -62,7 +64,7 @@ function Asidedashboard() {
                       )}
                     </div>
               </Link>
-              <Link href="/dashboard/request">
+              <Link href={`/${locale}/dashboard/request`}>
                     <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
                       <span className="text-gray-600">
                         <Paperclip></Paperclip>
@@ -86,7 +88,7 @@ function Asidedashboard() {
                       )}
                     </div>
               </Link>
-                 <Link href="/dashboard/wishlist">
+                 <Link href={`/${locale}/dashboard/wishlist`}>
                     <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
                       <span className="text-gray-600">
                         <Heart/>
@@ -98,7 +100,7 @@ function Asidedashboard() {
                       )}
                     </div>
               </Link>
-              <Link href="/shipping_calculator">
+              <Link href={`/${locale}/shipping_calculator`}>
                     <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
                       <span className="text-gray-600">
                         <Calculator/>

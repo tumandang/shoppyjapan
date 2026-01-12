@@ -113,11 +113,6 @@ function Tablerequest() {
       {RequestList.map((request) => (
         <tr key={request.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
           <td className="px-6 py-4">
-            <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 text-slate-700">
-              #{request.id}
-            </span>
-          </td>
-          <td className="px-6 py-4">
             <div className="flex items-center gap-3 max-w-xs">
               <div className="flex flex-col min-w-0 flex-1">
                 <span className="text-sm font-medium text-slate-800 truncate"
@@ -132,7 +127,6 @@ function Tablerequest() {
           </td>
           <td className="px-6 py-4">
             <span className="inline-flex items-center gap-1.5 text-sm text-slate-700">
-
               {request.quantity}
             </span>
           </td>
@@ -143,23 +137,17 @@ function Tablerequest() {
           </td>
           <td className="px-6 py-4">
             <div className="flex items-center gap-1.5 text-sm text-slate-500">
-              <Date datestring={request.created_at} />
+              <span className="bg-blue-100 text-blue-500 inline-flex items-center px-3 py-1 rounded-full text-xs font-medium">
+                {request.status}
+              </span>
             </div>
           </td>
           <td className="px-6 py-4">
             <div className="flex items-center gap-2">
               <button className="p-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-all duration-200 hover:scale-105"
                 title="View details" >
-                <svg className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor" >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -170,12 +158,7 @@ function Tablerequest() {
               </button>
               <button className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105"
                 title="Delete request" >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
+                <svg className="w-4 h-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"

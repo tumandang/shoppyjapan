@@ -116,10 +116,10 @@ function Header() {
 
           <div className="hidden lg:flex items-center gap-3">
             <Link
-              href={`/${locale}/link-form`}
+              href={`/${locale}/dashboard/wishlist`}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
             >
-              <Link2
+              <Heart
                 size={24}
                 className="text-gray-700 group-hover:text-orange-500 transition-colors"
               />

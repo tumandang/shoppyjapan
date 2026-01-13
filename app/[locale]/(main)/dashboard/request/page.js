@@ -36,35 +36,6 @@ export default function WishlistPage(){
     }
     }, [user, loading, router]);
 
-    const items = [
-    {
-      image: "/Product_Example/arsenal_jersey.webp",
-      name: "Arsenal Home Kit 25/26",
-      price: 259,
-      size: "Medium",
-      color: "None",
-      shop: "Rakuten",
-      qty: 1,
-    },
-    {
-      image: "/Product_Example/arsenal_jersey.webp",
-      name: "Arsenal Home Kit 25/26",
-      price: 259,
-      size: "Medium",
-      color: "None",
-      shop: "Rakuten",
-      qty: 1,
-    },
-    {
-      image: "/Product_Example/arsenal_jersey.webp",
-      name: "Arsenal Home Kit 25/26",
-      price: 259,
-      size: "Medium",
-      color: "None",
-      shop: "Rakuten",
-      qty: 1,
-    },
-  ];
     if (loading) {
     return (
         <div className="flex min-h-screen items-center justify-center bg-background">

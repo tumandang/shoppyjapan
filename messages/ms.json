@@ -239,6 +239,28 @@
 
     "mercari_card": "Pasaran sekunder untuk kad koleksi dan barangan hobi",
     "rakuma": "Platform jual semula untuk kad permainan dan barangan hobi"
+  },
+    "DahsboardTrans" : {
+    "sidebar" : {
+      "DashboardText": "Papan Pemuka Saya",
+      "ProfileText": "Profil Saya",
+      "InsertURlText": "Masukkan URL",
+      "RequestText": "Permintaan Saya",
+      "OrdersText": "Pesanan Saya",
+      "Wishlist": "Senarai Hajat Saya"
+    },
+    "profile": {
+      "profileText": "Profil Saya",
+      "profileDesc": "Urus maklumat akaun dan tetapan anda",
+      "totalOrdersText": "Jumlah Pesanan",
+      "totalwishlistext": "Item Wishlist",
+      "totalSpentText": "Jumlah Perbelanjaan",
+      "accountText": "Maklumat Akaun",
+      "shippingText": "Alamat Penghantaran",
+      "editBtn": "Edit Profil",
+      "changeBtn": "Tukar Kata Laluan",
+      "logoutBtn": "Log Keluar"
+    } 
   }
 
  

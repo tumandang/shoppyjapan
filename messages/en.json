@@ -248,6 +248,30 @@
 
     "mercari_card": "Secondary marketplace for trading cards and collectibles",
     "rakuma": "Resale platform for trading cards and hobby items"
+  },
+
+  "DahsboardTrans" : {
+    "sidebar" : {
+      "DashboardText" : "My Dashboard",
+      "ProfileText" : "My Profile",
+      "InsertURlText" : "Insert URL",
+      "RequestText" : "My Request",
+      "OrdersText" : "My Orders",
+      "Wishlist" : "My Wishlist"
+    },
+    "profile" : {
+      "profileText" : " My Profile",
+      "profileDesc" : "Manage your account information and preferences",
+      "totalOrdersText" : "TotalOrders",
+      "totalwishlistext" : "Wishlist Items",
+      "totalSpentText" : "Total Spent",
+      "accountText" : "Account information",
+      "shippingText" : "Shipping Address",
+      "editBtn" : "Edit Profile",
+      "changeBtn" : "Change Password",
+      "logoutBtn" : "Logout"
+
+    }
   }
 
 

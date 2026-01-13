@@ -3,7 +3,7 @@ import React ,{useState} from 'react'
 import { ArrowLeftToLine, ArrowRightToLine, Calculator, Heart, Link2, Paperclip, ShoppingBasketIcon, User } from "lucide-react";
 import Link from "next/link";
 import { Lexend, DM_Sans } from "next/font/google";
-import { useLocale } from 'next-intl';
+import { useLocale ,useTranslations } from 'next-intl';
 
 const lexend = Lexend({
   variable: "--font-Lexend",
@@ -24,12 +24,13 @@ const dm_sans_bold = DM_Sans({
 });
 function Asidedashboard() {
   const locale = useLocale();
+  const aside = useTranslations('DahsboardTrans');
   const [expanded, setexpanded] = useState(true);
   return (
     <aside className={`transition-all duration-300 border-r pr-4 ${expanded ? "w-64" : "w-14"}`}>
           <div className="flexBetween pb-3 border-b">
             <h4 className={`text-lg font-semibold transition-all ${dm_sans_bold.className} ${expanded ? "opacity-100" : "opacity-0 w-0"}`}>
-              My Dashboard
+              {aside('sidebar.DashboardText')}
             </h4>
             <button
               onClick={() => setexpanded((prev) => !prev)}
@@ -47,7 +48,7 @@ function Asidedashboard() {
                       </span>
                       {expanded && (
                         <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
-                          My Profile
+                          {aside('sidebar.ProfileText')}
                         </p>
                       )}
                     </div>
@@ -59,7 +60,7 @@ function Asidedashboard() {
                       </span>
                       {expanded && (
                         <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
-                          Insert URL
+                          {aside('sidebar.InsertURlText')}
                         </p>
                       )}
                     </div>
@@ -71,7 +72,7 @@ function Asidedashboard() {
                       </span>
                       {expanded && (
                         <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
-                          My Request
+                          {aside('sidebar.RequestText')}
                         </p>
                       )}
                     </div>
@@ -83,7 +84,7 @@ function Asidedashboard() {
                       </span>
                       {expanded && (
                         <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
-                          My Orders
+                           {aside('sidebar.OrdersText')}
                         </p>
                       )}
                     </div>
@@ -95,19 +96,7 @@ function Asidedashboard() {
                       </span>
                       {expanded && (
                         <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
-                          Wishlist
-                        </p>
-                      )}
-                    </div>
-              </Link>
-              <Link href={`/${locale}/shipping_calculator`}>
-                    <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
-                      <span className="text-gray-600">
-                        <Calculator/>
-                      </span>
-                      {expanded && (
-                        <p className={`text-sm text-gray-700 font-medium ${lexend.className}`}>
-                          Calculate Courier Fee
+                          {aside('sidebar.Wishlist')}
                         </p>
                       )}
                     </div>

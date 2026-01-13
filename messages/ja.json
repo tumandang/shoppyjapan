@@ -241,6 +241,29 @@
 
     "mercari_card": "トレカやコレクター向けのフリマサービス",
     "rakuma": "トレカやホビー向けのリセールサービス"
+  },
+
+      "DahsboardTrans" : {
+      "sidebar": {
+          "DashboardText": "マイダッシュボード",
+          "ProfileText": "マイプロフィール",
+          "InsertURlText": "URLを入力",
+          "RequestText": "マイリクエスト",
+          "OrdersText": "マイ注文",
+          "Wishlist": "ウィッシュリスト"
+        },
+      "profile": {
+          "profileText": "マイプロフィール",
+          "profileDesc": "アカウント情報と設定を管理します",
+          "totalOrdersText": "注文数",
+          "totalwishlistext": "ウィッシュリスト",
+          "totalSpentText": "合計支出額",
+          "accountText": "アカウント情報",
+          "shippingText": "配送先住所",
+          "editBtn": "プロフィール編集",
+          "changeBtn": "パスワード変更",
+          "logoutBtn": "ログアウト"
+       }
   }
 
 

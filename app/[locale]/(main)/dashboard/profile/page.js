@@ -16,9 +16,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAuth } from "@/context/AuthContext";
-import { ArrowLeftToLine, ArrowRightToLine, Calculator, Heart, Link2, ShoppingBasketIcon, User } from "lucide-react";
-import Link from "next/link";
-import axiosInstance from "@/lib/axios";
+import { useTranslations } from "next-intl";
+
 import Asidedashboard from "../components/asidedahsbord";
 
 const lexend = Lexend({
@@ -42,6 +41,7 @@ const dm_sans_bold = DM_Sans({
 export default function ProfilePage() {
   const { user, loading, logout,editprofile } = useAuth();
   const router = useRouter();
+  const profile = useTranslations('DahsboardTrans');
   const [expanded, setexpanded] = useState(true);
   useEffect(() => {
     if (!loading && !user) {
@@ -116,23 +116,23 @@ export default function ProfilePage() {
         <div className="mx-auto max-w-4xl flex-1">
         
           <div className="mb-8">
-            <h1 className={`${lexend.className} text-4xl mb-2`}>My Profile</h1>
+            <h1 className={`${lexend.className} text-4xl mb-2`}>{profile('profile.profileText')}</h1>
             <p className={`${dm_sans.className} text-gray-600`}>
-              Manage your account information and preferences
+              {profile('profile.profileDesc')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-7">
             <div className="bg-white rounded-lg border p-6 text-center">
               <div className="text-3xl font-bold text-primary mb-2">0</div>
-              <p className={`${dm_sans.className} text-gray-600`}>Total Orders</p>
+              <p className={`${dm_sans.className} text-gray-600`}>{profile('profile.totalOrdersText')}</p>
             </div>
             <div className="bg-white rounded-lg border p-6 text-center">
               <div className="text-3xl font-bold text-primary mb-2">0</div>
-              <p className={`${dm_sans.className} text-gray-600`}>Wishlist Items</p>
+              <p className={`${dm_sans.className} text-gray-600`}>{profile('profile.totalwishlistext')}</p>
             </div>
             <div className="bg-white rounded-lg border p-6 text-center">
               <div className="text-3xl font-bold text-primary mb-2">RM 0.00</div>
-              <p className={`${dm_sans.className} text-gray-600`}>Total Spent</p>
+              <p className={`${dm_sans.className} text-gray-600`}>{profile('profile.totalSpentText')}</p>
             </div>
           </div>            
                       
@@ -155,7 +155,7 @@ export default function ProfilePage() {
          
               <div>
                 <h3 className={`${lexend.className} text-xl mb-4 pb-2 border-b`}>
-                  Account Information
+                  {profile('profile.accountText')}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -197,7 +197,7 @@ export default function ProfilePage() {
               {user.customer?.address && (
                 <div>
                   <h3 className={`${lexend.className} text-xl mb-4 pb-2 border-b`}>
-                    Shipping Address
+                    {profile('profile.shippingText')}
                   </h3>
                   <div className="bg-gray-50 rounded-lg p-6">
                     <p className={`${dm_sans.className} text-lg leading-relaxed`}>
@@ -230,7 +230,7 @@ export default function ProfilePage() {
                   
                     <DialogTrigger asChild>
                       <Button variant="outline" className="flex-1 cursor-pointer">
-                        Edit Profile
+                        {profile('profile.editBtn')}
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
@@ -301,13 +301,13 @@ export default function ProfilePage() {
                   
                 </Dialog>
                 <Button variant="outline" className="flex-1 cursor-pointer">
-                  Change Password
+                  {profile('profile.changeBtn')}
                 </Button>
                 <Button 
                   onClick={handleLogout} 
                   variant="destructive"
                   className="px-8 cursor-pointer">
-                  Logout
+                  {profile('profile.logoutBtn')}
                 </Button>
               </div>
             </div>

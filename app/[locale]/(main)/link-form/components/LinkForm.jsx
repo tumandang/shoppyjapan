@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-
+import { useLocale,useTranslations } from "next-intl";
 import { Lexend, DM_Sans } from "next/font/google";
 import axiosInstance from "@/lib/axios";
 import {
@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -42,11 +42,14 @@ function LinkForm() {
     customer_notes : "",
 
   });
+  const router = useRouter();
+  const locale = useLocale();
   const handlesubmit = async (e)=> {
     e.preventDefault();
     try{
       await axiosInstance.post ('/requestproduct',form);
       alert ('Request successfully sent');
+      router.push(`/${locale}/dashboard/request`); 
       
     }
     catch(error){

@@ -86,7 +86,7 @@ export default function WishlistPage(){
 
                 <div className="mx-auto max-w-4xl flex-1">
                     <div className="mb-8">
-                        <h1 className={`${lexend.className} text-4xl mb-2`}>Wishlist</h1>
+                        <h1 className={`${lexend.className} text-4xl mb-2`}>Request</h1>
                         <p className={`${dm_sans.className} text-gray-600`}>
                         Your Request product
                         </p>
@@ -116,7 +116,10 @@ export default function WishlistPage(){
                                                         Quantity
                                                     </th>
                                                     <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Price
+                                                         Item Price
+                                                    </th>
+                                                    <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
+                                                         Total Quote
                                                     </th>
                                                     <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
                                                         Status

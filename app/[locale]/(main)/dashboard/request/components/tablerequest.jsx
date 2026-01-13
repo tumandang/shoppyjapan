@@ -1,15 +1,22 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { requestApi } from "@/lib/api";
 import { Spinner } from "@/components/ui/spinner";
 import { useAuth } from "@/context/AuthContext";
-import Date from "@/components/Date";
-
 function Tablerequest() {
   const [RequestList, setRequestList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { requestlist } = useAuth();
+  const statusStyles = {
+    new: 'bg-purple-100 text-purple-700',
+    quoted: 'bg-blue-100 text-blue-700',
+    pending_payment: 'bg-yellow-100 text-yellow-700',
+    paid: 'bg-emerald-100 text-emerald-700',
+    processing: 'bg-orange-100 text-orange-700',
+    completed: 'bg-green-100 text-green-700',
+    cancelled: 'bg-red-100 text-red-700'
+};
+
 
   useEffect(() => {
     const loadrequest = async () => {
@@ -132,12 +139,23 @@ function Tablerequest() {
           </td>
           <td className="px-6 py-4">
             <span className="text-sm font-semibold text-slate-800">
-              RM {request.product_price}
+              ¥{request.product_price}
             </span>
           </td>
           <td className="px-6 py-4">
+            {request.quoted_total !== null ? (
+              <span className="text-sm font-semibold text-slate-800">
+                ¥{request.quoted_total}
+              </span>
+            ) : (
+              <span className="text-sm font-semibold text-slate-400">
+                -
+              </span>
+            )}
+          </td>
+          <td className="px-6 py-4">
             <div className="flex items-center gap-1.5 text-sm text-slate-500">
-              <span className="bg-blue-100 text-blue-500 inline-flex items-center px-3 py-1 rounded-full text-xs font-medium">
+              <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium capitalize ${statusStyles[request.status.toLowerCase()]}`}>
                 {request.status}
               </span>
             </div>
@@ -156,17 +174,38 @@ function Tablerequest() {
                   />
                 </svg>
               </button>
-              <button className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105"
+              {/* Delete */}
+              {request.status === 'new' && (
+                <button className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105"
                 title="Delete request" >
-                <svg className="w-4 h-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor" >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                  />
+                  <svg className="w-4 h-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    />
+                  </svg>
+                </button>
+              )}
+              {request.status === 'quoted' && (
+                <>
+                <button className="p-2 rounded-lg bg-green-50 hover:bg-green-100 text-green-600 transition-all duration-200 hover:scale-105"
+                title="Accept request" >
+                <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
-              </button>
+
+                </button>
+                <button className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105"
+                title="Cancel request" >
+                <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+
+                </button>
+                </>
+              )}
             </div>
           </td>
         </tr>

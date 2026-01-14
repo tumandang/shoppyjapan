@@ -7,6 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import Image from "next/image";
 import Asidedashboard from "../components/asidedahsbord";
 import Tablerequest from "./components/tablerequest";
+import { TablerequestWithModal } from "./components/requestmodal";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
@@ -101,7 +102,7 @@ export default function WishlistPage(){
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <Tablerequest ></Tablerequest>
+                                                <TablerequestWithModal></TablerequestWithModal>
                                             </tbody>
                                         </table>
                                     </div>

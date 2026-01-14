@@ -2,9 +2,15 @@
 import React, { useEffect, useState } from "react";
 import { Spinner } from "@/components/ui/spinner";
 import { useAuth } from "@/context/AuthContext";
-
-
-function RequestModal({ modalType, selectedRequest, onClose, onDelete, onAccept, onCancel }) {
+import axiosInstance from "@/lib/axios";
+function RequestModal({
+  modalType,
+  selectedRequest,
+  onClose,
+  onDelete,
+  onAccept,
+  onCancel,
+}) {
   if (!modalType || !selectedRequest) return null;
 
   const statusStyles = {
@@ -16,92 +22,165 @@ function RequestModal({ modalType, selectedRequest, onClose, onDelete, onAccept,
     completed: "bg-green-100 text-green-700",
     cancelled: "bg-red-100 text-red-700",
   };
+  const JPY_TO_MYR_RATE = 0.025;
+  function convertJPYtoMYR(jpy) {
+    if (!jpy) {
+      return 0;
+    }
+    return (jpy * JPY_TO_MYR_RATE).toFixed(2);
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-     
-      <div 
-        className="absolute inset-0 bg-black bg-opacity-50 transition-opacity"
-        onClick={onClose}
-      ></div>
+      <div className="absolute inset-0 bg-black opacity-50 transition-opacity"
+        onClick={onClose}></div>
 
-     
       <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 z-10 animate-fadeIn">
-     
-        {modalType === 'view' && (
+        {modalType === "view" && (
           <>
             <div className="p-6 border-b border-slate-200">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold text-slate-800">Request Details</h3>
+                <h3 className="text-xl font-semibold text-slate-800">
+                  Request Details
+                </h3>
                 <button
                   onClick={onClose}
                   className="text-slate-400 hover:text-slate-600 transition-colors"
                 >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
               </div>
             </div>
             <div className="p-6 space-y-4">
               <div>
-                <label className="text-xs font-semibold text-slate-500 uppercase">Product Name</label>
-                <p className="text-sm text-slate-800 mt-1">{selectedRequest.product_name}</p>
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-slate-500 uppercase">Market</label>
-                <p className="text-sm text-slate-800 mt-1">{selectedRequest.market_name}</p>
+                <label className="text-xs font-semibold text-slate-500 uppercase">
+                  Product Name
+                </label>
+                <p className="text-sm text-slate-800 mt-1">
+                  {selectedRequest.product_name}
+                </p>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-semibold text-slate-500 uppercase">Quantity</label>
-                  <p className="text-sm text-slate-800 mt-1">{selectedRequest.quantity}</p>
+                  <label className="text-xs font-semibold text-slate-500 uppercase">
+                    Market
+                  </label>
+                  <p className="text-sm text-slate-800 mt-1">
+                    {selectedRequest.market_name}
+                  </p>
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-slate-500 uppercase">Item Price</label>
-                  <p className="text-sm text-slate-800 mt-1">¥{selectedRequest.product_price}</p>
+                  <label className="text-xs font-semibold text-slate-500 uppercase">
+                    Status
+                  </label>
+                  <div className="mt-1">
+                    <span
+                      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium capitalize ${
+                        statusStyles[selectedRequest.status.toLowerCase()]
+                      }`}
+                    >
+                      {selectedRequest.status}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-semibold text-slate-500 uppercase">
+                    Quantity
+                  </label>
+                  <p className="text-sm text-slate-800 mt-1">
+                    {selectedRequest.quantity}
+                  </p>
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-500 uppercase">
+                    Item Price
+                  </label>
+                  <p className="text-sm text-slate-800 mt-1">
+                    ¥{selectedRequest.product_price}
+                  </p>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-semibold text-slate-500 uppercase">
+                    Total Quote
+                  </label>
+                  <p className="text-sm text-slate-800 mt-1">
+                    {selectedRequest.quoted_total !== null
+                      ? `¥${selectedRequest.quoted_total}`
+                      : "Not quoted yet"}
+                  </p>
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-500 uppercase">
+                    Estimate MYR
+                  </label>
+                  <p className="text-sm text-slate-800 mt-1">
+                    {selectedRequest.quoted_total !== null
+                      ? `RM ${convertJPYtoMYR(selectedRequest.quoted_total)}`
+                      : "Not quoted yet"}
+                  </p>
                 </div>
               </div>
               <div>
-                <label className="text-xs font-semibold text-slate-500 uppercase">Total Quote</label>
+                <label className="text-xs font-semibold text-slate-500 uppercase">
+                  Notes from admin
+                </label>
                 <p className="text-sm text-slate-800 mt-1">
-                  {selectedRequest.quoted_total !== null ? `¥${selectedRequest.quoted_total}` : 'Not quoted yet'}
+                  {selectedRequest.admin_notes}
                 </p>
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-slate-500 uppercase">Status</label>
-                <div className="mt-1">
-                  <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium capitalize ${
-                    statusStyles[selectedRequest.status.toLowerCase()]
-                  }`}>
-                    {selectedRequest.status}
-                  </span>
-                </div>
               </div>
             </div>
             <div className="p-6 border-t border-slate-200 flex justify-end">
-              <button
-                onClick={onClose}
+              <button onClick={onClose}
                 className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-colors"
-              >
-                Close
+              > Close
               </button>
             </div>
           </>
         )}
 
-   
-        {modalType === 'delete' && (
+        {modalType === "delete" && (
           <>
             <div className="p-6">
               <div className="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full mb-4">
-                <svg className="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                <svg
+                  className="w-6 h-6 text-red-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-slate-800 text-center mb-2">Delete Request</h3>
+              <h3 className="text-xl font-semibold text-slate-800 text-center mb-2">
+                Delete Request
+              </h3>
               <p className="text-sm text-slate-600 text-center mb-6">
-                Are you sure you want to delete the request for <span className="font-semibold">{selectedRequest.product_name}</span>? This action cannot be undone.
+                Are you sure you want to delete the request for{" "}
+                <span className="font-semibold">
+                  {selectedRequest.product_name}
+                </span>
+                ? This action cannot be undone.
               </p>
               <div className="flex gap-3">
                 <button
@@ -121,18 +200,36 @@ function RequestModal({ modalType, selectedRequest, onClose, onDelete, onAccept,
           </>
         )}
 
-   
-        {modalType === 'accept' && (
+        {modalType === "accept" && (
           <>
             <div className="p-6">
               <div className="flex items-center justify-center w-12 h-12 mx-auto bg-green-100 rounded-full mb-4">
-                <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-6 h-6 text-green-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-slate-800 text-center mb-2">Accept Quote</h3>
+              <h3 className="text-xl font-semibold text-slate-800 text-center mb-2">
+                Accept Quote
+              </h3>
               <p className="text-sm text-slate-600 text-center mb-6">
-                Are you sure you want to accept the quote of <span className="font-semibold">¥{selectedRequest.quoted_total}</span> for {selectedRequest.product_name}?
+                Are you sure you want to accept the quote of{" "}
+                <span className="font-semibold">
+                  {" "}
+                  {selectedRequest.quoted_total !== null
+                    ? `RM ${convertJPYtoMYR(selectedRequest.quoted_total)}`
+                    : "Not quoted yet"}
+                </span>{" "}
+                for {selectedRequest.product_name}?
               </p>
               <div className="flex gap-3">
                 <button
@@ -152,17 +249,33 @@ function RequestModal({ modalType, selectedRequest, onClose, onDelete, onAccept,
           </>
         )}
 
-        {modalType === 'cancel' && (
+        {modalType === "cancel" && (
           <>
             <div className="p-6">
               <div className="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full mb-4">
-                <svg className="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-6 h-6 text-red-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-slate-800 text-center mb-2">Cancel Request</h3>
+              <h3 className="text-xl font-semibold text-slate-800 text-center mb-2">
+                Cancel Request
+              </h3>
               <p className="text-sm text-slate-600 text-center mb-6">
-                Are you sure you want to cancel the request for <span className="font-semibold">{selectedRequest.product_name}</span>?
+                Are you sure you want to cancel the request for{" "}
+                <span className="font-semibold">
+                  {selectedRequest.product_name}
+                </span>
+                ?
               </p>
               <div className="flex gap-3">
                 <button
@@ -200,6 +313,7 @@ function Tablerequest({ onOpenModal }) {
     processing: "bg-orange-100 text-orange-700",
     completed: "bg-green-100 text-green-700",
     cancelled: "bg-red-100 text-red-700",
+    reject: "bg-red-100 text-red-700",
   };
 
   useEffect(() => {
@@ -360,11 +474,9 @@ function Tablerequest({ onOpenModal }) {
           </td>
           <td className="px-6 py-4">
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => onOpenModal('view', request)}
+              <button  onClick={() => onOpenModal("view", request)}
                 className="p-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-all duration-200 hover:scale-105 cursor-pointer"
-                title="View details"
-              >
+                title="View details" >
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -385,10 +497,10 @@ function Tablerequest({ onOpenModal }) {
                   />
                 </svg>
               </button>
-              
+
               {request.status === "new" && (
                 <button
-                  onClick={() => onOpenModal('delete', request)}
+                  onClick={() => onOpenModal("delete", request)}
                   className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105 cursor-pointer"
                   title="Delete request"
                 >
@@ -411,11 +523,61 @@ function Tablerequest({ onOpenModal }) {
                   </svg>
                 </button>
               )}
-              
+              {request.status === "cancelled" && (
+                <button
+                  onClick={() => onOpenModal("delete", request)}
+                  className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105 cursor-pointer"
+                  title="Delete request"
+                >
+                  <svg
+                    className="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.3394 9.32245C16.7434 8.94589 16.7657 8.31312 16.3891 7.90911C16.0126 7.50509 15.3798 7.48283 14.9758 7.85938L12.0497 10.5866L9.32245 7.66048C8.94589 7.25647 8.31312 7.23421 7.90911 7.61076C7.50509 7.98731 7.48283 8.62008 7.85938 9.0241L10.5866 11.9502L7.66048 14.6775C7.25647 15.054 7.23421 15.6868 7.61076 16.0908C7.98731 16.4948 8.62008 16.5171 9.0241 16.1405L11.9502 13.4133L14.6775 16.3394C15.054 16.7434 15.6868 16.7657 16.0908 16.3891C16.4948 16.0126 16.5171 15.3798 16.1405 14.9758L13.4133 12.0497L16.3394 9.32245Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              )}
+              {request.status === "reject" && (
+                <button
+                  onClick={() => onOpenModal("delete", request)}
+                  className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105 cursor-pointer"
+                  title="Delete request"
+                >
+                  <svg
+                    className="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.3394 9.32245C16.7434 8.94589 16.7657 8.31312 16.3891 7.90911C16.0126 7.50509 15.3798 7.48283 14.9758 7.85938L12.0497 10.5866L9.32245 7.66048C8.94589 7.25647 8.31312 7.23421 7.90911 7.61076C7.50509 7.98731 7.48283 8.62008 7.85938 9.0241L10.5866 11.9502L7.66048 14.6775C7.25647 15.054 7.23421 15.6868 7.61076 16.0908C7.98731 16.4948 8.62008 16.5171 9.0241 16.1405L11.9502 13.4133L14.6775 16.3394C15.054 16.7434 15.6868 16.7657 16.0908 16.3891C16.4948 16.0126 16.5171 15.3798 16.1405 14.9758L13.4133 12.0497L16.3394 9.32245Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              )}
+
               {request.status === "quoted" && (
                 <>
                   <button
-                    onClick={() => onOpenModal('accept', request)}
+                    onClick={() => onOpenModal("accept", request)}
                     className="p-2 rounded-lg bg-green-50 hover:bg-green-100 text-green-600 transition-all duration-200 hover:scale-105 cursor-pointer"
                     title="Accept request"
                   >
@@ -438,29 +600,57 @@ function Tablerequest({ onOpenModal }) {
                     </svg>
                   </button>
                   <button
-                    onClick={() => onOpenModal('cancel', request)}
+                    onClick={() => onOpenModal("cancel", request)}
                     className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105 cursor-pointer"
                     title="Cancel request"
                   >
                     <svg
                       className="w-4 h-4"
-                      viewBox="0 0 24 24"
-                      fill="none"
                       xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
                     >
                       <path
-                        d="M16.3394 9.32245C16.7434 8.94589 16.7657 8.31312 16.3891 7.90911C16.0126 7.50509 15.3798 7.48283 14.9758 7.85938L12.0497 10.5866L9.32245 7.66048C8.94589 7.25647 8.31312 7.23421 7.90911 7.61076C7.50509 7.98731 7.48283 8.62008 7.85938 9.0241L10.5866 11.9502L7.66048 14.6775C7.25647 15.054 7.23421 15.6868 7.61076 16.0908C7.98731 16.4948 8.62008 16.5171 9.0241 16.1405L11.9502 13.4133L14.6775 16.3394C15.054 16.7434 15.6868 16.7657 16.0908 16.3891C16.4948 16.0126 16.5171 15.3798 16.1405 14.9758L13.4133 12.0497L16.3394 9.32245Z"
-                        fill="currentColor"
-                      />
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z"
-                        fill="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m6 4.125 2.25 2.25m0 0 2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"
                       />
                     </svg>
                   </button>
                 </>
+              )}
+
+              {request.status === "pending_payment" && (
+                  <>
+                  <button className="p-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-600 transition-all duration-200 hover:scale-105 cursor-pointer"
+                    title="Place Order">
+                    <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" >
+                      <path strokeLinecap="round" strokeLinejoin="round" 
+                      d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+                    </svg>
+
+                  </button>
+                   <button onClick={() => onOpenModal("cancel", request)}
+                    className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105 cursor-pointer"
+                    title="Cancel request">
+                    <svg
+                      className="w-4 h-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m6 4.125 2.25 2.25m0 0 2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"
+                      />
+                    </svg>
+                  </button>
+                  </>
               )}
             </div>
           </td>
@@ -470,9 +660,7 @@ function Tablerequest({ onOpenModal }) {
   );
 }
 
-
 export default Tablerequest;
-
 
 export function TablerequestWithModal() {
   const [selectedRequest, setSelectedRequest] = useState(null);
@@ -490,18 +678,74 @@ export function TablerequestWithModal() {
 
   const handleDelete = async () => {
     console.log("Deleting request:", selectedRequest.id);
+
+     try {
+         const response = await axiosInstance.post('/requestdelete', {
+           request_id: selectedRequest.id
+         });
+        
+        console.log("Delete success:", response.data);
+        
+        
+        window.location.reload();
+        
+      } catch (error) {
+        console.error("Delete failed:", error);
+        console.error("Error response:", error.response?.data);
+        
+        
+        alert(error.response?.data?.message || 'Failed to delete request');
+      }
+
+
     closeModal();
   };
 
   const handleAccept = async () => {
     console.log("Accepting request:", selectedRequest.id);
+     try {
+         const response = await axiosInstance.post('/requestaccept', {
+           request_id: selectedRequest.id
+         });
+        
+        console.log("Accept success:", response.data);
+        
+        
+        window.location.reload();
+        
+      } catch (error) {
+        console.error("Accept failed:", error);
+        console.error("Error response:", error.response?.data);
+        
+        
+        alert(error.response?.data?.message || 'Failed to cancel request');
+      }
     closeModal();
   };
 
   const handleCancel = async () => {
-    console.log("Canceling request:", selectedRequest.id);
-    closeModal();
-  };
+      console.log("Canceling request:", selectedRequest.id);
+      
+      try {
+         const response = await axiosInstance.post('/requestcancel', {
+           request_id: selectedRequest.id
+         });
+        
+        console.log("Cancel success:", response.data);
+        
+        
+        window.location.reload();
+        
+      } catch (error) {
+        console.error("Cancel failed:", error);
+        console.error("Error response:", error.response?.data);
+        
+        
+        alert(error.response?.data?.message || 'Failed to cancel request');
+      }
+      
+      closeModal();
+    };
 
   return (
     <>

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Spinner } from "@/components/ui/spinner";
 import { useAuth } from "@/context/AuthContext";
+
 import axiosInstance from "@/lib/axios";
 function RequestModal({
   modalType,
@@ -22,6 +23,7 @@ function RequestModal({
     completed: "bg-green-100 text-green-700",
     cancelled: "bg-red-100 text-red-700",
   };
+  const { user } = useAuth();
   const JPY_TO_MYR_RATE = 0.025;
   function convertJPYtoMYR(jpy) {
     if (!jpy) {
@@ -32,8 +34,10 @@ function RequestModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black opacity-50 transition-opacity"
-        onClick={onClose}></div>
+      <div
+        className="absolute inset-0 bg-black opacity-50 transition-opacity"
+        onClick={onClose}
+      ></div>
 
       <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 z-10 animate-fadeIn">
         {modalType === "view" && (
@@ -146,9 +150,12 @@ function RequestModal({
               </div>
             </div>
             <div className="p-6 border-t border-slate-200 flex justify-end">
-              <button onClick={onClose}
+              <button
+                onClick={onClose}
                 className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-colors"
-              > Close
+              >
+                {" "}
+                Close
               </button>
             </div>
           </>
@@ -293,6 +300,145 @@ function RequestModal({
               </div>
             </div>
           </>
+        )}
+        {modalType === "pending_payment" && (
+          <div className="p-6 space-y-6">
+          
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-green-100 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4 text-green-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+                  </svg>
+
+                </div>
+                <h3 className="text-lg font-semibold text-slate-800">
+                  Order Summary
+                </h3>
+              </div>
+
+              <div className="bg-slate-50 rounded-2xl p-5 space-y-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase text-slate-500">
+                    Product
+                  </p>
+                  <p className="text-sm font-medium text-slate-800">
+                    {selectedRequest.product_name}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-xs uppercase text-slate-500">Market</p>
+                    <p className="text-sm">{selectedRequest.market_name}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase text-slate-500">Quantity</p>
+                    <p className="text-sm">{selectedRequest.quantity}</p>
+                  </div>
+                </div>
+
+                <div className="border-t pt-4 space-y-1">
+                  <div className="flex justify-between">
+                    <span className="text-sm text-slate-500">Total (JPY)</span>
+                    <span className="font-semibold text-slate-800">
+                      {selectedRequest.quoted_total !== null
+                        ? `¥${selectedRequest.quoted_total}`
+                        : "—"}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between">
+                    <span className="text-sm text-slate-500">
+                      Estimated (MYR)
+                    </span>
+                    <span className="font-semibold text-green-600">
+                      {selectedRequest.quoted_total !== null
+                        ? `RM ${convertJPYtoMYR(selectedRequest.quoted_total)}`
+                        : "Not quoted"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+         
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-orange-100 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4 text-orange-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                  </svg>
+
+                </div>
+                <h3 className="text-lg font-semibold text-slate-800">
+                  Shipping Address
+                </h3>
+              </div>
+
+              <div className="bg-slate-50 rounded-2xl p-5 space-y-3">
+                <div>
+                  <p className="text-xs uppercase font-semibold text-slate-500">
+                    Full Name
+                  </p>
+                  <p className="text-sm font-medium text-slate-800">
+                    {user.customer.Fullname}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-xs uppercase text-slate-500">Email</p>
+                    <p className="text-sm">{user.email}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase text-slate-500">Phone</p>
+                    <p className="text-sm">{user.customer.Notel}</p>
+                  </div>
+                </div>
+
+                <div className="text-sm text-slate-700 leading-relaxed bg-white rounded-xl p-4">
+                  {user.customer.address.address1}
+                  {user.customer.address.address2 && (
+                    <>
+                      <br />
+                      {user.customer.address.address2}
+                    </>
+                  )}
+                  {user.customer.address.address3 && (
+                    <>
+                      <br />
+                      {user.customer.address.address3}
+                    </>
+                  )}
+                  <br />
+                  {user.customer.address.postcode} {user.customer.address.city}
+                  <br />
+                  {user.customer.address.state}, {user.customer.address.country}
+                </div>
+              </div>
+            </div>
+
+    
+            <div className="flex gap-3 pt-2">
+              <button
+                onClick={onClose}
+                className="flex-1 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition cursor-pointer"
+              >
+                Cancel
+              </button>
+
+              <button disabled={selectedRequest.quoted_total === null}
+                className={`flex-1 py-3 rounded-xl font-semibold transition cursor-pointer
+            ${selectedRequest.quoted_total !== null
+              ? "bg-green-600 hover:bg-green-700 text-white shadow-md"
+              : "bg-slate-300 text-slate-500 cursor-not-allowed"
+          }`}
+              >
+                Continue to Payment
+              </button>
+            </div>
+          </div>
         )}
       </div>
     </div>
@@ -474,9 +620,11 @@ function Tablerequest({ onOpenModal }) {
           </td>
           <td className="px-6 py-4">
             <div className="flex items-center gap-2">
-              <button  onClick={() => onOpenModal("view", request)}
+              <button
+                onClick={() => onOpenModal("view", request)}
                 className="p-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-all duration-200 hover:scale-105 cursor-pointer"
-                title="View details" >
+                title="View details"
+              >
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -623,18 +771,32 @@ function Tablerequest({ onOpenModal }) {
               )}
 
               {request.status === "pending_payment" && (
-                  <>
-                  <button className="p-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-600 transition-all duration-200 hover:scale-105 cursor-pointer"
-                    title="Place Order">
-                    <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" >
-                      <path strokeLinecap="round" strokeLinejoin="round" 
-                      d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+                <>
+                  <button
+                    onClick={() => onOpenModal("pending_payment", request)}
+                    className="p-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-600 transition-all duration-200 hover:scale-105 cursor-pointer"
+                    title="Pay Now"
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"
+                      />
                     </svg>
-
                   </button>
-                   <button onClick={() => onOpenModal("cancel", request)}
+                  <button
+                    onClick={() => onOpenModal("cancel", request)}
                     className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105 cursor-pointer"
-                    title="Cancel request">
+                    title="Cancel request"
+                  >
                     <svg
                       className="w-4 h-4"
                       xmlns="http://www.w3.org/2000/svg"
@@ -650,7 +812,7 @@ function Tablerequest({ onOpenModal }) {
                       />
                     </svg>
                   </button>
-                  </>
+                </>
               )}
             </div>
           </td>
@@ -679,73 +841,63 @@ export function TablerequestWithModal() {
   const handleDelete = async () => {
     console.log("Deleting request:", selectedRequest.id);
 
-     try {
-         const response = await axiosInstance.post('/requestdelete', {
-           request_id: selectedRequest.id
-         });
-        
-        console.log("Delete success:", response.data);
-        
-        
-        window.location.reload();
-        
-      } catch (error) {
-        console.error("Delete failed:", error);
-        console.error("Error response:", error.response?.data);
-        
-        
-        alert(error.response?.data?.message || 'Failed to delete request');
-      }
+    try {
+      const response = await axiosInstance.post("/requestdelete", {
+        request_id: selectedRequest.id,
+      });
 
+      console.log("Delete success:", response.data);
+
+      window.location.reload();
+    } catch (error) {
+      console.error("Delete failed:", error);
+      console.error("Error response:", error.response?.data);
+
+      alert(error.response?.data?.message || "Failed to delete request");
+    }
 
     closeModal();
   };
 
   const handleAccept = async () => {
     console.log("Accepting request:", selectedRequest.id);
-     try {
-         const response = await axiosInstance.post('/requestaccept', {
-           request_id: selectedRequest.id
-         });
-        
-        console.log("Accept success:", response.data);
-        
-        
-        window.location.reload();
-        
-      } catch (error) {
-        console.error("Accept failed:", error);
-        console.error("Error response:", error.response?.data);
-        
-        
-        alert(error.response?.data?.message || 'Failed to cancel request');
-      }
+    try {
+      const response = await axiosInstance.post("/requestaccept", {
+        request_id: selectedRequest.id,
+      });
+
+      console.log("Accept success:", response.data);
+
+      window.location.reload();
+    } catch (error) {
+      console.error("Accept failed:", error);
+      console.error("Error response:", error.response?.data);
+
+      alert(error.response?.data?.message || "Failed to cancel request");
+    }
     closeModal();
   };
 
   const handleCancel = async () => {
-      console.log("Canceling request:", selectedRequest.id);
-      
-      try {
-         const response = await axiosInstance.post('/requestcancel', {
-           request_id: selectedRequest.id
-         });
-        
-        console.log("Cancel success:", response.data);
-        
-        
-        window.location.reload();
-        
-      } catch (error) {
-        console.error("Cancel failed:", error);
-        console.error("Error response:", error.response?.data);
-        
-        
-        alert(error.response?.data?.message || 'Failed to cancel request');
-      }
-      
-      closeModal();
-    };
+    console.log("Canceling request:", selectedRequest.id);
+
+    try {
+      const response = await axiosInstance.post("/requestcancel", {
+        request_id: selectedRequest.id,
+      });
+
+      console.log("Cancel success:", response.data);
+
+      window.location.reload();
+    } catch (error) {
+      console.error("Cancel failed:", error);
+      console.error("Error response:", error.response?.data);
+
+      alert(error.response?.data?.message || "Failed to cancel request");
+    }
+
+    closeModal();
+  };
 
   return (
     <>

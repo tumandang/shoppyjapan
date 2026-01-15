@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Spinner } from "@/components/ui/spinner";
 import { useAuth } from "@/context/AuthContext";
-
+import { useLocale } from "next-intl";
 import axiosInstance from "@/lib/axios";
 function RequestModal({
   modalType,
@@ -11,6 +11,7 @@ function RequestModal({
   onDelete,
   onAccept,
   onCancel,
+  onPayment
 }) {
   if (!modalType || !selectedRequest) return null;
 
@@ -24,6 +25,7 @@ function RequestModal({
     cancelled: "bg-red-100 text-red-700",
   };
   const { user } = useAuth();
+
   const JPY_TO_MYR_RATE = 0.025;
   function convertJPYtoMYR(jpy) {
     if (!jpy) {
@@ -31,6 +33,7 @@ function RequestModal({
     }
     return (jpy * JPY_TO_MYR_RATE).toFixed(2);
   }
+  
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -135,7 +138,7 @@ function RequestModal({
                   </label>
                   <p className="text-sm text-slate-800 mt-1">
                     {selectedRequest.quoted_total !== null
-                      ? `RM ${convertJPYtoMYR(selectedRequest.quoted_total)}`
+                      ? `RM ${selectedRequest.total_myr}`
                       : "Not quoted yet"}
                   </p>
                 </div>
@@ -233,7 +236,7 @@ function RequestModal({
                 <span className="font-semibold">
                   {" "}
                   {selectedRequest.quoted_total !== null
-                    ? `RM ${convertJPYtoMYR(selectedRequest.quoted_total)}`
+                    ? `RM ${selectedRequest.total_myr}`
                     : "Not quoted yet"}
                 </span>{" "}
                 for {selectedRequest.product_name}?
@@ -307,8 +310,8 @@ function RequestModal({
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-green-100 rounded-full">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4 text-green-600">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-green-600">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
                   </svg>
 
                 </div>
@@ -354,7 +357,7 @@ function RequestModal({
                     </span>
                     <span className="font-semibold text-green-600">
                       {selectedRequest.quoted_total !== null
-                        ? `RM ${convertJPYtoMYR(selectedRequest.quoted_total)}`
+                        ? `RM ${selectedRequest.total_myr}`
                         : "Not quoted"}
                     </span>
                   </div>
@@ -366,8 +369,8 @@ function RequestModal({
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-orange-100 rounded-full">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4 text-orange-600">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-orange-600">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
                   </svg>
 
                 </div>
@@ -428,7 +431,7 @@ function RequestModal({
                 Cancel
               </button>
 
-              <button disabled={selectedRequest.quoted_total === null}
+              <button disabled={selectedRequest.quoted_total === null} onClick={onPayment}
                 className={`flex-1 py-3 rounded-xl font-semibold transition cursor-pointer
             ${selectedRequest.quoted_total !== null
               ? "bg-green-600 hover:bg-green-700 text-white shadow-md"
@@ -827,7 +830,7 @@ export default Tablerequest;
 export function TablerequestWithModal() {
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [modalType, setModalType] = useState(null);
-
+  const locale = useLocale();
   const openModal = (type, request) => {
     setModalType(type);
     setSelectedRequest(request);
@@ -858,7 +861,26 @@ export function TablerequestWithModal() {
 
     closeModal();
   };
+  const payNow = async () => {
+    
+    try{
+      const response = await axiosInstance.post("/stripe/checkout", {
+        request_id: selectedRequest.id,
+        locale : locale     
+      });
 
+      window.location.href = response.data.checkout_url;
+    }
+    catch(error){
+      console.error("Payment failed:", error);
+      console.error("Error response:", error.response?.data);
+
+      alert(error.response?.data?.message || "Failed to cancel request");
+    }
+
+   
+    
+  };
   const handleAccept = async () => {
     console.log("Accepting request:", selectedRequest.id);
     try {
@@ -909,6 +931,7 @@ export function TablerequestWithModal() {
         onDelete={handleDelete}
         onAccept={handleAccept}
         onCancel={handleCancel}
+        onPayment={payNow}
       />
     </>
   );

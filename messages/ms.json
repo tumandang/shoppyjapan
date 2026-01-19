@@ -261,6 +261,18 @@
       "changeBtn": "Tukar Kata Laluan",
       "logoutBtn": "Log Keluar"
     } 
+  },
+
+   "payment": {
+    "successTitle": "Pembayaran Berjaya",
+    "successDesc": "Terima kasih atas pembayaran anda. Pesanan anda telah berjaya dibuat.",
+    "viewOrder": "Lihat Sejarah Pesanan",
+    
+    "cancelTitle": "Pembayaran Dibatalkan",
+    "cancelDesc": "Terdapat masalah dengan transaksi anda. Jangan risau, tiada wang ditolak daripada akaun anda.",
+    "retryBtn": "Cuba Bayar Semula",
+    "backBtn": "Kembali ke Troli",
+    "supportText": "Perlu bantuan? Hubungi Sokongan"
   }
 
  

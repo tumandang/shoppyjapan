@@ -264,6 +264,17 @@
           "changeBtn": "パスワード変更",
           "logoutBtn": "ログアウト"
        }
+  },
+   "payment": {
+    "successTitle": "支払い完了",
+    "successDesc": "お支払いありがとうございます。ご注文は正常に完了しました。",
+    "viewOrder": "注文履歴を見る",
+    
+    "cancelTitle": "支払いキャンセル",
+    "cancelDesc": "取引に問題が発生しました。ご安心ください、資金は引き落とされていません。",
+    "retryBtn": "再度支払う",
+    "backBtn": "カートに戻る",
+    "supportText": "サポートが必要ですか？お問い合わせ"
   }
 
 

@@ -272,14 +272,17 @@
       "logoutBtn" : "Logout"
 
     }
-  }
+  },
 
-
-  
-
-
-
-
-
-  
+  "payment": {
+    "successTitle": "Payment Successful",
+    "successDesc": "Thank you for your payment. Your order has been placed.",
+    "viewOrder": "View Order History",
+    
+    "cancelTitle": "Payment Cancelled",
+    "cancelDesc": "Something went wrong with your transaction. Don't worry, no funds were deducted from your account.",
+    "retryBtn": "Try Payment Again",
+    "backBtn": "Back to Cart",
+    "supportText": "Need help? Contact Support"
+  } 
 }

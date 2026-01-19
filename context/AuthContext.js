@@ -32,6 +32,34 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const orderlist = async () => {
+    try {
+      const token = localStorage.getItem('token');
+
+      if(!token) {
+        throw new Error('No authentication token found');
+      }
+
+      const response = await axiosInstance.get('/listorder');
+
+      if (response.data.status) {
+        return response.data.request || response.data.requests || response.data.data;
+      }
+      else{
+        throw new Error(response.data.message || 'Failed to fetch requests');
+      }
+      
+    }catch (error) {
+      console.error('Error fetching request list:', error);
+      if (error.response?.status === 401) {
+        localStorage.removeItem('token');
+        setUser(null);
+      }
+      
+      throw error;
+    }
+  };
+
   const requestlist = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -43,7 +71,7 @@ export const AuthProvider = ({ children }) => {
       const response = await axiosInstance.get('/listrequest');
       
       if (response.data.status) {
-        // Return the request list, don't set it to user state
+        
         return response.data.request || response.data.requests || response.data.data;
       } else {
         throw new Error(response.data.message || 'Failed to fetch requests');
@@ -51,7 +79,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error('Error fetching request list:', error);
       
-      // If unauthorized, clear token
+      
       if (error.response?.status === 401) {
         localStorage.removeItem('token');
         setUser(null);
@@ -110,7 +138,7 @@ export const AuthProvider = ({ children }) => {
 
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth ,editprofile,requestlist }}>
+    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth ,editprofile,requestlist,orderlist }}>
       {children}
     </AuthContext.Provider>
   );

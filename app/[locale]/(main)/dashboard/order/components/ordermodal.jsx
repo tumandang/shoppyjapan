@@ -5,8 +5,16 @@ import { useAuth } from "@/context/AuthContext";
 import { useLocale } from "next-intl";
 import axiosInstance from "@/lib/axios";
 import Date from "@/components/Date";
-function OrderModal({modalType,selectedRequest,onClose,onDelete,onAccept,onCancel,onPayment}) 
-{
+import { Image } from "lucide-react";
+function OrderModal({
+  modalType,
+  selectedRequest,
+  onClose,
+  onDelete,
+  onAccept,
+  onCancel,
+  onPayment,
+}) {
   if (!modalType || !selectedRequest) return null;
   const statusStyles = {
     new: "bg-purple-100 text-purple-700",
@@ -18,128 +26,147 @@ function OrderModal({modalType,selectedRequest,onClose,onDelete,onAccept,onCance
     cancelled: "bg-red-100 text-red-700",
   };
   const { user } = useAuth();
+    const calculateSubtotal = () => {
+    return selectedRequest.request.product_price * selectedRequest.request.quantity;
+  };
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black opacity-50 transition-opacity" onClick={onClose}></div>
+      <div
+        className="absolute inset-0 bg-black opacity-50 transition-opacity"
+        onClick={onClose}
+      ></div>
 
       <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 z-10 animate-fadeIn">
         {modalType === "view" && (
           <>
-            <div className="p-6 border-b border-slate-200">
-              <div className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold text-slate-800">
-                  Request Details
-                </h3>
-                <button
-                  onClick={onClose}
-                  className="text-slate-400 hover:text-slate-600 transition-colors"
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+            <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full">
+        
+              <div className="p-6 border-b border-slate-200">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-900">
+                      Order #{selectedRequest.id}
+                    </h3>
+                    <div className="flex items-center gap-2 text-sm text-slate-500 mt-1">
+                      <Date datestring={selectedRequest.created_at} />
+                      <span>•</span>
+                      <span className="font-semibold text-green-700">
+                        RM {selectedRequest.amount_myr}
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={onClose}
+                    className="text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg p-2 transition-all"
+                    aria-label="Close"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div className="p-6 space-y-4">
-              <div>
-                <label className="text-xs font-semibold text-slate-500 uppercase">
-                  Product Name
-                </label>
-                <p className="text-sm text-slate-800 mt-1">
-                  {selectedRequest.product_name}
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs font-semibold text-slate-500 uppercase">
-                    Market
-                  </label>
-                  <p className="text-sm text-slate-800 mt-1">
-                    {selectedRequest.market_name}
-                  </p>
-                </div>
-                <div>
-                  <label className="text-xs font-semibold text-slate-500 uppercase">
-                    Status
-                  </label>
-                  <div className="mt-1">
-                    <span
-                      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium capitalize ${
-                        statusStyles[selectedRequest.status.toLowerCase()]
-                      }`}
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      {selectedRequest.status}
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+           
+              <div className="p-6 space-y-6">
+            
+                <div>
+                  <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wide mb-4">
+                    Order Summary
+                  </h4>
+
+                  <div className="flex gap-4 pb-6 border-b border-slate-300 border-dashed">
+                
+                    <div className="w-24 h-24 shrink-0 border-2 border-dashed border-slate-300 bg-slate-50 rounded-lg flex flex-col justify-center items-center">
+                      <Image className="w-6 h-6 text-slate-400" />
+                      <p className="text-xs text-slate-500 mt-1">No Image</p>
+                    </div>
+
+                  
+                    <div className="flex-1">
+                      <h5 className="text-base font-medium text-slate-900">
+                        {selectedRequest.request.product_name}
+                      </h5>
+                      <p className="text-sm text-slate-500 mt-1">
+                        Quantity: {selectedRequest.request.quantity}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-slate-600">Subtotal</span>
+                    <span className="text-sm font-medium text-slate-900">
+                      ¥ {calculateSubtotal().toLocaleString()}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-slate-600">Service Fees</span>
+                    <span className="text-sm font-medium text-slate-900">
+                      ¥ {selectedRequest.request.service_fee.toLocaleString()}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center pb-3 border-b border-slate-300 border-dashed">
+                    <span className="text-sm text-slate-600">
+                      Domestic Shipping
+                    </span>
+                    <span className="text-sm font-medium text-slate-900">
+                      ¥{" "}
+                      {selectedRequest.request.domestic_shipping.toLocaleString()}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center pt-2">
+                    <span className="text-base font-semibold text-slate-900">
+                      Total (JPY)
+                    </span>
+                    <span className="text-lg font-bold text-slate-900">
+                      ¥{selectedRequest.request.quoted_total}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center pt-2">
+                    <span className="text-base font-semibold text-slate-900">
+                      Total (MAS)
+                    </span>
+                    <span className="text-lg font-bold text-slate-900">
+                      RM{selectedRequest.amount_myr}
                     </span>
                   </div>
                 </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-semibold text-slate-500 uppercase">
-                    Quantity
-                  </label>
-                  <p className="text-sm text-slate-800 mt-1">
-                    {selectedRequest.quantity}
-                  </p>
-                </div>
-                <div>
-                  <label className="text-xs font-semibold text-slate-500 uppercase">
-                    Item Price
-                  </label>
-                  <p className="text-sm text-slate-800 mt-1">
-                    ¥{selectedRequest.product_price}
-                  </p>
+                  <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wide mb-4">
+                    Timeline
+                  </h4>
+                  <div className="text-sm text-slate-500 italic">
+                    No timeline events yet
+                  </div>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs font-semibold text-slate-500 uppercase">
-                    Total Quote
-                  </label>
-                  <p className="text-sm text-slate-800 mt-1">
-                    {selectedRequest.quoted_total !== null
-                      ? `¥${selectedRequest.quoted_total}`
-                      : "Not quoted yet"}
-                  </p>
-                </div>
-                <div>
-                  <label className="text-xs font-semibold text-slate-500 uppercase">
-                    Estimate MYR
-                  </label>
-                  <p className="text-sm text-slate-800 mt-1">
-                    {selectedRequest.quoted_total !== null
-                      ? `RM ${selectedRequest.total_myr}`
-                      : "Not quoted yet"}
-                  </p>
+
+              <div className="p-6 border-t border-slate-200 bg-slate-50 rounded-b-xl">
+                <div className="flex justify-end gap-3">
+                  <button
+                    onClick={onClose}
+                    className="px-6 py-2.5 bg-white hover:bg-slate-100 text-slate-700 font-medium rounded-lg border border-slate-300 transition-colors"
+                  >
+                    Close
+                  </button>
                 </div>
               </div>
-              <div>
-                <label className="text-xs font-semibold text-slate-500 uppercase">
-                  Notes from admin
-                </label>
-                <p className="text-sm text-slate-800 mt-1">
-                  {selectedRequest.admin_notes}
-                </p>
-              </div>
-            </div>
-            <div className="p-6 border-t border-slate-200 flex justify-end">
-              <button
-                onClick={onClose}
-                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-colors"
-              >
-                {" "}
-                Close
-              </button>
             </div>
           </>
         )}
@@ -286,14 +313,23 @@ function OrderModal({modalType,selectedRequest,onClose,onDelete,onAccept,onCance
         )}
         {modalType === "pending_payment" && (
           <div className="p-6 space-y-6">
-          
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-green-100 rounded-full">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-green-600">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-4 h-4 text-green-600"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z"
+                    />
                   </svg>
-
                 </div>
                 <h3 className="text-lg font-semibold text-slate-800">
                   Order Summary
@@ -345,14 +381,23 @@ function OrderModal({modalType,selectedRequest,onClose,onDelete,onAccept,onCance
               </div>
             </div>
 
-         
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-orange-100 rounded-full">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-orange-600">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-4 h-4 text-orange-600"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
+                    />
                   </svg>
-
                 </div>
                 <h3 className="text-lg font-semibold text-slate-800">
                   Shipping Address
@@ -402,7 +447,6 @@ function OrderModal({modalType,selectedRequest,onClose,onDelete,onAccept,onCance
               </div>
             </div>
 
-    
             <div className="flex gap-3 pt-2">
               <button
                 onClick={onClose}
@@ -411,12 +455,15 @@ function OrderModal({modalType,selectedRequest,onClose,onDelete,onAccept,onCance
                 Cancel
               </button>
 
-              <button disabled={selectedRequest.quoted_total === null} onClick={onPayment}
+              <button
+                disabled={selectedRequest.quoted_total === null}
+                onClick={onPayment}
                 className={`flex-1 py-3 rounded-xl font-semibold transition cursor-pointer
-            ${selectedRequest.quoted_total !== null
-              ? "bg-green-600 hover:bg-green-700 text-white shadow-md"
-              : "bg-slate-300 text-slate-500 cursor-not-allowed"
-          }`}
+            ${
+              selectedRequest.quoted_total !== null
+                ? "bg-green-600 hover:bg-green-700 text-white shadow-md"
+                : "bg-slate-300 text-slate-500 cursor-not-allowed"
+            }`}
               >
                 Continue to Payment
               </button>
@@ -459,14 +506,14 @@ function Orderrequest({ onOpenModal }) {
           const requests = data.requests || data.data || data.request || [];
           setOrderList(Array.isArray(requests) ? requests : []);
         } else {
-         setOrderList([]);
+          setOrderList([]);
         }
       } catch (err) {
         console.error("Error loading requests:", err);
         setError(
           err.response?.data?.message ||
             err.message ||
-            "Failed to load requests"
+            "Failed to load requests",
         );
       } finally {
         setLoading(false);
@@ -550,7 +597,10 @@ function Orderrequest({ onOpenModal }) {
   return (
     <>
       {OrderList.map((order) => (
-        <tr key={order.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+        <tr
+          key={order.id}
+          className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
+        >
           <td className="px-6 py-4">
             <div className="flex items-center gap-3 max-w-xs">
               <div className="flex flex-col min-w-0 flex-1">
@@ -561,45 +611,50 @@ function Orderrequest({ onOpenModal }) {
             </div>
           </td>
           <td className="px-6 py-4">
-            <span className="text-sm text-slate-600">
-                <Date datestring={order.created_at} />
+            <span className="text-sm font-medium text-slate-800">
+              <Date datestring={order.created_at} />
             </span>
           </td>
+          <td className="px-6 py-4 w-32">
+            <div className="flex items-center gap-3 max-w-[120px]">
+              <div className="flex flex-col min-w-0 flex-1">
+                <span
+                  className="text-sm font-medium text-slate-800 truncate"
+                  title={order.request.product_name}
+                >
+                  {order.request.product_name}
+                </span>
+              </div>
+            </div>
+          </td>
           <td className="px-6 py-4">
-            <span className="inline-flex items-center gap-1.5 text-sm text-slate-700">
+            <span className="text-sm font-medium text-slate-800">
               RM {order.amount_myr}
             </span>
           </td>
           <td className="px-6 py-4">
             <div className="flex items-center gap-1.5 text-sm text-slate-500">
               <span
-                className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium capitalize ${
-                  statusStyles[order.status.toLowerCase()]
-                }`}
+                className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium capitalize ${statusStyles[order.status.toLowerCase()]}`}
+              >
+                {order.request?.status}
+              </span>
+            </div>
+          </td>
+          <td className="px-6 py-4">
+            <div className="flex items-center gap-1.5 text-sm text-slate-500">
+              <span
+                className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium capitalize ${statusStyles[order.status.toLowerCase()]}`}
               >
                 {order.status}
               </span>
             </div>
           </td>
-          <td className="px-6 py-4">
-            <span className="text-sm font-semibold text-slate-800">
-              {order.product_price}
-            </span>
-          </td>
-          <td className="px-6 py-4">
-            {order.quoted_total !== null ? (
-              <span className="text-sm font-semibold text-slate-800">
-                ¥{order.quoted_total}
-              </span>
-            ) : (
-              <span className="text-sm font-semibold text-slate-400">-</span>
-            )}
-          </td>
 
           <td className="px-6 py-4">
             <div className="flex items-center gap-2">
               <button
-                onClick={() => onOpenModal("view", request)}
+                onClick={() => onOpenModal("view", order)}
                 className="p-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-all duration-200 hover:scale-105 cursor-pointer"
                 title="View details"
               >
@@ -626,7 +681,7 @@ function Orderrequest({ onOpenModal }) {
 
               {order.status === "new" && (
                 <button
-                  onClick={() => onOpenModal("delete", request)}
+                  onClick={() => onOpenModal("delete", order)}
                   className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105 cursor-pointer"
                   title="Delete request"
                 >
@@ -651,7 +706,7 @@ function Orderrequest({ onOpenModal }) {
               )}
               {order.status === "cancelled" && (
                 <button
-                  onClick={() => onOpenModal("delete", request)}
+                  onClick={() => onOpenModal("delete", order)}
                   className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105 cursor-pointer"
                   title="Delete request"
                 >
@@ -676,7 +731,7 @@ function Orderrequest({ onOpenModal }) {
               )}
               {order.status === "reject" && (
                 <button
-                  onClick={() => onOpenModal("delete", request)}
+                  onClick={() => onOpenModal("delete", order)}
                   className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105 cursor-pointer"
                   title="Delete request"
                 >
@@ -703,7 +758,7 @@ function Orderrequest({ onOpenModal }) {
               {order.status === "quoted" && (
                 <>
                   <button
-                    onClick={() => onOpenModal("accept", request)}
+                    onClick={() => onOpenModal("accept", order)}
                     className="p-2 rounded-lg bg-green-50 hover:bg-green-100 text-green-600 transition-all duration-200 hover:scale-105 cursor-pointer"
                     title="Accept request"
                   >
@@ -726,7 +781,7 @@ function Orderrequest({ onOpenModal }) {
                     </svg>
                   </button>
                   <button
-                    onClick={() => onOpenModal("cancel", request)}
+                    onClick={() => onOpenModal("cancel", order)}
                     className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105 cursor-pointer"
                     title="Cancel request"
                   >
@@ -751,7 +806,7 @@ function Orderrequest({ onOpenModal }) {
               {order.status === "pending_payment" && (
                 <>
                   <button
-                    onClick={() => onOpenModal("pending_payment", request)}
+                    onClick={() => onOpenModal("pending_payment", order)}
                     className="p-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-600 transition-all duration-200 hover:scale-105 cursor-pointer"
                     title="Pay Now"
                   >
@@ -771,7 +826,7 @@ function Orderrequest({ onOpenModal }) {
                     </svg>
                   </button>
                   <button
-                    onClick={() => onOpenModal("cancel", request)}
+                    onClick={() => onOpenModal("cancel", order)}
                     className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200 hover:scale-105 cursor-pointer"
                     title="Cancel request"
                   >
@@ -837,24 +892,19 @@ export function TablerequestWithModal() {
     closeModal();
   };
   const payNow = async () => {
-    
-    try{
+    try {
       const response = await axiosInstance.post("/stripe/checkout", {
         request_id: selectedRequest.id,
-        locale : locale     
+        locale: locale,
       });
 
       window.location.href = response.data.checkout_url;
-    }
-    catch(error){
+    } catch (error) {
       console.error("Payment failed:", error);
       console.error("Error response:", error.response?.data);
 
       alert(error.response?.data?.message || "Failed to cancel request");
     }
-
-   
-    
   };
   const handleAccept = async () => {
     console.log("Accepting request:", selectedRequest.id);

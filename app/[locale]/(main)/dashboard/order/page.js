@@ -78,22 +78,22 @@ export default function WishlistPage(){
                                             <thead className="align-bottom bg-slate-50">
                                                 <tr>
                                                     <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        #
+                                                        Order #
                                                     </th>
                                                     <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Submit Date
+                                                        Date
                                                     </th>
                                                     <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Order Amount
+                                                        Product
                                                     </th>
                                                     <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Order Status
+                                                        Amount Request
                                                     </th>
                                                     <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Request Status
+                                                       Order Status
                                                     </th>
                                                     <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Courier Payment
+                                                        Shipping Status
                                                     </th>
                                                     <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
                                                         Action

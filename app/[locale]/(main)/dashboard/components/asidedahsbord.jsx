@@ -77,7 +77,7 @@ function Asidedashboard() {
                       )}
                     </div>
               </Link>
-              <Link href="/">
+              <Link href={`/${locale}/dashboard/order`}>
                     <div className="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 cursor-pointer transition">
                       <span className="text-gray-600">
                         <ShoppingBasketIcon/>

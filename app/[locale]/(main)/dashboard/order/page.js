@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Lexend, DM_Sans } from "next/font/google";
 import { useAuth } from "@/context/AuthContext";
-import Image from "next/image";
 import Asidedashboard from "../components/asidedahsbord";
-import { TablerequestWithModal } from "./components/ordermodal";
+import { FileImage, ImageDown, Search } from "lucide-react";
+import OrderTable from "./components/OrderTable";
 
 const lexend = Lexend({
   variable: "--font-Lexend",
@@ -30,7 +30,14 @@ export default function WishlistPage(){
 
     const { user, loading, logout } = useAuth();
     const router = useRouter();
-    
+    const [buttonStatus, setbuttonStatus] = useState("View all");
+    const filters = [
+    'View all',
+    'Pending Payment',
+    'In Progress',
+    'Shipping',
+    'Refunded'
+  ];
     useEffect(() => {
     if (!loading && !user) {
         router.push('/login');
@@ -56,59 +63,36 @@ export default function WishlistPage(){
             <main className="flex gap-6 mt-6 ">
                 <Asidedashboard></Asidedashboard>
 
-                <div className="mx-auto max-w-4xl flex-1">
+                <div className="mx-auto max-w-4xl flex-1 space-y-5">
                     <div className="mb-8">
                         <h1 className={`${lexend.className} text-4xl mb-2`}>Order Summary</h1>
                         <p className={`${dm_sans.className} text-gray-600`}>
                             Order Overview, Purchase Summary, or Order Details
                         </p>
                     </div>
-                    <div className="w-full mx-auto">
-                        <div className="flex flex-wrap -mx-3">
-                            <div className="flex flex-col min-w-0 mb-6 wrap-break-word bg-white border border-slate-200 shadow-lg rounded-2xl w-full mx-auto">
-                                <div className="p-6 pb-4 border-b border-slate-200 bg-linear-to-r from-slate-50 to-white rounded-t-2xl">
-                                    <div className="flexBetween">
-                                        <h5 className="text-xl font-semibold text-slate-800">Order Table</h5> 
-                                    </div>
-                                </div>
-
-                                <div className="flex-auto px-0 pt-0 pb-2">
-                                    <div className="p-0 overflow-x-auto">
-                                        <table className="items-center w-full mb-0 align-top border-collapse text-slate-500">
-                                            <thead className="align-bottom bg-slate-50">
-                                                <tr>
-                                                    <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Order #
-                                                    </th>
-                                                    <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Date
-                                                    </th>
-                                                    <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Product
-                                                    </th>
-                                                    <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Amount Request
-                                                    </th>
-                                                    <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                       Order Status
-                                                    </th>
-                                                    <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Shipping Status
-                                                    </th>
-                                                    <th className="px-6 py-4 font-semibold text-left uppercase align-middle border-b-2 border-slate-200 text-slate-600 text-xs tracking-wide whitespace-nowrap">
-                                                        Action
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <TablerequestWithModal></TablerequestWithModal>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className=" p-2 flexBetween">
+                        <div className="flex overflow-hidden rounded-lg border border-gray-200 shadow-md ">
+                            {filters.map((filter) => (
+                                <button key={filter} onClick={() => setbuttonStatus(filter)}
+                                className={`px-4 py-2 transition-colors duration-500 cursor-pointer ${
+                                    buttonStatus === filter
+                                    ? 'bg-gray-900 text-white'
+                                    : 'bg-white text-gray-700 hover:bg-gray-200'
+                                }`}
+                                >
+                                {filter}
+                                </button>
+                            ))}
+                        </div>
+                        <div className="flexStart gap-x-2  p-2 rounded-lg shadow-md border border-gray-300">
+                            <label htmlFor="search" id="search">
+                                <Search className="w-4 h-4"></Search>
+                            </label>
+                            <input id="search" name="search" className="focus:outline-none" type="text" placeholder="Order ID, Product name.."/>
                         </div>
                     </div>
+
+                    <OrderTable/>
                   
                 </div>
             </main>

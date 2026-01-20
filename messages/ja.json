@@ -1,0 +1,281 @@
+{
+  "TopBar": {
+    "shortDesc": "自宅から簡単に日本でショッピング。迅速で信頼できるサービス。",
+    "aboutText": "Shopanについて",
+    "helpText": "初めての方へ",
+    "language1": "英語",
+    "language2": "マレー語",
+    "language3": "日本語"
+  },
+
+  "Header": {
+    "SearchPlaceHolder": "商品名またはURLで検索",
+    "loginText": "ログイン",
+    "registerText": "新規登録"
+  },
+
+   "layoutContainer": {
+    "integratedText": "統合ショップ",
+    "rakutenText": "楽天",
+    "rakumaText": "ラクマ",
+    "yahooText": "ヤフオク",
+    "notFoundText": "ショップを見る",
+    "listwebText": "対応ウェブサイト一覧",
+    "appText": "公式アプリ",
+    "playText": "Google Play"
+  },
+
+  "Metrics": {
+    "saving": "海外オンラインショッピングで最大割引",
+    "countries": "世界150か国以上に対応",
+    "support": "24時間365日カスタマーサポート"
+  },
+  "linkshop":{
+    "topText" : "トップマーケットプレイス",
+    "viewText" : "全て見る",
+    "marketplace": {
+      "amazon": "あらゆる商品を扱う総合オンラインマーケットプレイス",
+      "ydirect": "日本のショッピング・オークションプラットフォーム",
+      "mercari": "人気のフリマ・リセールプラットフォーム",
+      "newera": "日本発のキャップ＆アパレルブランド",
+      "uniqlo": "シンプルでカジュアルな日本のファッションブランド"
+    }
+  },
+
+  "Testimonials": {
+    "title": "お客様の声",
+    "subtitle": "なぜ多くの人々が私たちを愛し、頼れるパートナーに選ぶのかをご紹介します。",
+    "reviews": [
+      {
+        "text": "こちらの会社のサービスには大満足です！親切で迅速、私のニーズに真摯に応えてくれました。ぜひおすすめします。",
+        "author": "ジョン・モクスリー"
+      },
+      {
+        "text": "品質が素晴らしく、カスタマーサポートも優秀です。期待以上の対応で、また利用したいと思います。",
+        "author": "サラ・ジョンソン"
+      },
+      {
+        "text": "プロフェッショナルで信頼でき、効率的。細部へのこだわりと卓越したサービスで競合との差別化ができています。",
+        "author": "マイケル・チェン"
+      }
+    ]
+  },
+
+"Faq": {
+    "title": "よくある質問",
+    "subtitle": "ShoPan Japanでよくある質問はこちらです。",
+    "cta": "お探しの内容が見つかりませんか？",
+    "botText": "チャットボット「Aika」に相談する",
+    "general": {
+      "review": {
+        "question": "なぜ購入リクエストはShoPanチームによる確認が必要ですか？",
+        "answer": "購入リクエストは安全を確保するためです。商品によっては購入不可、数量制限あり、または怪しいリスクがある場合があります。"
+      },
+      "shipping": {
+        "question": "私の国へ配送可能ですか？",
+        "answer": "はい。ShoPanはJapan Post、FedEx、DHLを使用して世界中へ配送します。"
+      },
+      "authentic": {
+        "question": "ShoPanを通じて購入した商品は本物ですか？",
+        "answer": "ShoPanは、信頼できる日本のマーケットプレイスと販売者からのみ購入します。"
+      },
+      "seller": {
+        "question": "ShoPanが商品を販売していますか？",
+        "answer": "いいえ。ShoPanはあなたに代わって商品を購入する代理購入サービスです。"
+      },
+      "support": {
+        "question": "ShoPanはカスタマーサポートを提供していますか？",
+        "answer": "はい。サポートはダッシュボードおよび連絡チャネルを通じて利用可能です。"
+      }
+    }
+  },
+   "Footer": {
+    "brandName": "Shoppe Japan",
+    "description": "ShoppeJapanは、本物の日本製品をお届けする信頼のショッピング先です。美容やファッションからライフスタイル用品まで、日本の最高品質の商品をあなたの元へお届けします。",
+    "quickLinks": {
+      "title": "クイックリンク",
+      "home": "ホーム",
+      "about": "私たちについて",
+      "contact": "お問い合わせ",
+      "terms": "利用規約",
+      "getInTouch": "連絡する",
+      "email": "shopanhq@gmail.com"
+    },
+    "locations": {
+      "title": "Shoppe Japan Global",
+      "japan": {
+        "country": "日本",
+        "address": "739-0321 広島県広島市安芸区中野6-29-10 サンハイツ住田 B202",
+        "phone": "+8190-6437-2903"
+      },
+      "malaysia": {
+        "country": "マレーシア",
+        "address": "12A & 14A, Jalan Pulai Mutiara 9/5, Taman Pulai Mutiara 2, 81100 ジョホールバル, ジョホール",
+        "phone": "+60135987486"
+      }
+    }
+  },
+  "Login": {
+    "welcomeText": "Shopanへようこそ",
+    "registerText": "アカウントをお持ちでないですか？",
+    "ctaRegister": "新規登録",
+    "emailText": "メールアドレス",
+    "emailPlaceHolder": "name@example.com",
+    "passwordText": "パスワード",
+    "forgotText": "パスワードをお忘れですか？",
+    "loginText": "ログイン",
+    "loginPro" : "ログインする...",
+    "agreeText": "「続行」をクリックすることで、",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー"
+  },
+
+  "Register": {
+    "page1Title": "個人情報",
+    "page1Desc": "基本情報の入力から始めましょう",
+    "step1": "ステップ 1/4",
+    "step2": "ステップ 2/4",
+    "step3": "ステップ 3/4",
+    "step4": "ステップ 4/4",
+
+    "nameText": "ユーザー名",
+    "namePlace": "JohnDoe123",
+    "fullnameText": "氏名",
+    "fullnamePlace": "John Doe",
+    "emailText": "メールアドレス",
+    "emailPlace": "johndoe@gmail.com",
+    "notelText": "電話番号",
+    "notelPlace": "01129234038",
+
+    "page2": {
+      "title": "住所情報",
+      "desc": "商品のお届け先を入力してください",
+      "address1": "住所 1",
+      "addplace1": "1234",
+      "address2": "住所 2",
+      "addplace2": "Jalan Jati 1/3",
+      "address3": "住所 3",
+      "addplace3": "Bandar Selayang",
+      "postcode": "郵便番号",
+      "postcodeplace1": "87200",
+      "city": "市区町村",
+      "cityplace1": "Taiping",
+      "state": "州",
+      "stateplace": "Kedah",
+      "country": "国",
+      "countryplace": "マレーシア"
+    },
+
+    "page3": {
+      "title": "パスワードを作成",
+      "desc": "安全なパスワードを設定してください",
+      "passwordText": "パスワード",
+      "passwordPlace": "パスワードを入力",
+      "descpass": "8文字以上で入力してください",
+      "confirmPassText": "パスワード確認",
+      "confirmPlace": "もう一度入力してください"
+    },
+    "page4": {
+      "title": "準備完了",
+      "desc": "送信する前に入力内容を確認してください",
+      "email": "メールアドレス",
+      "name": "ユーザー名",
+      "phone": "電話番号"
+    },
+    "button": {
+      "Next": "次へ",
+      "Prev": "戻る",
+      "Back": "戻る",
+      "Create": "アカウント作成"
+    },
+    "footerText": "「続行」をクリックすることで、",
+    "terms": "利用規約",
+    "and": "および",
+    "privacy": "プライバシーポリシー",
+    "descfoot": "すでにアカウントをお持ちですか？",
+    "CTA-signIn": "ログイン"
+  },
+  "categoryTrans" :{
+    "viewText" :"すべて見る",
+    "backbtn"  : "戻る",
+    "filterText"    : "フィルター",
+    "categoriesText": "カテゴリー",
+    "shopText" : "楽天公式",
+    "bestseller": "ベストセラー製品"
+  },
+
+  "WebCateg": {
+    "title": "ウェブサイト一覧",
+    "ecommerce": "EC・オンラインショップ",
+    "fashion": "ファッション",
+    "shoes": "シューズ",
+    "sneaker": "スニーカー・中古品",
+    "auto": "自動車・ライフスタイル用品",
+    "anime": "アニメ・オタク・フィギュア・コレクターズ",
+    "card": "カード・コレクターズ（セカンダリーマーケット）"
+  },
+   "marketplaceDesc": {
+    "amazon": "あらゆる商品を扱う総合オンラインマーケットプレイス",
+    "jdirect": "日本のショッピング・オークションプラットフォーム",
+    "qoo10": "ファッションや生活用品を扱うオンラインマーケット",
+    "wowma": "多ジャンル対応の日本向け通販サイト",
+    "paypay": "個人間取引のフリーマーケット",
+    "mercari": "日本で人気のフリマ・リセールサービス",
+
+    "uniqlo": "シンプルで使いやすい日本のファッションブランド",
+    "supreme": "世界的に人気のストリートファッションブランド",
+    "bape": "日本発の有名ストリートウェアブランド",
+    "zozotown": "ファッション専門のオンラインショッピングサイト",
+    "newera": "キャップやアパレルで有名なブランド",
+    "louisvuitton": "高級ファッション・アクセサリーブランド",
+
+    "adidas": "スポーツ向けシューズ・アパレルブランド",
+    "asics": "日本の高性能スポーツシューズブランド",
+
+    "secondstreet": "中古ファッション・スニーカー専門店",
+
+    "webike": "バイクパーツとライディング用品の通販サイト",
+
+    "mandarake_anime": "アニメ・漫画・オタク向け専門ショップ",
+    "mandarake_card": "トレーディングカードや希少品の専門店",
+
+    "mercari_card": "トレカやコレクター向けのフリマサービス",
+    "rakuma": "トレカやホビー向けのリセールサービス"
+  },
+
+      "DahsboardTrans" : {
+      "sidebar": {
+          "DashboardText": "マイダッシュボード",
+          "ProfileText": "マイプロフィール",
+          "InsertURlText": "URLを入力",
+          "RequestText": "マイリクエスト",
+          "OrdersText": "マイ注文",
+          "Wishlist": "ウィッシュリスト"
+        },
+      "profile": {
+          "profileText": "マイプロフィール",
+          "profileDesc": "アカウント情報と設定を管理します",
+          "totalOrdersText": "注文数",
+          "totalwishlistext": "ウィッシュリスト",
+          "totalSpentText": "合計支出額",
+          "accountText": "アカウント情報",
+          "shippingText": "配送先住所",
+          "editBtn": "プロフィール編集",
+          "changeBtn": "パスワード変更",
+          "logoutBtn": "ログアウト"
+       }
+  },
+   "payment": {
+    "successTitle": "支払い完了",
+    "successDesc": "お支払いありがとうございます。ご注文は正常に完了しました。",
+    "viewOrder": "注文履歴を見る",
+    
+    "cancelTitle": "支払いキャンセル",
+    "cancelDesc": "取引に問題が発生しました。ご安心ください、資金は引き落とされていません。",
+    "retryBtn": "再度支払う",
+    "backBtn": "カートに戻る",
+    "supportText": "サポートが必要ですか？お問い合わせ"
+  }
+
+
+}

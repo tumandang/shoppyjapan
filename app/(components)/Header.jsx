@@ -13,7 +13,7 @@ import {
 import { ChevronDown, Heart, Search, ShoppingBag, Menu, X, Link2, Calculator, User, LogOut } from "lucide-react";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
-
+import { useLocale , useTranslations } from 'next-intl';
 
 const shopLinks = [
   { href: "/rakuten", label: "Rakuten" },
@@ -28,6 +28,7 @@ const navLinks = [
 ];
 
 function Header() {
+  const h = useTranslations('Header');
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isActive = (path) => pathname === path;
@@ -44,6 +45,7 @@ function Header() {
   };
   const router = useRouter();
   const closeMobileMenu = () => setMobileMenuOpen(false);
+  const locale = useLocale();
   const handleSearch = () => {
     if (!link) return;
 
@@ -52,7 +54,7 @@ function Header() {
         const url = new URL(link);
 
         if (!url.hostname.includes("rakuten.co.jp")) {
-          router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
+          router.push(`/${locale}/invalid-link?url=${encodeURIComponent(link)}`);
           return;
         }
         const pathSegments = url.pathname.split("/").filter(Boolean);
@@ -62,20 +64,20 @@ function Header() {
           pathSegments[pathSegments.length - 1];
 
         if (!itemCode) {
-          router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
+          router.push(`/${locale}/invalid-link?url=${encodeURIComponent(link)}`);
           return;
         }
         const productID = `${shopCode}:${itemCode}`;
-        router.push(`/Shop/Rakuten/Product/${encodeURIComponent(productID)}`);
+        router.push(`/${locale}/Shop/Rakuten/Product/${encodeURIComponent(productID)}`);
         return;
       } catch (err) {
-        router.push(`/invalid-link?url=${encodeURIComponent(link)}`);
+        router.push(`/${locale}/invalid-link?url=${encodeURIComponent(link)}`);
         return;
       }
     }
 
     const keyword = link.trim();
-    router.push(`/Shop/Rakuten/Search?keyword=${encodeURIComponent(keyword)}`);
+    router.push(`/${locale}/Shop/Rakuten/Search?keyword=${encodeURIComponent(keyword)}`);
   };
   return (
     <header className="bg-white border-b border-gray-200">
@@ -98,7 +100,7 @@ function Header() {
                 type="text"
                 value={link}
                 onChange={(e) => setLink(e.target.value)}
-                placeholder="Search by product or link URL"
+                placeholder={h('SearchPlaceHolder')}
                 className="flex-1 px-4 py-2.5 border border-gray-300 outline-none focus:border-orange-500 transition-colors text-sm rounded-l-lg"
               />
 
@@ -114,10 +116,10 @@ function Header() {
 
           <div className="hidden lg:flex items-center gap-3">
             <Link
-              href="/link-form"
+              href={`/${locale}/dashboard/wishlist`}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
             >
-              <Link2
+              <Heart
                 size={24}
                 className="text-gray-700 group-hover:text-orange-500 transition-colors"
               />
@@ -129,7 +131,7 @@ function Header() {
               <span className="sr-only">Wishlist ({wishlistCount} items)</span>
             </Link>
             <Link
-              href="/shipping_calculator"
+              href={`/${locale}/shipping_calculator`}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
               aria-label="Go to shipping calculator" 
             >
@@ -140,7 +142,7 @@ function Header() {
             </Link>
 
             <Link
-              href="/cart"
+              href={`/${locale}/cart`}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors group"
             >
               <ShoppingBag
@@ -157,7 +159,7 @@ function Header() {
 
             {user ? (
               <div className="flex flex-row gap-x-4">
-                <Link href="/dashboard/profile">
+                <Link href={`/${locale}/dashboard/profile`}>
                   <Button
                     variant="outline"
                     className="rounded-lg px-5 py-2 border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer flex items-center gap-2"
@@ -177,19 +179,19 @@ function Header() {
               </div>
             ):(
              <div className="flex flex-row gap-x-4">
-               <Link href="/login">
-              <Button
-                variant="outline"
-                className="rounded-lg px-5 py-2 border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer"
-              >
-                Login
-              </Button>
-            </Link>
-            <Link href="/register">
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg px-5 py-2 cursor-pointer">
-                Register
-              </Button>
-            </Link>
+                <Link href={`/${locale}/login`}>
+                  <Button
+                    variant="outline"
+                    className="rounded-lg px-5 py-2 border-gray-300 text-gray-700 hover:bg-gray-50 cursor-pointer"
+                  >
+                    {h('loginText')}
+                  </Button>
+                </Link>
+                <Link href={`/${locale}/register`}>
+                  <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg px-5 py-2 cursor-pointer">
+                    {h('registerText')}
+                  </Button>
+                </Link>
              </div>
             )}
 
@@ -198,7 +200,7 @@ function Header() {
 
           <div className="lg:hidden flex items-center gap-3">
             <Link
-              href="/wishlist"
+              href={`/${locale}/wishlist`}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <Heart size={24} className="text-gray-700" />
@@ -210,7 +212,7 @@ function Header() {
             </Link>
 
             <Link
-              href="/cart"
+              href={`/${locale}/cart`}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <ShoppingBag size={24} className="text-gray-700" />

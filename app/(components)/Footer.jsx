@@ -1,3 +1,4 @@
+
 import {
   Facebook,
   Instagram,
@@ -8,8 +9,9 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-
+import { useTranslations } from 'next-intl';
 function Footer() {
+  const ft = useTranslations('Footer');
   const SocialMedia = [
     {
       icon: Facebook,
@@ -33,39 +35,33 @@ function Footer() {
     },
   ];
   const quicklink = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/" },
-    { name: "Contact Us", href: "/" },
-    { name: "Term And Condition", href: "/" },
+    { name: ft('quickLinks.home'), href: "/" },
+    { name: ft('quickLinks.about'), href: "/" },
+    { name: ft('quickLinks.contact'), href: "/" },
+    { name: ft('quickLinks.terms'), href: "/" },
   ];
   const office = [
     {
-      name: "Shoppe Japan Global ( Japan )",
-      address:
-        "739-0321 Hiroshima-ken, Hiroshima-Shi, Akiku, Nakano 6-29-10 Sun Heights Sumita B202",
-      notel: "+8190-6437-2903",
+      name:` ${ft('locations.title')} (${ft('locations.japan.country')})`,
+      address: ft('locations.japan.address'),
+       notel: ft('locations.japan.phone'),
     },
     {
-      name: "Shoppe Japan Global ( Malaysia )",
-      address:
-        "12A & 14A, Jalan Pulai Mutiara 9/5, Taman Pulai Mutiara 2, 81100 Johor Bahru, Johor",
-      notel: "+60135987486",
+       name:` ${ft('locations.title')} (${ft('locations.malaysia.country')})`,
+      address: ft('locations.malaysia.address'),
+      notel: ft('locations.malaysia.phone'),
     },
   ];
   return (
     <footer className="bg-[#041E1C] border-t border-border/50 padd-cont ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Brand */}
           <div>
             <h3 className="text-xl font-serif font-bold text-white mb-4">
               Shoppe Japan
             </h3>
             <p className="mb-4">
-              ShoppeJapan is your trusted destination for authentic Japanese
-              products. From beauty and fashion to lifestyle essentials, we
-              bring the best of Japan straight to your doorstep with quality you
-              can count on.
+              {ft('description')}
             </p>
             <div className="flex space-x-4">
               {SocialMedia.map((i) => {
@@ -87,7 +83,7 @@ function Footer() {
           {/* Quick Link */}
           <div>
             <h3 className="text-xl font-serif font-bold text-white mb-4">
-              Quick Links
+              {ft('quickLinks.title')}
             </h3>
             <ul className="space-y-2">
               {quicklink.map((i) => (

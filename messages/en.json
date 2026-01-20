@@ -6,5 +6,283 @@
     "language1": "ENGLISH",
     "language2": "BAHASA MELAYU",
     "language3": "日本語"
-  }
+  },
+  "Header": {
+     "SearchPlaceHolder" : "Search by product or link URL",
+     "loginText" : "Login",
+     "registerText" : "Register"
+  },
+
+  "layoutContainer":{
+    "integratedText": "Integrated Shops",
+    "rakutenText" : "Rakuten",
+    "rakumaText" : "Rakuma",
+    "yahooText" : "Yahoo Auction",
+    "notFoundText": "Browse Shop",
+    "listwebText" : "List of Website",
+    "appText" : "Our Application",
+    "playText": "Play Store"
+  },
+  
+  "Metrics": {
+    "saving": "Maximum savings on overseas online shopping",
+    "countries": "Countries supported worldwide",
+    "support": "Customer support available 24/7"
+  },
+
+  "linkshop":{
+    "topText" : "Top Marketplace",
+    "viewText" : "View All",
+    "marketplace": {
+      "amazon": "General online marketplace for all product types",
+      "ydirect": "Shopping and auction platform in Japan",
+      "mercari": "Popular resale and thrift platform",
+      "newera": "Cap and apparel brand from Japan",
+      "uniqlo": "Casual and minimalist Japanese fashion brand"
+    }
+  },
+  "Testimonials": {
+    "title": "What Our Customers Say",
+    "subtitle": "Discover the reasons why people love us and become your go-to partner.",
+    "reviews": [
+      {
+        "text": "I am absolutely thrilled with the service I received from their company! They were attentive, responsive, and genuinely cared about meeting my needs. I highly recommend them.",
+        "author": "Jon Moxley"
+      },
+      {
+        "text": "Exceptional quality and outstanding customer support. They went above and beyond to ensure my satisfaction. Will definitely use their services again!",
+        "author": "Sarah Johnson"
+      },
+      {
+        "text": "Professional, reliable, and efficient. Their attention to detail and commitment to excellence sets them apart from the competition.",
+        "author": "Michael Chen"
+      }
+    ]
+  },
+
+  "Faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "These are the most commonly asked questions for ShoPan Japan.",
+    "cta": "Can't find what you are looking for?",
+    "botText" : "Chat with our chatbot - Aika",
+    "general": {
+      "review": {
+        "question": "Why do Buy Requests need to be reviewed by the ShoPan team?",
+        "answer": "Buy Requests ensure safety. Items may be ineligible, limited, or show suspicious red flags."
+      },
+      "shipping": {
+        "question": "Can you ship to my country?",
+        "answer": "Yes. ShoPan ships worldwide using Japan Post, FedEx, and DHL."
+      },
+      "authentic": {
+        "question": "Are items purchased through ShoPan authentic?",
+        "answer": "ShoPan purchases only from verified, reputable Japanese marketplaces and sellers."
+      },
+      "seller": {
+        "question": "Is ShoPan the seller of the items?",
+        "answer": "No. ShoPan is a proxy buying service that purchases items on your behalf."
+      },
+      "support": {
+        "question": "Does ShoPan provide customer support?",
+        "answer": "Yes. Support is available through your dashboard and contact channels."
+      }
+    }
+  },
+
+  "Footer": {
+    "brandName": "Shoppe Japan",
+    "description": "ShoppeJapan is your trusted destination for authentic Japanese products. From beauty and fashion to lifestyle essentials, we bring the best of Japan straight to your doorstep with quality you can count on.",
+    "quickLinks": {
+      "title": "Quick Links",
+      "home": "Home",
+      "about": "About Us",
+      "contact": "Contact Us",
+      "terms": "Terms and Conditions",
+      "getInTouch": "Get In Touch",
+      "email": "shopanhq@gmail.com"
+    },
+    "locations": {
+      "title": "Shoppe Japan Global",
+      "japan": {
+        "country": "Japan",
+        "address": "739-0321 Hiroshima-ken, Hiroshima-Shi, Akiku, Nakano 6-29-10 Sun Heights Sumita B202",
+        "phone": "+8190-6437-2903"
+      },
+      "malaysia": {
+        "country": "Malaysia",
+        "address": "12A & 14A, Jalan Pulai Mutiara 9/5, Taman Pulai Mutiara 2, 81100 Johor Bahru, Johor",
+        "phone": "+60135987486"
+      }
+    }
+  },
+
+  "Login": {
+    "welcomeText": "Welcome to Shopan",
+    "registerText": "Don't have an account?",
+    "ctaRegister": "Sign up",
+    "emailText": "Email",
+    "emailPlaceHolder": "name@example.com",
+    "passwordText": "Password",
+    "forgotText": "Forgot your password?",
+    "loginText": "Login",
+    "loginPro" : "Logging in...",
+    "agreeText": "By clicking continue, you agree to our",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy"
+  },
+
+  "Register" : {
+    "page1Title"    : "Personal Detail",
+    "page1Desc"     : "Let's start with your basic details",
+    "step1"         : "Step 1/4",
+    "step2"         : "Step 2/4",
+    "step3"         : "Step 3/4",
+    "step4"         : "Step 4/4",
+    "nameText"      : "Username",
+    "namePlace"     : "JonhDoe123",
+    "fullnameText"  : "Fullname",
+    "fullnamePlace" : "Jonh Doe",
+    "emailText"     : "Email",
+    "emailPlace"    : "jondoe@gmail.com",
+    "notelText"     : "Telephone Number",
+    "notelPlace"    : "01129234038",
+
+    "page2":{
+      "title"   :  "Address Details",
+      "desc"    :  "Where should we deliver your orders?",
+      "address1":  "Address 1" ,
+      "addplace1" : "NO 1234",
+      "address2":  "Address 2" ,
+      "addplace2" : "Jalan Jati 1/3",
+      "address3":  "Address 3" ,
+      "addplace3" : "Bandar Selayang",
+      "postcode":  "Postcode" ,
+      "postcodeplace1" : "87200",
+      "city"    :  "City" ,
+      "cityplace1" : "Taiping",
+      "state"   :  "State" ,
+      "stateplace" : "Kedah",
+      "country" :  "Country",
+      "countryplace" : "Malaysia"
+
+
+      
+      
+    },
+
+    "page3":{
+      "title" : "Create a Password" ,
+      "desc"  : "Secure your account with a strong password" ,
+      "passwordText" : "Password" ,
+      "passwordPlace" : "Enter your Password",
+      "descpass" : "Must be at least 8 characters long",
+      "confirmPassText" : "Confirm Password",
+      "confirmPlace" : "Re-Enter Your Password"
+    },
+    "page4" : {
+      "title" : "All Set!" ,
+      "desc"  : "Review your information before submitting",
+      "email" : "Email",
+      "name"  : "Username",
+      "phone" : "Phone"
+      
+    },
+    "button" : {
+      "Next" : "Next",
+      "Prev" : "Prev",
+      "Back" : "Back",
+      "Create" : "Create Account"
+    },
+    "footerText" : "By clicking continue, you agree to our" ,
+    "terms": "Terms of Service",
+    "and" : "and",
+    "privacy": "Privacy Policy",
+    "descfoot" : "Already have an account?",
+    "CTA-signIn" : "Log In"
+
+  },
+  "categoryTrans" :{
+    "viewText" :"View All",
+    "backbtn"  : "Back",
+    "filterText"    : "Filters",
+    "categoriesText": "Categories",
+    "shopText" : "Rakuten Official",
+    "bestseller": "Best Seller Products"
+  },
+
+  "WebCateg": {
+    "title": "List of Websites",
+    "ecommerce": "E-Commerce",
+    "fashion": "Fashion",
+    "shoes": "Shoes",
+    "sneaker": "Sneaker / Second-hand",
+    "auto": "Automotive / Lifestyle Gear",
+    "anime": "Anime / Otaku / Figures / Collectibles",
+    "card": "Cards / Collectibles (Secondary Market)"
+  },
+
+"marketplaceDesc": {
+    "amazon": "General online marketplace offering a wide range of products",
+    "jdirect": "Japanese shopping and auction platform",
+    "qoo10": "Online marketplace for fashion and lifestyle products",
+    "wowma": "Japanese multi-category online shopping platform",
+    "paypay": "Consumer-to-consumer flea market platform",
+    "mercari": "Popular Japanese resale and thrift marketplace",
+
+    "uniqlo": "Simple and functional Japanese fashion brand",
+    "supreme": "Globally popular high-end streetwear brand",
+    "bape": "Iconic Japanese streetwear fashion brand",
+    "zozotown": "Fashion-focused online shopping platform",
+    "newera": "Well-known cap and apparel brand",
+    "louisvuitton": "Luxury fashion and accessories brand",
+
+    "adidas": "Sports footwear and apparel brand",
+    "asics": "Japanese performance sports shoe brand",
+
+    "secondstreet": "Second-hand fashion and sneaker store",
+
+    "webike": "Online marketplace for motorcycle parts and riding gear",
+
+    "mandarake_anime": "Specialty store for anime, manga, and otaku goods",
+    "mandarake_card": "Specialty store for collectible cards and rare items",
+
+    "mercari_card": "Secondary marketplace for trading cards and collectibles",
+    "rakuma": "Resale platform for trading cards and hobby items"
+  },
+
+  "DahsboardTrans" : {
+    "sidebar" : {
+      "DashboardText" : "My Dashboard",
+      "ProfileText" : "My Profile",
+      "InsertURlText" : "Insert URL",
+      "RequestText" : "My Request",
+      "OrdersText" : "My Orders",
+      "Wishlist" : "My Wishlist"
+    },
+    "profile" : {
+      "profileText" : " My Profile",
+      "profileDesc" : "Manage your account information and preferences",
+      "totalOrdersText" : "TotalOrders",
+      "totalwishlistext" : "Wishlist Items",
+      "totalSpentText" : "Total Spent",
+      "accountText" : "Account information",
+      "shippingText" : "Shipping Address",
+      "editBtn" : "Edit Profile",
+      "changeBtn" : "Change Password",
+      "logoutBtn" : "Logout"
+
+    }
+  },
+
+  "payment": {
+    "successTitle": "Payment Successful",
+    "successDesc": "Thank you for your payment. Your order has been placed.",
+    "viewOrder": "View Order History",
+    
+    "cancelTitle": "Payment Cancelled",
+    "cancelDesc": "Something went wrong with your transaction. Don't worry, no funds were deducted from your account.",
+    "retryBtn": "Try Payment Again",
+    "backBtn": "Back to Cart",
+    "supportText": "Need help? Contact Support"
+  } 
 }

@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 
 function RakutenHome() {
   return (
-    <section className="padd-cont  w-full mb-15">
+    <section className="padd-cont  w-full mb-2">
       <div className=" flex-col  p-5 rounded-lg bg-white px-5 shadow-lg ">
         <div className=" flexBetween mb-5">
           <Image

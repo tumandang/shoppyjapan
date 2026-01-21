@@ -33,8 +33,8 @@ export default function WishlistPage(){
     const [buttonStatus, setbuttonStatus] = useState("View all");
     const filters = [
     'View all',
-    'Pending Payment',
     'In Progress',
+    'Pending Payment',    
     'Shipping',
     'Refunded'
   ];

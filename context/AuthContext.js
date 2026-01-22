@@ -59,7 +59,20 @@ export const AuthProvider = ({ children }) => {
       throw error;
     }
   };
-
+const getRequestById = async (id) => {
+  try {
+    console.log("Fetching request ID:", id);
+    const response = await axiosInstance.get(`/request/${id}`);
+    console.log("Response:", response.data);
+    return response.data; 
+  } catch (error) {
+    console.error(
+      "Error fetching request by ID:",
+      error.response?.data || error.message
+    );
+    throw new Error("Request not found or you are not authorized");
+  }
+};
   const requestlist = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -73,7 +86,8 @@ export const AuthProvider = ({ children }) => {
       if (response.data.status) {
         
         return response.data.request || response.data.requests || response.data.data;
-      } else {
+      } 
+      else {
         throw new Error(response.data.message || 'Failed to fetch requests');
       }
     } catch (error) {
@@ -88,6 +102,8 @@ export const AuthProvider = ({ children }) => {
       throw error;
     }
   };
+
+
 
   const login = async (email, password) => {
     const response = await axiosInstance.post('/login', {
@@ -138,7 +154,7 @@ export const AuthProvider = ({ children }) => {
 
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth ,editprofile,requestlist,orderlist }}>
+    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth ,editprofile,requestlist,orderlist,getRequestById  }}>
       {children}
     </AuthContext.Provider>
   );

@@ -9,10 +9,11 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [marketplaces, setMarketplaces] = useState([]);
   
   useEffect(() => {
     checkAuth();
+    fetchMarketplaces();
   }, []);
 
   const checkAuth = async () => {
@@ -59,7 +60,20 @@ export const AuthProvider = ({ children }) => {
       throw error;
     }
   };
-
+const getRequestById = async (id) => {
+  try {
+    console.log("Fetching request ID:", id);
+    const response = await axiosInstance.get(`/request/${id}`);
+    console.log("Response:", response.data);
+    return response.data; 
+  } catch (error) {
+    console.error(
+      "Error fetching request by ID:",
+      error.response?.data || error.message
+    );
+    throw new Error("Request not found or you are not authorized");
+  }
+};
   const requestlist = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -73,7 +87,8 @@ export const AuthProvider = ({ children }) => {
       if (response.data.status) {
         
         return response.data.request || response.data.requests || response.data.data;
-      } else {
+      } 
+      else {
         throw new Error(response.data.message || 'Failed to fetch requests');
       }
     } catch (error) {
@@ -88,6 +103,8 @@ export const AuthProvider = ({ children }) => {
       throw error;
     }
   };
+
+
 
   const login = async (email, password) => {
     const response = await axiosInstance.post('/login', {
@@ -135,10 +152,21 @@ export const AuthProvider = ({ children }) => {
     return response;
   };
 
+  const fetchMarketplaces = async () => {
+    try {
+      const response = await axiosInstance.get('/marketplace'); 
+      if (response.data.status) {
+        setMarketplaces(response.data.data || response.data.marketplaces || response.data); 
+      }
+    } catch (error) {
+      console.error('Error fetching marketplaces:', error);
+    }
+  };
+
 
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth ,editprofile,requestlist,orderlist }}>
+    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth ,editprofile,requestlist,orderlist,getRequestById, marketplaces, fetchMarketplaces}}>
       {children}
     </AuthContext.Provider>
   );

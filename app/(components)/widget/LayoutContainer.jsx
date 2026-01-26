@@ -118,41 +118,6 @@ function LayoutContainer() {
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-lg shadow-lg p-2">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 w-full">
-
-          {/* Left content */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 px-4 py-3">
-
-            <h4 className={`${lexend.className} text-base`}>
-              Announcement
-            </h4>
-
-            <div className="flex gap-2 text-sm text-gray-600">
-              <p>13/3/2025</p>
-              <p>13:43</p>
-            </div>
-
-            <p
-              className={`text-sm font-semibold line-clamp-2 text-gray-800 ${lexend.className}`}
-            >
-              UPDATED SHIPPING FEE POLICY
-            </p>
-          </div>
-
-          {/* View all */}
-          <div className="px-4 sm:px-0">
-            <Link
-              href="/announcement"
-              className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group"
-            >
-              <span>View All</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-        </div>
-      </div>
     </div>
   );
 }

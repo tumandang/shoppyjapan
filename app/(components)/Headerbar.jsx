@@ -20,6 +20,7 @@ function Headerbar() {
   { code: "GB", locale: 'en', label: "ENGLISH" },
   { code: "MY", locale: 'ms', label: "BAHASA MELAYU" },
   { code: "JP", locale: 'ja', label: "日本語" },
+  { code: "ID", locale: 'id', label: "BAHASA INDONESIA" },
 ];
   const t = useTranslations('TopBar');
   const selectedLang = langs.find(lang => lang.locale === locale) || langs[0];

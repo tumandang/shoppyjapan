@@ -1,0 +1,286 @@
+{
+  "TopBar": {
+    "shortDesc": "Belanja di Jepang dengan mudah dari rumah dengan layanan cepat dan terpercaya.",
+    "aboutText": "Tentang Shopan",
+    "helpText": "Pertama Kali?",
+    "language1": "BAHASA INGGRIS",
+    "language2": "BAHASA MELAYU",
+    "language3": "日本語"
+  },
+  "Header": {
+    "SearchPlaceHolder": "Cari berdasarkan produk atau URL tautan",
+    "loginText": "Masuk",
+    "registerText": "Daftar"
+  },
+
+  "layoutContainer": {
+    "integratedText": "Toko Terintegrasi",
+    "rakutenText": "Rakuten",
+    "rakumaText": "Rakuma",
+    "yahooText": "Yahoo Auction",
+    "notFoundText": "Jelajahi Toko",
+    "listwebText": "Daftar Situs Web",
+    "appText": "Aplikasi Kami",
+    "playText": "Play Store"
+  },
+
+  "Metrics": {
+    "saving": "Penghematan maksimal untuk belanja online luar negeri",
+    "countries": "Negara yang didukung di seluruh dunia",
+    "support": "Layanan pelanggan tersedia 24/7"
+  },
+
+  "linkshop": {
+    "topText": "Marketplace Teratas",
+    "viewText": "Lihat Semua",
+    "marketplace": {
+      "amazon": "Marketplace online umum untuk semua jenis produk",
+      "ydirect": "Platform belanja dan lelang di Jepang",
+      "mercari": "Platform jual beli barang bekas dan preloved populer",
+      "newera": "Merek topi dan pakaian dari Jepang",
+      "uniqlo": "Merek fashion Jepang yang kasual dan minimalis"
+    }
+  },
+
+  "Testimonials": {
+    "title": "Apa Kata Pelanggan Kami",
+    "subtitle": "Temukan alasan mengapa banyak orang menyukai kami dan menjadikan kami partner pilihan mereka.",
+    "reviews": [
+      {
+        "text": "Saya sangat puas dengan layanan yang saya terima! Timnya responsif, perhatian, dan benar-benar peduli dengan kebutuhan saya. Sangat direkomendasikan.",
+        "author": "Jon Moxley"
+      },
+      {
+        "text": "Kualitas luar biasa dan dukungan pelanggan yang sangat baik. Mereka melampaui ekspektasi saya. Pasti akan menggunakan layanan ini lagi!",
+        "author": "Sarah Johnson"
+      },
+      {
+        "text": "Profesional, dapat dipercaya, dan efisien. Perhatian mereka terhadap detail dan komitmen pada kualitas membuat mereka unggul.",
+        "author": "Michael Chen"
+      }
+    ]
+  },
+
+  "Faq": {
+    "title": "Pertanyaan yang Sering Diajukan",
+    "subtitle": "Berikut adalah pertanyaan yang paling sering diajukan untuk ShoPan Japan.",
+    "cta": "Tidak menemukan jawaban yang Anda cari?",
+    "botText": "Chat dengan chatbot kami - Aika",
+    "general": {
+      "review": {
+        "question": "Mengapa Permintaan Pembelian perlu ditinjau oleh tim ShoPan?",
+        "answer": "Permintaan Pembelian ditinjau demi keamanan. Beberapa barang mungkin tidak memenuhi syarat, terbatas, atau mencurigakan."
+      },
+      "shipping": {
+        "question": "Apakah Anda bisa mengirim ke negara saya?",
+        "answer": "Ya. ShoPan mengirim ke seluruh dunia menggunakan Japan Post, FedEx, dan DHL."
+      },
+      "authentic": {
+        "question": "Apakah barang yang dibeli melalui ShoPan asli?",
+        "answer": "ShoPan hanya membeli dari marketplace dan penjual Jepang yang terverifikasi dan terpercaya."
+      },
+      "seller": {
+        "question": "Apakah ShoPan adalah penjual barang tersebut?",
+        "answer": "Tidak. ShoPan adalah layanan proxy yang membeli barang atas nama Anda."
+      },
+      "support": {
+        "question": "Apakah ShoPan menyediakan layanan pelanggan?",
+        "answer": "Ya. Dukungan tersedia melalui dashboard dan saluran kontak."
+      }
+    }
+  },
+
+  "Footer": {
+    "brandName": "Shoppe Japan",
+    "description": "ShoppeJapan adalah destinasi terpercaya Anda untuk produk asli Jepang. Dari kecantikan dan fashion hingga kebutuhan gaya hidup, kami menghadirkan yang terbaik dari Jepang langsung ke rumah Anda.",
+    "quickLinks": {
+      "title": "Tautan Cepat",
+      "home": "Beranda",
+      "about": "Tentang Kami",
+      "contact": "Hubungi Kami",
+      "terms": "Syarat dan Ketentuan",
+      "getInTouch": "Hubungi Kami",
+      "email": "shopanhq@gmail.com"
+    },
+    "locations": {
+      "title": "Shoppe Japan Global",
+      "japan": {
+        "country": "Jepang",
+        "address": "739-0321 Hiroshima-ken, Hiroshima-Shi, Akiku, Nakano 6-29-10 Sun Heights Sumita B202",
+        "phone": "+8190-6437-2903"
+      },
+      "malaysia": {
+        "country": "Malaysia",
+        "address": "12A & 14A, Jalan Pulai Mutiara 9/5, Taman Pulai Mutiara 2, 81100 Johor Bahru, Johor",
+        "phone": "+60135987486"
+      }
+    }
+  },
+
+  "Login": {
+    "welcomeText": "Selamat Datang di Shopan",
+    "registerText": "Belum punya akun?",
+    "ctaRegister": "Daftar",
+    "emailText": "Email",
+    "emailPlaceHolder": "nama@email.com",
+    "passwordText": "Kata Sandi",
+    "forgotText": "Lupa kata sandi?",
+    "loginText": "Masuk",
+    "loginPro": "Sedang masuk...",
+    "agreeText": "Dengan melanjutkan, Anda menyetujui",
+    "terms": "Syarat Layanan",
+    "privacy": "Kebijakan Privasi"
+  },
+
+  "Register": {
+    "page1Title": "Data Pribadi",
+    "page1Desc": "Mari mulai dengan data dasar Anda",
+    "step1": "Langkah 1/4",
+    "step2": "Langkah 2/4",
+    "step3": "Langkah 3/4",
+    "step4": "Langkah 4/4",
+    "nameText": "Nama Pengguna",
+    "namePlace": "JonhDoe123",
+    "fullnameText": "Nama Lengkap",
+    "fullnamePlace": "Jonh Doe",
+    "emailText": "Email",
+    "emailPlace": "jondoe@gmail.com",
+    "notelText": "Nomor Telepon",
+    "notelPlace": "08123456789",
+
+    "page2": {
+      "title": "Detail Alamat",
+      "desc": "Ke mana pesanan Anda akan dikirim?",
+      "address1": "Alamat 1",
+      "addplace1": "No 1234",
+      "address2": "Alamat 2",
+      "addplace2": "Jalan Jati 1/3",
+      "address3": "Alamat 3",
+      "addplace3": "Bandar Selayang",
+      "postcode": "Kode Pos",
+      "postcodeplace1": "87200",
+      "city": "Kota",
+      "cityplace1": "Taiping",
+      "state": "Provinsi",
+      "stateplace": "Kedah",
+      "country": "Negara",
+      "countryplace": "Malaysia"
+    },
+
+    "page3": {
+      "title": "Buat Kata Sandi",
+      "desc": "Amankan akun Anda dengan kata sandi yang kuat",
+      "passwordText": "Kata Sandi",
+      "passwordPlace": "Masukkan kata sandi",
+      "descpass": "Minimal 8 karakter",
+      "confirmPassText": "Konfirmasi Kata Sandi",
+      "confirmPlace": "Masukkan ulang kata sandi"
+    },
+
+    "page4": {
+      "title": "Selesai!",
+      "desc": "Periksa kembali data Anda sebelum mengirim",
+      "email": "Email",
+      "name": "Nama Pengguna",
+      "phone": "Nomor Telepon"
+    },
+
+    "button": {
+      "Next": "Berikutnya",
+      "Prev": "Sebelumnya",
+      "Back": "Kembali",
+      "Create": "Buat Akun"
+    },
+
+    "footerText": "Dengan melanjutkan, Anda menyetujui",
+    "terms": "Syarat Layanan",
+    "and": "dan",
+    "privacy": "Kebijakan Privasi",
+    "descfoot": "Sudah punya akun?",
+    "CTA-signIn": "Masuk"
+  },
+
+  "categoryTrans": {
+    "viewText": "Lihat Semua",
+    "backbtn": "Kembali",
+    "filterText": "Filter",
+    "categoriesText": "Kategori",
+    "shopText": "Rakuten Resmi",
+    "bestseller": "Produk Terlaris"
+  },
+
+  "WebCateg": {
+    "title": "Daftar Situs Web",
+    "ecommerce": "E-Commerce",
+    "fashion": "Fashion",
+    "shoes": "Sepatu",
+    "sneaker": "Sneaker / Barang Bekas",
+    "auto": "Otomotif / Perlengkapan Gaya Hidup",
+    "anime": "Anime / Otaku / Figur / Koleksi",
+    "card": "Kartu / Koleksi (Pasar Sekunder)"
+  },
+
+  "marketplaceDesc": {
+    "amazon": "Marketplace online umum dengan berbagai produk",
+    "jdirect": "Platform belanja dan lelang Jepang",
+    "qoo10": "Marketplace online untuk produk fashion dan gaya hidup",
+    "wowma": "Platform belanja online multi-kategori Jepang",
+    "paypay": "Platform pasar loak antar pengguna",
+    "mercari": "Marketplace jual beli barang bekas populer",
+
+    "uniqlo": "Merek fashion Jepang yang sederhana dan fungsional",
+    "supreme": "Merek streetwear premium populer secara global",
+    "bape": "Merek streetwear ikonik dari Jepang",
+    "zozotown": "Platform belanja online khusus fashion",
+    "newera": "Merek topi dan pakaian ternama",
+    "louisvuitton": "Merek fashion dan aksesori mewah",
+
+    "adidas": "Merek sepatu dan pakaian olahraga",
+    "asics": "Merek sepatu olahraga performa dari Jepang",
+
+    "secondstreet": "Toko fashion dan sneaker bekas",
+
+    "webike": "Marketplace online untuk suku cadang motor dan perlengkapan berkendara",
+
+    "mandarake_anime": "Toko khusus anime, manga, dan barang otaku",
+    "mandarake_card": "Toko khusus kartu koleksi dan barang langka",
+
+    "mercari_card": "Marketplace sekunder untuk kartu dan barang koleksi",
+    "rakuma": "Platform jual beli untuk kartu dan hobi"
+  },
+
+  "DahsboardTrans": {
+    "sidebar": {
+      "DashboardText": "Dashboard Saya",
+      "ProfileText": "Profil Saya",
+      "InsertURlText": "Masukkan URL",
+      "RequestText": "Permintaan Saya",
+      "OrdersText": "Pesanan Saya",
+      "Wishlist": "Daftar Favorit"
+    },
+    "profile": {
+      "profileText": "Profil Saya",
+      "profileDesc": "Kelola informasi akun dan preferensi Anda",
+      "totalOrdersText": "Total Pesanan",
+      "totalwishlistext": "Item Favorit",
+      "totalSpentText": "Total Pengeluaran",
+      "accountText": "Informasi Akun",
+      "shippingText": "Alamat Pengiriman",
+      "editBtn": "Edit Profil",
+      "changeBtn": "Ubah Kata Sandi",
+      "logoutBtn": "Keluar"
+    }
+  },
+
+  "payment": {
+    "successTitle": "Pembayaran Berhasil",
+    "successDesc": "Terima kasih atas pembayaran Anda. Pesanan Anda telah diproses.",
+    "viewOrder": "Lihat Riwayat Pesanan",
+
+    "cancelTitle": "Pembayaran Dibatalkan",
+    "cancelDesc": "Terjadi kesalahan pada transaksi Anda. Jangan khawatir, dana tidak dipotong.",
+    "retryBtn": "Coba Bayar Lagi",
+    "backBtn": "Kembali ke Keranjang",
+    "supportText": "Butuh bantuan? Hubungi Dukungan"
+  }
+}

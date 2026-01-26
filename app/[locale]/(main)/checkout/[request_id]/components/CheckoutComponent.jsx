@@ -1,12 +1,13 @@
 "use client";
-
+import { useLocale } from "next-intl";
 import { useAuth } from "@/context/AuthContext";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { MapPin, Plus, Package } from "lucide-react";
-
+import axiosInstance from "@/lib/axios";
 function CheckoutComponent() {
   const { request_id } = useParams();
+  const locale = useLocale();
   const { getRequestById, user } = useAuth();
   const [request, setRequest] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState('existing-1');
@@ -20,7 +21,6 @@ function CheckoutComponent() {
     country: 'Malaysia'
   });
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchRequest = async () => {
       try {
@@ -37,6 +37,27 @@ function CheckoutComponent() {
 
     if (request_id) fetchRequest();
   }, [request_id, getRequestById]);
+
+  const payNow = async () => {
+    
+    try{
+      const response = await axiosInstance.post("/stripe/checkout", {
+        request_id: request.id,
+        locale : locale     
+      });
+
+      window.location.href = response.data.checkout_url;
+    }
+    catch(error){
+      console.error("Payment failed:", error);
+      console.error("Error response:", error.response?.data);
+
+      alert(error.response?.data?.message || "Failed to cancel request");
+    }
+
+   
+    
+  };
 
   const handleNewAddressChange = (e) => {
     const { name, value } = e.target;
@@ -86,10 +107,10 @@ function CheckoutComponent() {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Left Column - Address Section */}
+   
           <div className="w-full lg:w-3/5 space-y-6 border border-gray-200 rounded-xl p-6">
             
-            {/* Current Address */}
+          
             <div className="flex flex-col space-y-3">
               <div className="flex items-center gap-2 mb-2">
                 <MapPin className="w-5 h-5 text-blue-600" />
@@ -139,7 +160,7 @@ function CheckoutComponent() {
               )}
             </div>
 
-            {/* Add New Address Form */}
+        
             <div className="flex flex-col space-y-3">
               <div className="flex items-center gap-2 mb-2">
                 <Plus className="w-5 h-5 text-green-600" />
@@ -304,7 +325,7 @@ function CheckoutComponent() {
             </div>
           </div>
 
-          {/* Right Column - Order Summary */}
+      
           <div className="w-full lg:w-2/5">
             <div className="bg-white border border-gray-200 rounded-xl p-6 sticky top-4">
               <div className="flex items-center gap-2 mb-6">
@@ -312,12 +333,12 @@ function CheckoutComponent() {
                 <h5 className="text-xl font-semibold text-gray-900">Order Summary</h5>
               </div>
 
-              {/* Cart Item */}
+        
               <div className="space-y-4 mb-6 pb-6 border-b border-gray-200">
                 <div className="flex gap-4">
                   {request.product_image ? (
                     <img
-                      src={`/storage/${request.product_image}`}
+                      src={request.image_url}
                       alt={request.product_name}
                       className="w-20 h-20 object-cover rounded-lg border border-gray-200"
                     />
@@ -337,7 +358,6 @@ function CheckoutComponent() {
                 </div>
               </div>
 
-              {/* Japan Costs */}
               <div className="space-y-3 mb-4">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Subtotal (JPY)</span>
@@ -365,7 +385,7 @@ function CheckoutComponent() {
                 </div>
               </div>
 
-              {/* Malaysia Total */}
+        
               <div className="bg-blue-50 rounded-lg p-4 space-y-3 mb-6">
                 <div className="flex justify-between pt-3 border-t border-blue-200">
                   <span className="text-lg font-bold text-gray-900">Total (MYR)</span>
@@ -375,7 +395,7 @@ function CheckoutComponent() {
                 </div>
               </div>
 
-              <button className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-3 rounded-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+              <button onClick={payNow} className="w-full bg-linear-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-3 rounded-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                 Continue to Payment
               </button>
 

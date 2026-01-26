@@ -9,10 +9,11 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [marketplaces, setMarketplaces] = useState([]);
   
   useEffect(() => {
     checkAuth();
+    fetchMarketplaces();
   }, []);
 
   const checkAuth = async () => {
@@ -151,10 +152,21 @@ const getRequestById = async (id) => {
     return response;
   };
 
+  const fetchMarketplaces = async () => {
+    try {
+      const response = await axiosInstance.get('/marketplace'); 
+      if (response.data.status) {
+        setMarketplaces(response.data.data || response.data.marketplaces || response.data); 
+      }
+    } catch (error) {
+      console.error('Error fetching marketplaces:', error);
+    }
+  };
+
 
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth ,editprofile,requestlist,orderlist,getRequestById  }}>
+    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth ,editprofile,requestlist,orderlist,getRequestById, marketplaces, fetchMarketplaces}}>
       {children}
     </AuthContext.Provider>
   );

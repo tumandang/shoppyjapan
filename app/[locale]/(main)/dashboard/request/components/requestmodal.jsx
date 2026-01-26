@@ -413,9 +413,10 @@ function Tablerequest({ onOpenModal }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { requestlist } = useAuth();
+  const locale = useLocale();
   const router = useRouter();
   const handleCheckout = (request) => {
-    router.push(`/checkout/${request.id}`);
+    router.push(`/${locale}/checkout/${request.id}`);
   };
   const statusStyles = {
     new: "bg-purple-100 text-purple-700",

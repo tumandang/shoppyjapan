@@ -1,6 +1,6 @@
 
 import Header from "../../(components)/Header";
-import Headerbar from "../../(components)/headerbar";
+import Headerbar from "../../(components)/Headerbar";
 import Footer from "../../(components)/Footer";
 import ChabotIcon from "../../(components)/ChabotIcon";
 

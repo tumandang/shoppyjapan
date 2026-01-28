@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Lexend, Sansation } from "next/font/google";
+import { Lexend } from "next/font/google";
 import {
   ChevronDown,
   Globe2,
@@ -16,11 +16,6 @@ const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
   weight: ["600"],
-});
-const sansation = Sansation({
-  variable: "--font-Sansation",
-  subsets: ["latin"],
-  weight: ["400"],
 });
 
 
@@ -83,7 +78,7 @@ function FAQ() {
           { fq('title') }
         </h3>
       </div>
-      <div className={`${sansation.className} text-center mt-2`}>
+      <div className={`${lexend.className} text-center mt-2`}>
         <p className="text-gray-300"> 
           {fq('subtitle')}
           <br />
@@ -130,7 +125,7 @@ function FAQ() {
                       className="overflow-hidden"
                     >
                       <p
-                        className={`${sansation.className} text-gray-100 mt-1 `}
+                        className={`${lexend.className} text-gray-100 mt-1 `}
                       >
                         {item.answer}
                       </p>

@@ -87,7 +87,7 @@ function Linkshop() {
                 <div className="w-32 h-20 flex items-center justify-center">
                   {marketplace.logo_url ? (
                     <img
-                      src={marketplace.logo_url}
+                      src={marketplace.logo}
                       alt={marketplace.name}
                       className="object-contain max-h-full max-w-full"
                     />

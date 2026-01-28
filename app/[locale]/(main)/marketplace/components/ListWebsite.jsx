@@ -99,7 +99,7 @@ function ListWebsite() {
                     <div className="w-32 h-20 flex items-center justify-center">
                       {marketplace.logo && (
                         <img
-                          src={marketplace.logo_url}
+                          src={marketplace.logo}
                           alt={marketplace.name}
                           width={400}
                           height={200}

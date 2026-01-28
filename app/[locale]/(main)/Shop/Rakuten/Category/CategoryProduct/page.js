@@ -1,6 +1,6 @@
 "use client";
 import { useParams } from "next/navigation";
-import CategoryProduct from "./components/ListingProductCategory";
+import CategoryProduct from "./[CategoryID]/components/ListingProductCategory";
 
 export default function CategoryPage() {
   const { CategoryID } = useParams();

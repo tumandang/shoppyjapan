@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [marketplaces, setMarketplaces] = useState([]);
-  
+  const [blog, setblog] = useState([]);
   useEffect(() => {
     checkAuth();
     fetchMarketplaces();
@@ -163,10 +163,22 @@ const getRequestById = async (id) => {
     }
   };
 
+  const fetchBlog = async () => {
+    try{
+      const response = await axiosInstance.get('/fetchblog');
+      if (response.data.status){
+        setblog(response.data.data)
+      }
+    }
+    catch(error){
+      console.error('Error fetching marketplaces:', error);
+    }
+  }
+
 
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth ,editprofile,requestlist,orderlist,getRequestById, marketplaces, fetchMarketplaces}}>
+    <AuthContext.Provider value={{ user, login, register, logout, loading, checkAuth ,editprofile,requestlist,orderlist,getRequestById, marketplaces, fetchMarketplaces , blog , fetchBlog }}>
       {children}
     </AuthContext.Provider>
   );

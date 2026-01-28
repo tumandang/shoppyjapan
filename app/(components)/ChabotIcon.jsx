@@ -21,7 +21,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Asimovian, Lexend } from "next/font/google";
+import {  Lexend } from "next/font/google";
 import { Spinner } from "@/components/ui/spinner";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Markdown from "react-markdown";
@@ -32,11 +32,7 @@ const lexend = Lexend({
   subsets: ["latin"],
   weight: ["600"],
 });
-const asimovian = Asimovian({
-  variable: "--font-Asimovian",
-  subsets: ["latin"],
-  weight: ["400"],
-});
+
 function ChabotIcon() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const chatIconRef = useRef(null);
@@ -131,7 +127,7 @@ function ChabotIcon() {
                       alt="Shopan Logo"
                       className="h-10 w-auto"
                     />
-                    <h3 className={`text-orange-400 ${asimovian.className} items-center`}>
+                    <h3 className={`text-orange-400 ${lexend.className} items-center`}>
                       AIKA
                     </h3>
                   </div>

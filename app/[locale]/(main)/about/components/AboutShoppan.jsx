@@ -1,16 +1,12 @@
 import DotGrid from "@/components/react-bits/DotGrid";
-import { Lexend, Sansation, DM_Sans } from "next/font/google";
+import { Lexend, DM_Sans } from "next/font/google";
 import React from "react";
 const lexend = Lexend({
   variable: "--font-Lexend",
   subsets: ["latin"],
   weight: ["600"],
 });
-const sansation = Sansation({
-  variable: "--font-Sansation",
-  subsets: ["latin"],
-  weight: ["400"],
-});
+
 const dm_sans = DM_Sans({
   variable: "--font-DM_Sans",
   subsets: ["latin"],
@@ -59,7 +55,7 @@ function AboutShoppan() {
       </section>
       <section className="w-full bg-[#ffffff]  flex padd-cont-img gap-x-30 ">
         <div className="flex flex-row gap-x-3 w-[1408px] ">
-          <div className={`${sansation.className}  h-[54px] flexCenter `}>
+          <div className={`${dm_sans.className}  h-[54px] flexCenter `}>
             <span>01</span>
           </div>
           <div className="">

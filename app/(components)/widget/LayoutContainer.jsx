@@ -118,7 +118,8 @@ function LayoutContainer() {
             <Banner />
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow-lg p-2">
+      </div>
+      <div className="bg-white rounded-lg shadow-lg p-2">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 w-full">
          
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 px-4 py-3">
@@ -136,10 +137,10 @@ function LayoutContainer() {
               </p>
             </div>
 
-            {/* View all */}
+          
             <div className="px-4 sm:px-0">
               <Link
-                href="/announcement"
+                href={`${locale}/announcement`}
                 className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group"
               >
                 <span>View All</span>
@@ -148,7 +149,6 @@ function LayoutContainer() {
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 }

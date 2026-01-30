@@ -1,12 +1,12 @@
 import React from "react";
-import { useLocale } from "next-intl";
+import { useLocale,useTranslations } from "next-intl";
 import CardRakuten from "../widget/CardRakuten";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 function RakutenHome() {
-
+    const VA = useTranslations('categoryTrans')
   const locale = useLocale();
   return (
     <section className="padd-cont  w-full mb-2">
@@ -23,7 +23,7 @@ function RakutenHome() {
               href={`${locale}/Shop/Rakuten/Product/Ranking`}
               className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition-colors group"
             >
-              <span>View All</span>
+              <span>{VA('viewText')}</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           
